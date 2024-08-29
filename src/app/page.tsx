@@ -4,7 +4,6 @@ import * as React from 'react';
 import { Box, Typography } from '@mui/material';
 import AVariableModifyInputBox from '@/conponents/atom/Input/AVariableModifyInputBox';
 import AFixedModifyInputBox from '@/conponents/atom/Input/AFixedModifyInputBox';
-import Test from '@/conponents/atom/Input/Test';
 
 const Home = () => {
   return (
