@@ -11,14 +11,25 @@ import {
 } from '@mui/material';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 
-export type AFixedModifyInputBoxProp = {
-  type?: 'text' | 'password';
+type InputTextType = {
+  text?: string;
+  password?: string;
+};
+
+type inputVariantType = {
+  outlined?: string;
+  standard?: string;
+  filled?: string;
+};
+
+type AFixedModifyInputBoxProp = {
+  type?: keyof InputTextType;
   placeholder?: string;
   isInvisible?: boolean;
   width?: number;
   sx?: object;
   isMultiline?: boolean;
-  inputVariant?: 'outlined' | 'standard' | 'filled';
+  inputVariant?: keyof inputVariantType;
 };
 
 const AFixedModifyInputBox = ({
