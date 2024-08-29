@@ -24,7 +24,7 @@ type InputVariantType<T extends string> = {
 
 type AFixedModifyInputBoxProp<T extends string> = {
   type?: keyof InputTextType<T>;
-  placeholder?: string;
+  placeholder?: T;
   isInvisible?: boolean;
   width?: number;
   sx?: object;
