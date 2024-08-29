@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import Drawer from "@mui/material/Drawer";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import ImageIcon from "../conponents/atom/ImageIcon";
-import { DrawerMuiStyle, DrawerToolbarMuiStyle } from "../styles/mui";
-import { logoData } from "../constants/logoData";
-import MenuBox from "../conponents/organism/MenuBox";
+import * as React from 'react';
+import Drawer from '@mui/material/Drawer';
+import Toolbar from '@mui/material/Toolbar';
+import List from '@mui/material/List';
+import { DrawerMuiStyle, DrawerToolbarMuiStyle } from '@/styles/mui';
+import { logoData } from '@/constants/logoData';
+import AImageIcon from '@/conponents/atom/Icon/AImageIcon';
+import ASideMenuBox from '@/conponents/organism/Menu/ASideMenuBox';
 
 const SideNav = () => {
   return (
@@ -17,10 +17,10 @@ const SideNav = () => {
           ...DrawerToolbarMuiStyle,
         }}
       >
-        <ImageIcon {...logoData} />
+        <AImageIcon {...logoData} />
       </Toolbar>
       <List>
-        <MenuBox />
+        <ASideMenuBox />
       </List>
     </Drawer>
   );

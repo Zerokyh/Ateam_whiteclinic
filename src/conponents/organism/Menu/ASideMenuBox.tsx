@@ -1,9 +1,9 @@
-import LinkButton from "../molecules/LinkButton";
-import { colors } from "@/app/styles/colors";
-import TitleMenuBox from "../molecules/TitleMenuBox";
-import { sideBarMenuData } from "@/app/constants/sideBarMenudata";
+import LinkButton from '@/conponents/molecules/Menu/LinkButton';
+import TitleMenuBox from '@/conponents/molecules/Menu/TitleMenuBox';
+import { sideBarMenuData } from '@/constants/sideBarMenudata';
+import { colors } from '@/styles/colors';
 
-const MenuBox = () => {
+const ASideMenuBox = () => {
   return (
     <>
       {sideBarMenuData.map((menuItem) => (
@@ -25,4 +25,4 @@ const MenuBox = () => {
   );
 };
 
-export default MenuBox;
+export default ASideMenuBox;

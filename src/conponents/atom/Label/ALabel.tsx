@@ -1,13 +1,14 @@
-import { sizes } from "@/app/styles/sizes";
-import { LabelProps } from "@/app/util/labelType";
-import { ListItemText } from "@mui/material";
+import { sizes } from '@/styles/sizes';
+import { ListItemText } from '@mui/material';
 
-const Label = ({
-  text = "Label",
-  color = "black",
-  fontSize = "medium",
-  sx,
-}: LabelProps) => {
+export type ALabelProps = {
+  text?: string;
+  color?: string;
+  fontSize?: keyof typeof sizes.fontSize;
+  sx?: object;
+};
+
+const ALabel = ({ text = 'Label', color = 'black', fontSize = 'medium', sx }: ALabelProps) => {
   return (
     <ListItemText
       primary={text}
@@ -19,4 +20,4 @@ const Label = ({
   );
 };
 
-export default Label;
+export default ALabel;

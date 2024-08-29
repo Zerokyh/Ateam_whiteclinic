@@ -1,8 +1,14 @@
-import { ImageIconProps } from "@/app/util/imageIconType";
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-const ImageIcon = ({ href, src, width, height, alt }: ImageIconProps) => {
+export type AImageIconProps = {
+  href: string;
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+};
+const AImageIcon = ({ href, src, width, height, alt }: AImageIconProps) => {
   return (
     <>
       <Link href={href}>
@@ -12,4 +18,4 @@ const ImageIcon = ({ href, src, width, height, alt }: ImageIconProps) => {
   );
 };
 
-export default ImageIcon;
+export default AImageIcon;

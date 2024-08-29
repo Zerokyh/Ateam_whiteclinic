@@ -1,41 +1,44 @@
-import { ListItemButton } from "@mui/material";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import AIcon, { AIconProps } from '@/conponents/atom/Icon/AIcon';
+import ALabel, { ALabelProps } from '@/conponents/atom/Label/ALabel';
+import { colors } from '@/styles/colors';
+import { LinkButtonHoverStyle } from '@/styles/mui';
+import { ListItemButton } from '@mui/material';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-import { colors } from "@/app/styles/colors";
-import { LinkButtonProps } from "@/app/util/linkButtonType";
-import Icon from "../atom/Icon";
-import Label from "../atom/Label";
-import { LinkButtonHoverStyle } from "@/app/styles/mui";
+export type ALinkButtonProps = {
+  iconprops: AIconProps;
+  labelprops: ALabelProps;
+  href: string;
+  sx?: object;
+};
 
-const LinkButton = ({ iconprops, labelprops, href }: LinkButtonProps) => {
+const LinkButton = ({ iconprops, labelprops, href }: ALinkButtonProps) => {
   const pathname = usePathname();
   return (
-    <Link href={href} passHref style={{ textDecoration: "none" }}>
+    <Link href={href} passHref style={{ textDecoration: 'none' }}>
       <ListItemButton
         sx={{
           color: pathname === href ? colors.text.active : colors.text.inActive,
-          ":hover": {
-            "& .MuiListItemIcon-root, & .MuiListItemText-root": {
+          ':hover': {
+            '& .MuiListItemIcon-root, & .MuiListItemText-root': {
               color: colors.text.active,
             },
           },
         }}
       >
-        <Icon
+        <AIcon
           {...iconprops}
           sx={{
             ...LinkButtonHoverStyle,
-            color:
-              pathname === href ? colors.text.active : colors.text.inActive,
+            color: pathname === href ? colors.text.active : colors.text.inActive,
           }}
         />
-        <Label
+        <ALabel
           {...labelprops}
           sx={{
             ...LinkButtonHoverStyle,
-            color:
-              pathname === href ? colors.text.active : colors.text.inActive,
+            color: pathname === href ? colors.text.active : colors.text.inActive,
           }}
         />
       </ListItemButton>

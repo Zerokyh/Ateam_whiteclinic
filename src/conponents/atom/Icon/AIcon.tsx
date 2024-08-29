@@ -1,7 +1,13 @@
-import { IconProps } from "@/app/util/iconType";
-import { ListItemIcon } from "@mui/material";
+import { ListItemIcon } from '@mui/material';
+import { ReactElement } from 'react';
 
-const Icon = ({ icon, color, sx }: IconProps) => {
+export type AIconProps = {
+  icon: ReactElement;
+  color?: string;
+  sx?: object;
+};
+
+const AIcon = ({ icon, color, sx }: AIconProps) => {
   return (
     <ListItemIcon
       sx={{
@@ -14,4 +20,4 @@ const Icon = ({ icon, color, sx }: IconProps) => {
   );
 };
 
-export default Icon;
+export default AIcon;

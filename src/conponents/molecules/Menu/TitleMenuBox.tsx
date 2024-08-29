@@ -1,24 +1,28 @@
-import { ListItem } from "@mui/material";
-import { TitleMenuBoxProps } from "@/app/util/titleMenuBoxType";
-import Icon from "../atom/Icon";
-import Label from "../atom/Label";
-import { TitleMenuIconStyle } from "@/app/styles/mui";
+import { ListItem } from '@mui/material';
+import AIcon, { AIconProps } from '@/conponents/atom/Icon/AIcon';
+import ALabel, { ALabelProps } from '@/conponents/atom/Label/ALabel';
+import { TitleMenuIconStyle } from '@/styles/mui';
+
+export type TitleMenuBoxProps = {
+  iconprops: AIconProps;
+  labelprops: ALabelProps;
+};
 
 const TitleMenuBox = ({ iconprops, labelprops }: TitleMenuBoxProps) => {
   return (
     <ListItem
       sx={{
-        display: "flex",
-        alignItems: "center",
+        display: 'flex',
+        alignItems: 'center',
       }}
     >
-      <Icon
+      <AIcon
         {...iconprops}
         sx={{
           ...TitleMenuIconStyle,
         }}
       />
-      <Label {...labelprops} fontSize="small" />
+      <ALabel {...labelprops} fontSize="small" />
     </ListItem>
   );
 };
