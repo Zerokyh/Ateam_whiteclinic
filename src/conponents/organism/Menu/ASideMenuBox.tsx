@@ -6,7 +6,7 @@ import { colors } from '@/styles/colors';
 const ASideMenuBox = () => {
   return (
     <>
-      {sideBarMenuData.map((menuItem) => (
+      {Object.entries(sideBarMenuData).map(([key, menuItem]) => (
         <div key={menuItem.title}>
           <TitleMenuBox
             iconprops={{ icon: <menuItem.icon />, color: colors.text.title }}
