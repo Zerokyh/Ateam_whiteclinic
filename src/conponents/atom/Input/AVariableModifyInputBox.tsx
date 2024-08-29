@@ -1,24 +1,40 @@
 'use client';
 import * as React from 'react';
-import { FormControl, IconButton, Input, InputAdornment } from '@mui/material';
+import {
+  FilledInput,
+  FormControl,
+  IconButton,
+  Input,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+} from '@mui/material';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 
 export type AVariableModifyInputBoxProp = {
   type?: 'text' | 'password';
   placeholder?: string;
+  isInvisible?: boolean;
   width?: number;
+  height?: number;
   sx?: object;
+  isMultiline?: boolean;
+  inputVariant?: 'outlined' | 'standard' | 'filled';
 };
 
 const AVariableModifyInputBox = ({
   type = 'text',
-  placeholder = '직접수정',
+  placeholder,
+  isInvisible = true,
   width = 4, // 최소 너비 (ch 단위)
   sx,
+  isMultiline = false,
+  inputVariant = 'outlined',
 }: AVariableModifyInputBoxProp) => {
-  const [isDisabled, setIsDisabled] = React.useState(true);
+  const [isDisabled, setIsDisabled] = React.useState(isInvisible);
   const [inputValue, setInputValue] = React.useState('');
   const inputRef = React.useRef<HTMLInputElement | null>(null);
+
   React.useEffect(() => {
     if (inputRef.current) {
       const inputElement = inputRef.current;
@@ -32,6 +48,7 @@ const AVariableModifyInputBox = ({
       inputElement.style.width = `${newWidth}px`;
     }
   }, [inputValue, width]);
+
   const handleChange = () => {
     setIsDisabled(!isDisabled);
   };
@@ -40,25 +57,33 @@ const AVariableModifyInputBox = ({
     setInputValue(e.target.value);
   };
 
+  const inputProps = {
+    type,
+    value: inputValue,
+    onChange: handleInputChange,
+    endAdornment: (
+      <InputAdornment position="end">
+        <IconButton aria-label="toggle modify text" edge="end" onClick={handleChange}>
+          <DriveFileRenameOutlineIcon />
+        </IconButton>
+      </InputAdornment>
+    ),
+    multiline: isMultiline,
+    placeholder,
+    disabled: isDisabled,
+    inputRef,
+  };
   return (
-    <FormControl sx={{ m: 1, minWidth: `${width}ch`, ...sx }} variant="standard">
-      <Input
-        id="outlined-adornment-input"
-        type={type}
-        value={inputValue}
-        onChange={handleInputChange}
-        endAdornment={
-          <InputAdornment position="end">
-            <IconButton aria-label="toggle modify text" edge="end" onClick={handleChange}>
-              <DriveFileRenameOutlineIcon />
-            </IconButton>
-          </InputAdornment>
-        }
-        placeholder={placeholder}
-        disabled={isDisabled}
-        inputRef={inputRef}
-        sx={{ width: 'auto' }}
-      />
+    <FormControl
+      sx={{ m: 1, minWidth: typeof width === 'number' ? `${width}ch` : width, ...sx }}
+      variant={inputVariant}
+    >
+      {(inputVariant === 'outlined' || inputVariant === 'filled') && (
+        <InputLabel>{placeholder}</InputLabel>
+      )}
+      {inputVariant === 'outlined' && <OutlinedInput {...inputProps} />}
+      {inputVariant === 'filled' && <FilledInput {...inputProps} />}
+      {inputVariant === 'standard' && <Input {...inputProps} />}
     </FormControl>
   );
 };
