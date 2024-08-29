@@ -22,9 +22,8 @@ const AFixedModifyInputBox = ({
   };
   return (
     <FormControl sx={{ m: 1, width: { width }, ...sx }} variant="outlined">
-      <InputLabel htmlFor="outlined-adornment-password">{placeholder}</InputLabel>
+      <InputLabel>{placeholder}</InputLabel>
       <OutlinedInput
-        id="outlined-adornment-password"
         type={type}
         endAdornment={
           <InputAdornment position="end">
@@ -33,7 +32,6 @@ const AFixedModifyInputBox = ({
             </IconButton>
           </InputAdornment>
         }
-        label="Password"
         disabled={isDisabled}
       />
     </FormControl>
