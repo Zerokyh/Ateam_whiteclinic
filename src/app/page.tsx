@@ -4,6 +4,7 @@ import * as React from 'react';
 import { Box, Typography } from '@mui/material';
 import AVariableModifyInputBox from '@/conponents/atom/Input/AVariableModifyInputBox';
 import AFixedModifyInputBox from '@/conponents/atom/Input/AFixedModifyInputBox';
+import Test from './Test';
 
 const Home = () => {
   return (
@@ -31,6 +32,9 @@ const Home = () => {
         <AVariableModifyInputBox isMultiline={true} />
         <AVariableModifyInputBox inputVariant="filled" isMultiline={true} />
         <AVariableModifyInputBox inputVariant="standard" isMultiline={true} />
+      </Box>
+      <Box>
+        <Test />
       </Box>
     </main>
   );

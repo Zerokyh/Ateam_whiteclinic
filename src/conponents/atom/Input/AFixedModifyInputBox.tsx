@@ -11,25 +11,25 @@ import {
 } from '@mui/material';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 
-type InputTextType = {
-  text?: string;
-  password?: string;
+type InputTextType<T extends string> = {
+  text?: T;
+  password?: T;
 };
 
-type inputVariantType = {
-  outlined?: string;
-  standard?: string;
-  filled?: string;
+type InputVariantType<T extends string> = {
+  outlined?: T;
+  standard?: T;
+  filled?: T;
 };
 
-type AFixedModifyInputBoxProp = {
-  type?: keyof InputTextType;
+type AFixedModifyInputBoxProp<T extends string> = {
+  type?: keyof InputTextType<T>;
   placeholder?: string;
   isInvisible?: boolean;
   width?: number;
   sx?: object;
   isMultiline?: boolean;
-  inputVariant?: keyof inputVariantType;
+  inputVariant?: keyof InputVariantType<T>;
 };
 
 const AFixedModifyInputBox = ({
@@ -40,7 +40,7 @@ const AFixedModifyInputBox = ({
   sx,
   isMultiline = false,
   inputVariant = 'outlined',
-}: AFixedModifyInputBoxProp) => {
+}: AFixedModifyInputBoxProp<string>) => {
   const [isDisabled, setIsDisabled] = React.useState(isInvisible);
   const handleChange = () => {
     setIsDisabled(!isDisabled);
