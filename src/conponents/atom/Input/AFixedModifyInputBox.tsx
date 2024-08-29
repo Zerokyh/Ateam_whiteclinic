@@ -32,7 +32,7 @@ type AFixedModifyInputBoxProp<T extends string> = {
   inputVariant?: keyof InputVariantType<T>;
 };
 
-const AFixedModifyInputBox = ({
+const AFixedModifyInputBox = <T extends string>({
   type = 'text',
   placeholder,
   isInvisible = true,
@@ -40,7 +40,7 @@ const AFixedModifyInputBox = ({
   sx,
   isMultiline = false,
   inputVariant = 'outlined',
-}: AFixedModifyInputBoxProp<string>) => {
+}: AFixedModifyInputBoxProp<T>) => {
   const [isDisabled, setIsDisabled] = React.useState(isInvisible);
   const handleChange = () => {
     setIsDisabled(!isDisabled);
