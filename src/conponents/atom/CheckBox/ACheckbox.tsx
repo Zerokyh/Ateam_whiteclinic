@@ -1,6 +1,6 @@
 import { Checkbox, FormControlLabel } from '@mui/material';
 import AText, { TextProps } from '../Text/AText';
-import { CheckboxTextType } from '@/util/textType';
+import { CheckboxTextType } from '@/constants/textType';
 
 export type CheckboxProps = {
   isCheck?: boolean;

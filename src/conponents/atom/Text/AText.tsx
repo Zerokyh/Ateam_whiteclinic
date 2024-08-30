@@ -1,5 +1,5 @@
 import { sizes } from '@/styles/sizes';
-import { TextType } from '@/util/textType';
+import { TextType } from '@/constants/textType';
 import { Typography } from '@mui/material';
 
 export type TextProps = {
