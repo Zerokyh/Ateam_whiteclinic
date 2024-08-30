@@ -1,6 +1,7 @@
-import { CustomButtonProps } from "@/util/type/ButtonType";
+import { ButtonStyle } from "@/styles/ButtonStyle";
+import { CustomButtonProps } from "@/util/ButtonType";
 import { Button } from "@mui/material";
-import { ButtonStyle } from "../style/ButtonStyle";
+
 
 const CustomButton = ({ 
   variant, 

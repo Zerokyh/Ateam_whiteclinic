@@ -1,4 +1,4 @@
-import { ButtonStyle } from "@/app/hwanhee/style/ButtonStyle";
+import { ButtonStyle } from "@/styles/ButtonStyle";
 
 export type CustomButtonProps= {
     variant: 'text' | 'contained' | 'outlined';
