@@ -1,47 +1,37 @@
-import { sizes } from "@/styles/sizes";
-import RCheckbox, { CheckboxProps } from "../atom/RCheckbox";
-import RIcon, { IconProps } from "../atom/RIcon";
-import RText, { TextProps } from "../atom/RText";
+import React from 'react';
 
-type ControlGroup = 'RCheckbox' | 'RIcon';
+import { Box } from '@mui/material';
+import RCheckbox, { CheckboxProps } from '@/conponents/atom/CheckBox/RCheckbox';
+import RIcon, { IconProps } from '@/conponents/atom/Icon/RIcon';
+import AText, { TextProps } from '@/conponents/atom/Text/AText';
 
-type ControlGroupPropsMap = {
-  RCheckbox: CheckboxProps;
-  RIcon: IconProps;
-  text: never;
-};
+type ComponentType = 'RIcon' | 'RCheckbox';
+type PrevProps = CheckboxProps | IconProps;
 
-// BaseProps는 모든 경우에 공통으로 사용할 수 있는 props를 정의
-type BaseProps = {
+type TextualControlGroupProps = {
+  component?: ComponentType;
+  preveprops?: PrevProps;
   textprops?: TextProps;
-  size?: keyof typeof sizes.fontSize;
 };
 
-// ControlGroup과 해당하는 props를 함께 정의
-type TextualControlGroupProps<T extends ControlGroup> = BaseProps & {
-  component: T;
-  controlprops: ControlGroupPropsMap[T];
-};
-
-// Component 매핑
-const componentMap = {
-  RCheckbox,
+// 컴포넌트 매핑
+const componentsMap = {
   RIcon,
+  RCheckbox,
 };
 
-const TextualControlGroup = <T extends ControlGroup>({
-  component,
-  controlprops,
-  textprops,
-}: TextualControlGroupProps<T>) => {
-  const Component = componentMap[component] as React.ComponentType<ControlGroupPropsMap[T]>;
+const TextualControlGroup = ({ component, preveprops, textprops }: TextualControlGroupProps) => {
+  // 선택된 컴포넌트 가져오기
+  const Component = component ? componentsMap[component] : null;
 
   return (
-    <div className="flex items-center gap-2">
-      <Component {...controlprops} />
-      {textprops?.text && <RText {...textprops} />}
-    </div>
+    <Box sx={{ display: 'flex', justifyContent: 'start', alignItems:'center', gap: '10px' }}>
+      {Component && <Component {...preveprops} />}
+      <AText {...textprops} />
+    </Box>
   );
 };
 
 export default TextualControlGroup;
+
+

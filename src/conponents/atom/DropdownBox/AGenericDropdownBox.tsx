@@ -1,5 +1,5 @@
-import { selectDate } from '@/app/constants/Dates';
-import { Days } from '@/app/constants/Days';
+import { selectDate } from '@/constants/Dates';
+import { Days } from '@/constants/Days';
 import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { useState } from 'react';
 
