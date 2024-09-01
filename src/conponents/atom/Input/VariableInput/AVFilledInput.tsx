@@ -3,7 +3,7 @@ import * as React from 'react';
 import { FormControl, FilledInput, InputAdornment, InputLabel, IconButton } from '@mui/material';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 
-type VFilledInputProps = {
+type AVFilledInputProps = {
   type?: string;
   placeholder?: string;
   isInvisible?: boolean;
@@ -12,14 +12,14 @@ type VFilledInputProps = {
   isMultiline?: boolean;
 };
 
-const VFilledInput = ({
+const AVFilledInput = ({
   type,
   placeholder,
   isInvisible = true,
   width = 4,
   sx,
   isMultiline = false,
-}: VFilledInputProps) => {
+}: AVFilledInputProps) => {
   const [isDisabled, setIsDisabled] = React.useState(isInvisible);
   const [inputValue, setInputValue] = React.useState('');
   const inputRef = React.useRef<HTMLInputElement | null>(null);
@@ -69,4 +69,4 @@ const VFilledInput = ({
   );
 };
 
-export default VFilledInput;
+export default AVFilledInput;

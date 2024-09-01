@@ -1,8 +1,8 @@
 'use client';
-import VFilledInput from '@/conponents/atom/Input/VariableInput/VFilledInput';
-import VOutlinedInput from '@/conponents/atom/Input/VariableInput/VOutlinedInput';
-import VStandardInput from '@/conponents/atom/Input/VariableInput/VStandardInput';
 import * as React from 'react';
+import AVFilledInput from '@/conponents/atom/Input/VariableInput/AVFilledInput';
+import AVOutlinedInput from '@/conponents/atom/Input/VariableInput/AVOutlinedInput';
+import AVStandardInput from '@/conponents/atom/Input/VariableInput/AVStandardInput';
 
 type InputVariantType = 'outlined' | 'standard' | 'filled';
 
@@ -42,11 +42,11 @@ const AVariableModifyInputBox = <T extends string>({
 
   switch (inputVariant) {
     case 'outlined':
-      return <VOutlinedInput {...commonProps} />;
+      return <AVOutlinedInput {...commonProps} />;
     case 'filled':
-      return <VFilledInput {...commonProps} />;
+      return <AVFilledInput {...commonProps} />;
     case 'standard':
-      return <VStandardInput {...commonProps} />;
+      return <AVStandardInput {...commonProps} />;
     default:
       return null;
   }

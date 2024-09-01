@@ -1,9 +1,9 @@
 'use client';
 import * as React from 'react';
-import { FormControl, OutlinedInput, InputAdornment, InputLabel, IconButton } from '@mui/material';
+import { FormControl, FilledInput, InputAdornment, InputLabel, IconButton } from '@mui/material';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 
-type FOutLinedInputProps = {
+type AFFilledInputProps = {
   type?: string;
   placeholder?: string;
   isInvisible?: boolean;
@@ -12,23 +12,23 @@ type FOutLinedInputProps = {
   isMultiline?: boolean;
 };
 
-const FOutLinedInput = ({
+const AFFilledInput = ({
   type,
   placeholder,
   isInvisible,
   width,
   sx,
   isMultiline,
-}: FOutLinedInputProps) => {
+}: AFFilledInputProps) => {
   const [isDisabled, setIsDisabled] = React.useState(isInvisible);
   const handleChange = () => {
     setIsDisabled(!isDisabled);
   };
 
   return (
-    <FormControl sx={{ m: 1, width: `${width}px`, ...sx }} variant="outlined">
+    <FormControl sx={{ m: 1, width: `${width}px`, ...sx }} variant="filled">
       <InputLabel>{placeholder}</InputLabel>
-      <OutlinedInput
+      <FilledInput
         type={type}
         placeholder={placeholder}
         disabled={isDisabled}
@@ -45,4 +45,4 @@ const FOutLinedInput = ({
   );
 };
 
-export default FOutLinedInput;
+export default AFFilledInput;

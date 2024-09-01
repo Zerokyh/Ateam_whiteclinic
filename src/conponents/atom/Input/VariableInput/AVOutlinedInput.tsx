@@ -1,9 +1,9 @@
 'use client';
 import * as React from 'react';
-import { FormControl, Input, InputAdornment, IconButton } from '@mui/material';
+import { FormControl, OutlinedInput, InputAdornment, InputLabel, IconButton } from '@mui/material';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 
-type VStandardInputProps = {
+type AVOutlinedInputProps = {
   type?: string;
   placeholder?: string;
   isInvisible?: boolean;
@@ -12,14 +12,14 @@ type VStandardInputProps = {
   isMultiline?: boolean;
 };
 
-const VStandardInput = ({
+const AVOutlinedInput = ({
   type,
   placeholder,
   isInvisible = true,
   width = 4,
   sx,
   isMultiline = false,
-}: VStandardInputProps) => {
+}: AVOutlinedInputProps) => {
   const [isDisabled, setIsDisabled] = React.useState(isInvisible);
   const [inputValue, setInputValue] = React.useState('');
   const inputRef = React.useRef<HTMLInputElement | null>(null);
@@ -47,8 +47,9 @@ const VStandardInput = ({
   };
 
   return (
-    <FormControl sx={{ m: 1, minWidth: `${width}ch`, ...sx }} variant="standard">
-      <Input
+    <FormControl sx={{ m: 1, minWidth: `${width}ch`, ...sx }} variant="outlined">
+      <InputLabel>{placeholder}</InputLabel>
+      <OutlinedInput
         type={type}
         value={inputValue}
         onChange={handleInputChange}
@@ -68,4 +69,4 @@ const VStandardInput = ({
   );
 };
 
-export default VStandardInput;
+export default AVOutlinedInput;

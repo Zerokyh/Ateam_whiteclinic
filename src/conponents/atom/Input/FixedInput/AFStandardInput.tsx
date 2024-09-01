@@ -3,7 +3,7 @@ import * as React from 'react';
 import { FormControl, Input, InputAdornment, IconButton } from '@mui/material';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 
-type FStandardInputProps = {
+type AFStandardInputProps = {
   type?: string;
   placeholder?: string;
   isInvisible?: boolean;
@@ -12,14 +12,14 @@ type FStandardInputProps = {
   isMultiline?: boolean;
 };
 
-const FStandardInput = ({
+const AFStandardInput = ({
   type,
   placeholder,
   isInvisible,
   width,
   sx,
   isMultiline,
-}: FStandardInputProps) => {
+}: AFStandardInputProps) => {
   const [isDisabled, setIsDisabled] = React.useState(isInvisible);
   const handleChange = () => {
     setIsDisabled(!isDisabled);
@@ -44,4 +44,4 @@ const FStandardInput = ({
   );
 };
 
-export default FStandardInput;
+export default AFStandardInput;

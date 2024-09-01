@@ -1,8 +1,8 @@
 'use client';
-import FFilledInput from '@/conponents/atom/Input/FixedInput/FFilledInput';
-import FOutLinedInput from '@/conponents/atom/Input/FixedInput/FOutLinedInput';
-import FStandardInput from '@/conponents/atom/Input/FixedInput/FStandardInput';
 import * as React from 'react';
+import AFFilledInput from '@/conponents/atom/Input/FixedInput/AFFilledInput';
+import AFOutLinedInput from '@/conponents/atom/Input/FixedInput/AFOutLinedInput';
+import AFStandardInput from '@/conponents/atom/Input/FixedInput/AFStandardInput';
 
 type InputVariantType = 'outlined' | 'standard' | 'filled';
 
@@ -37,11 +37,11 @@ const AFixedModifyInputBox = <T extends string>({
 
   switch (inputVariant) {
     case 'outlined':
-      return <FOutLinedInput {...commonProps} />;
+      return <AFOutLinedInput {...commonProps} />;
     case 'filled':
-      return <FFilledInput {...commonProps} />;
+      return <AFFilledInput {...commonProps} />;
     case 'standard':
-      return <FStandardInput {...commonProps} />;
+      return <AFStandardInput {...commonProps} />;
     default:
       return null;
   }
