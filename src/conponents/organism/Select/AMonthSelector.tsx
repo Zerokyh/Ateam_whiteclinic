@@ -1,9 +1,9 @@
-import { Months } from '@/app/constants/Months';
-import GenericDropdownBox from '../../molecules/dropdownBox/GenericDropdownBox';
+import ADropdownBox from '@/conponents/atom/DropdownBox/ADropdownBox';
+import { Months } from '@/constants/Months';
 
-const MonthSelector = () => {
+const AMonthSelector = () => {
   const MonthsOption = Months.map((month) => ({ text: month, value: month }));
-  return <GenericDropdownBox label="월" options={MonthsOption} />;
+  return <ADropdownBox label="월" options={MonthsOption} />;
 };
 
-export default MonthSelector;
+export default AMonthSelector;

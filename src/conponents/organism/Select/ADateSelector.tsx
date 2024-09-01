@@ -1,10 +1,10 @@
-import { selectDate } from '@/app/constants/Dates';
-import GenericDropdownBox from '../../molecules/dropdownBox/GenericDropdownBox';
+import ADropdownBox from '@/conponents/atom/DropdownBox/ADropdownBox';
+import { selectDate } from '@/constants/Dates';
 
-const DatesSelector = () => {
+const ADatesSelector = () => {
   const DatesOption = selectDate.map((date) => ({ text: date, value: date }));
 
-  return <GenericDropdownBox label="일" options={DatesOption} />;
+  return <ADropdownBox label="일" options={DatesOption} />;
 };
 
-export default DatesSelector;
+export default ADatesSelector;

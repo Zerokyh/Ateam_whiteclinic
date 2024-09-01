@@ -1,9 +1,9 @@
-import { Percentage } from '@/app/constants/Percentage';
-import GenericDropdownBox from '../../molecules/dropdownBox/GenericDropdownBox';
+import ADropdownBox from '@/conponents/atom/DropdownBox/ADropdownBox';
+import { Percentage } from '@/constants/Percentage';
 
-const Percent = () => {
+const APercent = () => {
   const PercentOption = Percentage.map((per) => ({ text: per, value: per }));
 
-  return <GenericDropdownBox label="수당률" options={PercentOption} />;
+  return <ADropdownBox label="수당률" options={PercentOption} />;
 };
-export default Percent;
+export default APercent;

@@ -1,11 +1,10 @@
-import { Days } from '@/app/constants/Days';
-import { text } from 'stream/consumers';
-import GenericDropdownBox from '../../molecules/dropdownBox/GenericDropdownBox';
+import ADropdownBox from '@/conponents/atom/DropdownBox/ADropdownBox';
+import { Days } from '@/constants/Days';
 
-const DaySelector = () => {
+const ADaySelector = () => {
   const DayOption = Days.map((day) => ({ text: day, value: day }));
 
-  return <GenericDropdownBox label="" options={DayOption} />;
+  return <ADropdownBox label="" options={DayOption} />;
 };
 
-export default DaySelector;
+export default ADaySelector;

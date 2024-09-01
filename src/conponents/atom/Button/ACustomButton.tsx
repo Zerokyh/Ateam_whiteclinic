@@ -1,26 +1,26 @@
-import { CustomButtonProps } from "@/util/type/ButtonType";
-import { Button } from "@mui/material";
-import { ButtonStyle } from "../style/ButtonStyle";
+import { ButtonStyle } from '@/styles/ButtonStyle';
+import { ACustomButtonProps } from '@/util/ButtonType';
+import { Button } from '@mui/material';
 
-const CustomButton = ({ 
-  variant, 
-  text, 
-  onClick, 
-  color = 'default', 
-  size = 'medium'
-}: CustomButtonProps) => {
+const ACustomButton = ({
+  variant,
+  text,
+  onClick,
+  color = 'default',
+  size = 'medium',
+}: ACustomButtonProps) => {
   return (
-    <Button 
+    <Button
       variant={variant}
-      onClick={onClick} 
-      sx={{ 
-        ...ButtonStyle.size[size], 
-        ...ButtonStyle.color[color]
+      onClick={onClick}
+      sx={{
+        ...ButtonStyle.size[size],
+        ...ButtonStyle.color[color],
       }}
     >
       {text}
     </Button>
   );
-}
+};
 
-export default CustomButton;
+export default ACustomButton;

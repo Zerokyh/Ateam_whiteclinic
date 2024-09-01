@@ -1,15 +1,22 @@
+
 import { selectDate } from '@/constants/Dates';
 import { Days } from '@/constants/Days';
+import { Months } from '@/constants/Months';
+import { Percentage } from '@/constants/Percentage';
 import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { useState } from 'react';
 
-type valueTextProps = {
-  value: keyof typeof Days | keyof typeof selectDate;
-};
+type AllowedObjects =
+  // | (typeof AvailableThings)[number] // 상수 객체의 키들을 유니온타입으로 만들기때문에
+  | (typeof Days)[number] // [number] 배열의 요소타입을 추출하기위해 사용
+  | (typeof selectDate)[number] //
+  | (typeof Months)[number]
+  | (typeof Percentage)[number]
+  // | (typeof PaymentPlan)[number];
 
 type OptionsProps = {
-  value: valueTextProps;
-  text: string;
+  value: AllowedObjects;
+  text: AllowedObjects;
 };
 
 type GenericDropdownBoxProps = {
@@ -17,12 +24,12 @@ type GenericDropdownBoxProps = {
   options: OptionsProps[];
 };
 
-const GenericDropdownBox = ({ label, options }: GenericDropdownBoxProps) => {
+const ADropdownBox = ({ label, options }: GenericDropdownBoxProps) => {
   const [selectedValue, setSelectedValue] = useState('');
 
   const handleChange = (e: SelectChangeEvent<string>) => {
     const value = e.target.value;
-    console.log(value);
+    console.log(value); // test용 함수
     setSelectedValue(value);
   };
 
@@ -38,8 +45,8 @@ const GenericDropdownBox = ({ label, options }: GenericDropdownBoxProps) => {
           onChange={handleChange}
         >
           {options.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.text}
+            <MenuItem key={String(option.value)} value={String(option.value)}>
+              {String(option.text)}
             </MenuItem>
           ))}
         </Select>
@@ -48,4 +55,4 @@ const GenericDropdownBox = ({ label, options }: GenericDropdownBoxProps) => {
   );
 };
 
-export default GenericDropdownBox;
+export default ADropdownBox;
