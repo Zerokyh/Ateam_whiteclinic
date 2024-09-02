@@ -1,15 +1,9 @@
-"use client";
-import * as React from "react";
-import {
-  FormControl,
-  OutlinedInput,
-  InputAdornment,
-  InputLabel,
-  IconButton,
-} from "@mui/material";
-import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
+'use client';
+import * as React from 'react';
+import { FormControl, OutlinedInput, InputAdornment, InputLabel, IconButton } from '@mui/material';
+import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 
-type heightSize = "small" | "medium";
+type heightSize = 'small' | 'medium';
 
 type AFOutLinedInputProps = {
   type?: string;
@@ -28,7 +22,7 @@ const AFOutLinedInput = ({
   width,
   sx,
   isMultiline,
-  inputHeightSize = "small",
+  inputHeightSize = 'small',
 }: AFOutLinedInputProps) => {
   const [isDisabled, setIsDisabled] = React.useState(isInvisible);
   const handleChange = () => {
@@ -42,17 +36,14 @@ const AFOutLinedInput = ({
       size={inputHeightSize}
     >
       <OutlinedInput
+        sx={{ height: '20px' }}
         type={type}
         placeholder={placeholder}
         disabled={isDisabled}
         multiline={isMultiline}
         endAdornment={
           <InputAdornment position="end">
-            <IconButton
-              aria-label="toggle modify text"
-              edge="end"
-              onClick={handleChange}
-            >
+            <IconButton aria-label="toggle modify text" edge="end" onClick={handleChange}>
               <DriveFileRenameOutlineIcon />
             </IconButton>
           </InputAdornment>

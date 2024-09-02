@@ -6,10 +6,10 @@ import ABasicInput from '@/conponents/atom/Input/Basic/ABasicInput';
 import AText from '@/conponents/atom/Text/AText';
 import ADatesSelector from '@/conponents/organism/Select/ADateSelector';
 import AMonthSelector from '@/conponents/organism/Select/AMonthSelector';
-import TextualControlGroup from '@/conponents/molecules/Text/TextualControlGroup';
 import AVariableModifyInputBox from '@/conponents/molecules/Input/AVariableModifyInputBox';
 import ACustomButton from '@/conponents/atom/Button/ACustomButton';
 import ACheckbox from '@/conponents/atom/CheckBox/ACheckbox';
+import ReservationOrder from './ui/kyh/ReservationOrder';
 
 const Home = () => {
   return (
@@ -31,35 +31,7 @@ const Home = () => {
         }}
       >
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Box
-              sx={{
-                width: 110,
-                height: 56,
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                bgcolor: '#F2F2F2',
-                borderRight: '1px solid #7F7F7F',
-                borderBottom: '1px solid #7F7F7F',
-              }}
-            >
-              <AText text="예약일시" />
-            </Box>
-            <Box
-              sx={{
-                width: 392,
-                display: 'flex',
-                p: 1,
-                gap: 1,
-                borderBottom: '1px solid #7F7F7F',
-              }}
-            >
-              <ABasicInput label="년(4자)" variant="outlined" />
-              <AMonthSelector />
-              <ADatesSelector />
-            </Box>
-          </Box>
+          <ReservationOrder labeltext="예약일시" />
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Box
               sx={{
@@ -148,7 +120,7 @@ const Home = () => {
                 borderBottom: '1px solid #7F7F7F',
               }}
             >
-              <AText text="고객성함" />
+              <AText text="특이사항" />
             </Box>
             <Box
               sx={{

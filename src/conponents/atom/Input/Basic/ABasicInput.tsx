@@ -1,20 +1,19 @@
-import TextField from "@mui/material/TextField";
-import { ChangeEvent } from "react";
+import TextField from '@mui/material/TextField';
+import { ChangeEvent } from 'react';
 
-type InputVariantType = "outlined" | "standard" | "filled";
+type InputVariantType = 'outlined' | 'standard' | 'filled';
 
 type ABasicInputProps = {
   label: string;
   variant: InputVariantType;
   width?: string;
-  height?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
 const ABasicInput = ({
   label,
-  variant = "standard",
-  width = "120px",
+  variant = 'standard',
+  width = '120px',
   onChange,
 }: ABasicInputProps) => {
   return (
