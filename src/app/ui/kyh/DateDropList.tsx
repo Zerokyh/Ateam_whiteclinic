@@ -7,7 +7,7 @@ const DateDropList = () => {
   return (
     <Box
       sx={{
-        width: 392,
+        width: 462,
         height: 57,
         display: 'flex',
         p: 1,

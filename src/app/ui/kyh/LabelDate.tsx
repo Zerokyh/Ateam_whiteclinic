@@ -1,15 +1,18 @@
-import ABasicInput from '@/conponents/atom/Input/Basic/ABasicInput';
 import AText from '@/conponents/atom/Text/AText';
-import ADatesSelector from '@/conponents/organism/Select/ADateSelector';
-import AMonthSelector from '@/conponents/organism/Select/AMonthSelector';
 import { Box } from '@mui/material';
 import DateDropList from './DateDropList';
 
-type ReservationOrderProps = {
+type LabelDateProps = {
   labeltext?: string;
+  borderBottom?: string;
+  borderRight?: string;
 };
 
-const ReservationOrder = ({ labeltext }: ReservationOrderProps) => {
+const LabelDate = ({
+  labeltext,
+  borderBottom = '1px solid #7F7F7F', // border 제거 : '0'
+  borderRight = '1px solid #7F7F7F', // border 제거 : '0'
+}: LabelDateProps) => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Box
@@ -20,8 +23,8 @@ const ReservationOrder = ({ labeltext }: ReservationOrderProps) => {
           justifyContent: 'center',
           alignItems: 'center',
           bgcolor: '#F2F2F2',
-          borderRight: '1px solid #7F7F7F',
-          borderBottom: '1px solid #7F7F7F',
+          borderRight: { borderRight },
+          borderBottom: { borderBottom },
         }}
       >
         <AText text={labeltext} />
@@ -31,4 +34,4 @@ const ReservationOrder = ({ labeltext }: ReservationOrderProps) => {
   );
 };
 
-export default ReservationOrder;
+export default LabelDate;
