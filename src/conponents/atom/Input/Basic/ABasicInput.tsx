@@ -3,7 +3,7 @@ import { ChangeEvent } from "react";
 
 type InputVariantType = "outlined" | "standard" | "filled";
 
-type ABasicInputProps = {
+export type ABasicInputProps = {
   label: string;
   variant: InputVariantType;
   width?: string;
