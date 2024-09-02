@@ -3,7 +3,6 @@ import { TextType } from "@/constants/textType";
 import { Typography } from "@mui/material";
 
 export type TextProps = {
-  // text?: TextType;
   text?: string;
   size?: keyof typeof sizes.fontSize;
 };
