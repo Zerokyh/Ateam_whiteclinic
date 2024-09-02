@@ -3,6 +3,8 @@ import * as React from 'react';
 import { FormControl, OutlinedInput, InputAdornment, InputLabel, IconButton } from '@mui/material';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 
+type heightSize = 'small' | 'medium';
+
 type AVOutlinedInputProps = {
   type?: string;
   placeholder?: string;
@@ -10,6 +12,7 @@ type AVOutlinedInputProps = {
   width?: number;
   sx?: object;
   isMultiline?: boolean;
+  inputHeightSize?: heightSize;
 };
 
 const AVOutlinedInput = ({
@@ -19,6 +22,7 @@ const AVOutlinedInput = ({
   width = 4,
   sx,
   isMultiline = false,
+  inputHeightSize = 'small',
 }: AVOutlinedInputProps) => {
   const [isDisabled, setIsDisabled] = React.useState(isInvisible);
   const [inputValue, setInputValue] = React.useState('');
@@ -47,11 +51,11 @@ const AVOutlinedInput = ({
   };
 
   return (
-    <FormControl sx={{ m: 1, minWidth: `${width}ch`, ...sx }} variant="outlined">
-      <InputLabel>{placeholder}</InputLabel>
+    <FormControl sx={{ m: 1, width: `${width}`, ...sx }} variant="outlined" size={inputHeightSize}>
       <OutlinedInput
         type={type}
         value={inputValue}
+        sx={{ minWidth: '120px' }}
         onChange={handleInputChange}
         multiline={isMultiline}
         placeholder={placeholder}

@@ -1,0 +1,25 @@
+import ABasicInput from '@/conponents/atom/Input/Basic/ABasicInput';
+import ADatesSelector from '@/conponents/organism/Select/ADateSelector';
+import AMonthSelector from '@/conponents/organism/Select/AMonthSelector';
+import { Box } from '@mui/material';
+
+const DateDropList = () => {
+  return (
+    <Box
+      sx={{
+        width: 392,
+        height: 57,
+        display: 'flex',
+        p: 1,
+        gap: 1,
+        borderBottom: '1px solid #7F7F7F',
+      }}
+    >
+      <ABasicInput label="년(4자)" variant="outlined" />
+      <AMonthSelector />
+      <ADatesSelector />
+    </Box>
+  );
+};
+
+export default DateDropList;

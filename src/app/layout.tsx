@@ -9,7 +9,6 @@ import { Inter } from 'next/font/google';
 import SideNav from './ui/SideNav';
 
 const drawerWidth = 240;
-const toolbarHeight = 112;
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -25,7 +24,7 @@ const RootLayout = ({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Box sx={{ display: 'flex', height: '100vh', flexDirection: 'column' }}>
+        <Box sx={{ display: 'flex' }}>
           <CssBaseline />
           <AppBar
             position="fixed"
@@ -48,11 +47,11 @@ const RootLayout = ({
             sx={{
               flexGrow: 1,
               bgcolor: '#F4F7FA',
+              p: 3,
             }}
           >
-            <Box sx={{ flexGrow: 1, minHeight: `calc(100vh - ${toolbarHeight}px)` }}>
-              {children}
-            </Box>
+            <Toolbar />
+            <div className="flex-grow p-6 md:overflow-y-auto md:p-12">{children}</div>
           </Box>
         </Box>
       </body>

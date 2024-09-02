@@ -1,7 +1,13 @@
-'use client';
-import * as React from 'react';
-import { FormControl, FilledInput, InputAdornment, InputLabel, IconButton } from '@mui/material';
-import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+"use client";
+import * as React from "react";
+import {
+  FormControl,
+  FilledInput,
+  InputAdornment,
+  InputLabel,
+  IconButton,
+} from "@mui/material";
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 
 type AFFilledInputProps = {
   type?: string;
@@ -27,7 +33,6 @@ const AFFilledInput = ({
 
   return (
     <FormControl sx={{ m: 1, width: `${width}px`, ...sx }} variant="filled">
-      <InputLabel>{placeholder}</InputLabel>
       <FilledInput
         type={type}
         placeholder={placeholder}
@@ -35,7 +40,11 @@ const AFFilledInput = ({
         multiline={isMultiline}
         endAdornment={
           <InputAdornment position="end">
-            <IconButton aria-label="toggle modify text" edge="end" onClick={handleChange}>
+            <IconButton
+              aria-label="toggle modify text"
+              edge="end"
+              onClick={handleChange}
+            >
               <DriveFileRenameOutlineIcon />
             </IconButton>
           </InputAdornment>
