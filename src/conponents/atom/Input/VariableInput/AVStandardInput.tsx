@@ -1,7 +1,9 @@
-'use client';
-import * as React from 'react';
-import { FormControl, Input, InputAdornment, IconButton } from '@mui/material';
-import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+"use client";
+import * as React from "react";
+import { FormControl, Input, InputAdornment, IconButton } from "@mui/material";
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
+
+type heightSize = "small" | "medium";
 
 type AVStandardInputProps = {
   type?: string;
@@ -10,6 +12,7 @@ type AVStandardInputProps = {
   width?: number;
   sx?: object;
   isMultiline?: boolean;
+  inputHeightSize?: heightSize;
 };
 
 const AVStandardInput = ({
@@ -19,16 +22,17 @@ const AVStandardInput = ({
   width = 4,
   sx,
   isMultiline = false,
+  inputHeightSize = "small",
 }: AVStandardInputProps) => {
   const [isDisabled, setIsDisabled] = React.useState(isInvisible);
-  const [inputValue, setInputValue] = React.useState('');
+  const [inputValue, setInputValue] = React.useState("");
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 
   React.useEffect(() => {
     if (inputRef.current) {
       const inputElement = inputRef.current;
 
-      inputElement.style.width = '80px';
+      inputElement.style.width = "80px";
 
       const scrollWidth = inputElement.scrollWidth;
       const padding = 1;
@@ -47,7 +51,11 @@ const AVStandardInput = ({
   };
 
   return (
-    <FormControl sx={{ m: 1, minWidth: `${width}ch`, ...sx }} variant="standard">
+    <FormControl
+      sx={{ m: 1, minWidth: `${width}ch`, ...sx }}
+      variant="standard"
+      size={inputHeightSize}
+    >
       <Input
         type={type}
         value={inputValue}
@@ -58,7 +66,11 @@ const AVStandardInput = ({
         inputRef={inputRef}
         endAdornment={
           <InputAdornment position="end">
-            <IconButton aria-label="toggle modify text" edge="end" onClick={handleChange}>
+            <IconButton
+              aria-label="toggle modify text"
+              edge="end"
+              onClick={handleChange}
+            >
               <DriveFileRenameOutlineIcon />
             </IconButton>
           </InputAdornment>

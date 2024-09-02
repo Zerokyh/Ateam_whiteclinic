@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import { Box } from '@mui/material';
-import RCheckbox, { CheckboxProps } from '@/conponents/atom/CheckBox/RCheckbox';
-import RIcon, { IconProps } from '@/conponents/atom/Icon/RIcon';
-import AText, { TextProps } from '@/conponents/atom/Text/AText';
+import { Box } from "@mui/material";
+import RCheckbox, { CheckboxProps } from "@/conponents/atom/CheckBox/RCheckbox";
+import RIcon, { IconProps } from "@/conponents/atom/Icon/RIcon";
+import AText, { TextProps } from "@/conponents/atom/Text/AText";
 
-type ComponentType = 'RIcon' | 'RCheckbox';
+type ComponentType = "RIcon" | "RCheckbox";
 type PrevProps = CheckboxProps | IconProps;
 
 type TextualControlGroupProps = {
@@ -20,12 +20,22 @@ const componentsMap = {
   RCheckbox,
 };
 
-const TextualControlGroup = ({ component, preveprops, textprops }: TextualControlGroupProps) => {
+const TextualControlGroup = ({
+  component,
+  preveprops,
+  textprops,
+}: TextualControlGroupProps) => {
   // 선택된 컴포넌트 가져오기
   const Component = component ? componentsMap[component] : null;
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'start', alignItems:'center', gap: '10px' }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "start",
+        alignItems: "center",
+      }}
+    >
       {Component && <Component {...preveprops} />}
       <AText {...textprops} />
     </Box>
@@ -33,5 +43,3 @@ const TextualControlGroup = ({ component, preveprops, textprops }: TextualContro
 };
 
 export default TextualControlGroup;
-
-
