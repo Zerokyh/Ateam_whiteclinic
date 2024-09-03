@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Box, Grid } from '@mui/material';
 import ACheckbox, { CheckboxProps } from '@/conponents/atom/CheckBox/ACheckbox';

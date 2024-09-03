@@ -1,3 +1,5 @@
+import { faker } from '@faker-js/faker';
+
 type EngineerRegisterObjectType = {
   [key: string]: {
     title: string;
@@ -9,7 +11,7 @@ export const EngineerRegister: EngineerRegisterObjectType = {
     title: '기사성함',
     type: 'input',
   },
-  contact: {
+  phone: {
     title: '연락처',
     type: 'input',
   },
@@ -41,3 +43,21 @@ export const EngineerWashingMachineCategory = [
   '빌트인',
   '건조기',
 ];
+
+//faker api 데이터
+
+export type EngineerData = {
+  name: string;
+  phone: string;
+  area: string;
+  items: string[];
+  specialNotes: string;
+};
+
+export const generateEngineerData = (): EngineerData => ({
+  name: faker.person.fullName(),
+  phone: faker.phone.number(),
+  area: faker.location.city(),
+  items: faker.helpers.arrayElements(EngineerWashingMachineCategory, { min: 2, max: 4 }),
+  specialNotes: faker.lorem.sentence(),
+});

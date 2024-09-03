@@ -1,14 +1,18 @@
+'use client';
+
 import React from 'react';
-import { Box, IconButton } from '@mui/material';
+import { Box } from '@mui/material';
 import LabelCheckBox, { LabelCheckBoxProps } from './LabelCheckBox';
 import { TextProps } from 'recharts';
-import ABasicInput, { ABasicInputProps } from '@/conponents/atom/Input/Basic/ABasicInput';
 import AText from '@/conponents/atom/Text/AText';
 import ACustomButton from '@/conponents/atom/Button/ACustomButton';
 
+import useEngineerData from '@/constants/EngineerEffect';
+import AVOutlinedInput, { AVOutlinedInputProps } from './Input';
+
 type EngineerRegisterProps = {
   textProps: TextProps;
-  inputProps: ABasicInputProps;
+  inputProps: AVOutlinedInputProps;
   checkBoxProps: LabelCheckBoxProps;
   engneerObject: {
     [key: string]: {
@@ -18,15 +22,18 @@ type EngineerRegisterProps = {
   };
 };
 
-const EnginnerLabel: React.FC<EngineerRegisterProps> = ({
+const EngineerLabel: React.FC<EngineerRegisterProps> = ({
   checkBoxProps,
   engneerObject,
   inputProps,
   textProps,
 }) => {
+  const { engineerData, customSkill, handleCustomSkillChange, handleCustomSkillAdd } =
+    useEngineerData();
+
   return (
     <Box sx={{ maxWidth: '1200px', margin: '0 auto' }}>
-      {Object.entries(engneerObject).map(([key, value], index) => (
+      {Object.entries(engneerObject).map(([key, value]) => (
         <Box key={key} sx={{ display: 'flex', alignItems: 'center' }}>
           <Box
             sx={{
@@ -52,19 +59,28 @@ const EnginnerLabel: React.FC<EngineerRegisterProps> = ({
             }}
           >
             {value.type === 'input' ? (
-              <>
-                <ABasicInput {...inputProps} label={value.title} />
-              </>
+              <AVOutlinedInput
+                {...inputProps}
+                placeholder={value.title}
+                value={
+                  engineerData && key !== 'items'
+                    ? (engineerData[key as keyof typeof engineerData] as string)
+                    : ''
+                }
+                onChange={() => console.log(`${key} changed`)}
+              />
             ) : (
-              <LabelCheckBox {...checkBoxProps} />
+              <LabelCheckBox {...checkBoxProps} option={engineerData?.items || []} />
             )}
           </Box>
         </Box>
       ))}
-      <ACustomButton text="취소" variant="outlined" color="default" size="medium" />
-      <ACustomButton text="등록" variant="contained" color="primary" size="medium" />
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2, gap: 2 }}>
+        <ACustomButton text="취소" variant="outlined" color="default" size="medium" />
+        <ACustomButton text="등록" variant="contained" color="primary" size="medium" />
+      </Box>
     </Box>
   );
 };
 
-export default EnginnerLabel;
+export default EngineerLabel;
