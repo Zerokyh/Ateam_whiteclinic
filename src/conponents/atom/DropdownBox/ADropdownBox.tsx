@@ -1,5 +1,6 @@
 'use client';
 
+import { airConditionerCategories } from '@/constants/airConditionerCategories';
 import { selectDate } from '@/constants/Dates';
 import { Days } from '@/constants/Days';
 import { Document } from '@/constants/Document';
@@ -19,7 +20,8 @@ type AllowedObjects =
   | (typeof Percentage)[number]
   | (typeof Document)[number]
   | (typeof MonthsPlan)[number]
-  | (typeof Payment)[number];
+  | (typeof Payment)[number]
+  | (typeof airConditionerCategories)[number];
 // | (typeof PaymentPlan)[number];
 
 type widthOptions = keyof typeof sizes.width;
@@ -29,7 +31,7 @@ type OptionsProps = {
   text: AllowedObjects;
 };
 
-type GenericDropdownBoxProps = {
+export type GenericDropdownBoxProps = {
   label: string;
   value: string;
   onChange: (event: SelectChangeEvent<string>) => void;
