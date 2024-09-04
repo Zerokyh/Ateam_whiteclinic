@@ -1,16 +1,11 @@
-import { selectDate } from "@/constants/Dates";
-import { Days } from "@/constants/Days";
-import { Months } from "@/constants/Months";
-import { Percentage } from "@/constants/Percentage";
-import {
-  Box,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-} from "@mui/material";
-import { useState } from "react";
+'use client';
+
+import { selectDate } from '@/constants/Dates';
+import { Days } from '@/constants/Days';
+import { Months } from '@/constants/Months';
+import { Percentage } from '@/constants/Percentage';
+import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { useState } from 'react';
 
 type AllowedObjects =
   // | (typeof AvailableThings)[number] // 상수 객체의 키들을 유니온타입으로 만들기때문에
@@ -27,18 +22,12 @@ type OptionsProps = {
 
 type GenericDropdownBoxProps = {
   label: string;
+  value: string;
+  onChange: (event: SelectChangeEvent<string>) => void;
   options: OptionsProps[];
 };
 
-const ADropdownBox = ({ label, options }: GenericDropdownBoxProps) => {
-  const [selectedValue, setSelectedValue] = useState("");
-
-  const handleChange = (e: SelectChangeEvent<string>) => {
-    const value = e.target.value;
-    console.log(value); // test용 함수
-    setSelectedValue(value);
-  };
-
+const ADropdownBox = ({ label, options, onChange }: GenericDropdownBoxProps) => {
   return (
     <Box
       sx={{
@@ -51,9 +40,8 @@ const ADropdownBox = ({ label, options }: GenericDropdownBoxProps) => {
         <Select
           labelId={`${label}-simple-select-label`}
           id={`${label}-simple-select`}
-          value={selectedValue}
           label={label}
-          onChange={handleChange}
+          onChange={onChange}
         >
           {options.map((option) => (
             <MenuItem key={String(option.value)} value={String(option.value)}>
