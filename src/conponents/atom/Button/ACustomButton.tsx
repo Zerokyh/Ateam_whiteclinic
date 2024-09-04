@@ -1,13 +1,13 @@
-import { ButtonStyle } from "@/styles/ButtonStyle";
-import { ACustomButtonProps } from "@/util/ButtonType";
-import { Button } from "@mui/material";
+import { ButtonStyle } from '@/styles/ButtonStyle';
+import { ACustomButtonProps } from '@/util/ButtonType';
+import { Button } from '@mui/material';
 
 const ACustomButton = ({
   variant,
   text,
   onClick,
-  color = "default",
-  size = "medium",
+  color = 'default',
+  size = 'medium',
   sx,
 }: ACustomButtonProps) => {
   return (
