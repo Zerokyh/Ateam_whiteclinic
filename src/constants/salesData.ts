@@ -44,5 +44,23 @@ export const salesButtonData = [
 // 추가등록 모달
 export const salesModalData = {};
 
-// 일반세척 모달
-export const normalWashModalData = {};
+// 일반세척 모달 버튼
+export const normalWashModalData = {
+  textprops: {
+    text: '일반세척으로 진행하는 게 맞습니까?',
+    size: 'large' as const,
+  },
+  abuttonprops: [
+    {
+      variant: 'contained' as const,
+      text: '아니오' as const,
+      size: 'medium' as const,
+    },
+    {
+      variant: 'contained' as const,
+      text: '등록' as const,
+      size: 'medium' as const,
+      color: 'primary' as const,
+    },
+  ],
+};
