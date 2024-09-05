@@ -1,6 +1,7 @@
 'use client';
 
-import AMonthPlan from '@/conponents/organism/Select/AMonthPlan';
+import ADropdownBox from '@/conponents/atom/DropdownBox/ADropdownBox';
+import AMonthPlan from '@/conponents/molecules/Select/AMonthPlan';
 import { Box } from '@mui/material';
 
 const Page = () => {

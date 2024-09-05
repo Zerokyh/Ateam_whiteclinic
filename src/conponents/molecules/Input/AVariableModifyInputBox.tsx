@@ -1,12 +1,12 @@
-"use client";
-import * as React from "react";
-import AVFilledInput from "@/conponents/atom/Input/VariableInput/AVFilledInput";
-import AVOutlinedInput from "@/conponents/atom/Input/VariableInput/AVOutlinedInput";
-import AVStandardInput from "@/conponents/atom/Input/VariableInput/AVStandardInput";
+'use client';
+import * as React from 'react';
+import AVFilledInput from '@/conponents/atom/Input/VariableInput/AVFilledInput';
+import AVOutlinedInput from '@/conponents/atom/Input/VariableInput/AVOutlinedInput';
+import AVStandardInput from '@/conponents/atom/Input/VariableInput/AVStandardInput';
 
-type InputVariantType = "outlined" | "standard" | "filled";
+type InputVariantType = 'outlined' | 'standard' | 'filled';
 
-type heightSize = "small" | "medium";
+type heightSize = 'small' | 'medium';
 
 type InputTextType<T extends string> = {
   text?: T;
@@ -26,14 +26,14 @@ type AVariableModifyInputBoxProp<T extends string> = {
 };
 
 const AVariableModifyInputBox = <T extends string>({
-  type = "text",
+  type = 'text',
   placeholder,
   isInvisible = true,
   width = 4,
   sx,
   isMultiline = false,
-  inputVariant = "outlined",
-  inputHeightSize = "small",
+  inputVariant = 'outlined',
+  inputHeightSize = 'small',
 }: AVariableModifyInputBoxProp<T>) => {
   const commonProps = {
     type,
@@ -46,11 +46,11 @@ const AVariableModifyInputBox = <T extends string>({
   };
 
   switch (inputVariant) {
-    case "outlined":
+    case 'outlined':
       return <AVOutlinedInput {...commonProps} />;
-    case "filled":
+    case 'filled':
       return <AVFilledInput {...commonProps} />;
-    case "standard":
+    case 'standard':
       return <AVStandardInput {...commonProps} />;
     default:
       return null;
