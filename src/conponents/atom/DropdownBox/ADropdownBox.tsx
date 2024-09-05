@@ -36,10 +36,17 @@ export type GenericDropdownBoxProps = {
   value: string;
   onChange: (event: SelectChangeEvent<string>) => void;
   options: OptionsProps[];
-  width: widthOptions;
+  width?: widthOptions;
+  color?: string;
 };
 
-const ADropdownBox = ({ label, options, width = 'small', onChange }: GenericDropdownBoxProps) => {
+const ADropdownBox = ({
+  label,
+  options,
+  width = 'small',
+  color,
+  onChange,
+}: GenericDropdownBoxProps) => {
   return (
     <Box
       sx={{
@@ -54,6 +61,7 @@ const ADropdownBox = ({ label, options, width = 'small', onChange }: GenericDrop
           id={`${label}-simple-select`}
           label={label}
           onChange={onChange}
+          sx={{ color: color }}
         >
           {options.map((option) => (
             <MenuItem key={String(option.value)} value={String(option.value)}>

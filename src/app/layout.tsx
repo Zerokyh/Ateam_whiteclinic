@@ -47,7 +47,7 @@ const RootLayout = ({
             sx={{
               flexGrow: 1,
               bgcolor: '#F4F7FA',
-              p: 3,
+              p: 0,
             }}
           >
             <Toolbar />
