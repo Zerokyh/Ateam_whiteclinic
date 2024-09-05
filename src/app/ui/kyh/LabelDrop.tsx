@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Box } from '@mui/material';
-import AText from '@/conponents/atom/Text/AText';
+
 import AMonthSelector from '@/conponents/molecules/Select/AMonthSelector';
 import ADatesSelector from '@/conponents/molecules/Select/ADateSelector';
 import ADaySelector from '@/conponents/molecules/Select/ADaySelector';
 import APercent from '@/conponents/molecules/Select/APercent';
 import APayment from '@/conponents/molecules/Select/APayment';
 import AEvidentialDocument from '@/conponents/molecules/Select/AEvidentialDocument';
+import AText from '@/conponents/atom/Text/AText';
 
 
 const components = {

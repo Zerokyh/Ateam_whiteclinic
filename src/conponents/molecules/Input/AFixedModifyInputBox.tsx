@@ -6,7 +6,7 @@ import AFStandardInput from '@/conponents/atom/Input/FixedInput/AFStandardInput'
 
 type InputVariantType = 'outlined' | 'standard' | 'filled';
 
-type AFixedModifyInputBoxProp<T extends string> = {
+export type AFixedModifyInputBoxProp<T extends string> = {
   type?: string;
   placeholder?: T;
   isInvisible?: boolean;

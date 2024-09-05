@@ -9,7 +9,7 @@ type SalesDetailsMenuType =
 type WashType = '종합세척' | '일반세척';
 type Discount = '할인적용';
 
-type airConditionerCategory =
+export type airConditionerCategory =
   | '벽걸이'
   | '원웨이'
   | '포웨이'

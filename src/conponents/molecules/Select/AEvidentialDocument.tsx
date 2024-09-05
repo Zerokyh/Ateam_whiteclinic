@@ -1,10 +1,10 @@
 import ADropdownBox from '@/conponents/atom/DropdownBox/ADropdownBox';
-import { DocumentType } from '@/constants/DocumentType';
+import { Document } from '@/constants/Document';
 
 const AEvidentialDocument = () => {
-  const DocumentOption = DocumentType.map((doc) => ({ text: doc, value: doc }));
+  const DocumentOption = Document.map((doc) => ({ text: doc, value: doc }));
 
-  return <ADropdownBox label="선택" options={DocumentOption} />;
+  return <ADropdownBox label="선택" options={DocumentOption} width="medium" />;
 };
 
 export default AEvidentialDocument;

@@ -1,9 +1,11 @@
+'use client';
+
 import ACheckbox, { CheckboxProps } from '@/conponents/atom/CheckBox/ACheckbox';
 import { CheckboxTextType } from '@/constants/textType';
 import { Box } from '@mui/material';
 import React, { useState } from 'react';
 
-type CheckboxGroupProps = {
+export type CheckboxGroupProps = {
   checkboxes: { [key: string | number]: CheckboxProps };
 };
 
