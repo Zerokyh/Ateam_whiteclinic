@@ -63,7 +63,7 @@ const Page = () => {
                 <Box
                   sx={{
                     width: 'calc(100vw - 417px)',
-                    height: '40px',
+                    minHeight: '40px',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
