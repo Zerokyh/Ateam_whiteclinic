@@ -1,5 +1,5 @@
-import ADropdownBox from "@/conponents/atom/DropdownBox/ADropdownBox";
-import { selectDate } from "@/constants/Dates";
+import ADropdownBox from '@/conponents/atom/DropdownBox/ADropdownBox';
+import { selectDate } from '@/constants/Dates';
 
 const ADatesSelector = () => {
   const DatesOption = selectDate.map((date) => ({ text: date, value: date }));
