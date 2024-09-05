@@ -1,25 +1,11 @@
 'use client';
 
 import ACheckbox, { CheckboxProps } from '@/conponents/atom/CheckBox/ACheckbox';
-import { CheckboxTextType } from '@/constants/textType';
 import { Box } from '@mui/material';
 import React, { useState } from 'react';
 
 export type CheckboxGroupProps = {
   checkboxes: { [key: string | number]: CheckboxProps };
-};
-
-export const checkboxData: { [key: string]: CheckboxProps } = {
-  comprehensiveWash: {
-    isCheck: false,
-    onChange: () => {},
-    textprops: { text: '종합세척' as CheckboxTextType },
-  },
-  normalWash: {
-    isCheck: false,
-    onChange: () => {},
-    textprops: { text: '일반세척' as CheckboxTextType },
-  },
 };
 
 const OneCheckbox = ({ checkboxes }: CheckboxGroupProps) => {
@@ -31,14 +17,15 @@ const OneCheckbox = ({ checkboxes }: CheckboxGroupProps) => {
 
     // 콘솔에 선택된 항목의 키와 라벨 출력
     if (newKey !== null) {
-      console.log(`선택된 항목: ${checkboxData[newKey].textprops?.text}`);
+      const selectedCheckbox = checkboxes[newKey]; // 선택된 체크박스 데이터 가져오기
+      console.log(`선택된 항목: ${selectedCheckbox.textprops?.text}`);
     } else {
       console.log('선택된 항목이 해제되었습니다.');
     }
   };
 
   return (
-    <Box sx={{ display: 'flex', gap: 2 }}>
+    <Box sx={{ display: 'flex' }}>
       {Object.entries(checkboxes).map(([key, checkboxProps]) => (
         <ACheckbox
           key={key}

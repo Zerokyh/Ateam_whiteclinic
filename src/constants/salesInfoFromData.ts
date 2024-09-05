@@ -1,10 +1,11 @@
 import { CheckboxProps } from '@/conponents/atom/CheckBox/ACheckbox';
 import { GenericDropdownBoxProps } from '@/conponents/atom/DropdownBox/ADropdownBox';
-import { checkboxData, CheckboxGroupProps } from '@/conponents/molecules/checkbox/OneCheckbox';
-import { AFixedModifyInputBoxProp } from '@/conponents/molecules/Input/AFixedModifyInputBox';
+import { CheckboxGroupProps } from '@/conponents/molecules/checkbox/OneCheckbox';
 import { FormFieldType } from '@/conponents/molecules/SalesForm/FormField';
 import { TitledFormControlProps } from '@/conponents/molecules/SalesForm/TitledFormControl';
-import { airConditionerCategories } from '@/constants/airConditionerCategories';
+import { airConditionerCategories, washingMachineCategories } from './productCategory';
+import { AVariableModifyInputBoxProp } from '@/conponents/molecules/Input/AVariableModifyInputBox';
+import { discountCheckboxData, washCheckboxData } from './salesData';
 
 export const salesInfoFormData: TitledFormControlProps[] = [
   {
@@ -16,7 +17,7 @@ export const salesInfoFormData: TitledFormControlProps[] = [
         {
           formfieldtype: 'ADropdownBox' as FormFieldType,
           prevprops: {
-            label: '선택',
+            label: '에어컨',
             options: airConditionerCategories.map((category) => ({
               value: category,
               text: category,
@@ -24,11 +25,21 @@ export const salesInfoFormData: TitledFormControlProps[] = [
           } as GenericDropdownBoxProps,
         },
         {
-          formfieldtype: 'AFixedModifyInputBox' as FormFieldType,
+          formfieldtype: 'ADropdownBox' as FormFieldType,
+          prevprops: {
+            label: '세탁기',
+            options: washingMachineCategories.map((category) => ({
+              value: category,
+              text: category,
+            })),
+          } as GenericDropdownBoxProps,
+        },
+        {
+          formfieldtype: 'AVariableModifyInputBox' as FormFieldType,
           prevprops: {
             placeholder: '직접 입력',
             inputVariant: 'outlined',
-          } as AFixedModifyInputBoxProp<string>,
+          } as AVariableModifyInputBoxProp<string>,
         },
       ],
     },
@@ -40,11 +51,11 @@ export const salesInfoFormData: TitledFormControlProps[] = [
     formfieldprops: {
       fields: [
         {
-          formfieldtype: 'AFixedModifyInputBox' as FormFieldType,
+          formfieldtype: 'AVariableModifyInputBox' as FormFieldType,
           prevprops: {
             placeholder: '직접 수정',
             inputVariant: 'outlined',
-          } as AFixedModifyInputBoxProp<string>,
+          } as AVariableModifyInputBoxProp<string>,
         },
       ],
     },
@@ -58,7 +69,7 @@ export const salesInfoFormData: TitledFormControlProps[] = [
         {
           formfieldtype: 'OneCheckbox' as FormFieldType,
           prevprops: {
-            checkboxes: checkboxData,
+            checkboxes: washCheckboxData,
           } as CheckboxGroupProps,
         },
       ],
@@ -71,20 +82,17 @@ export const salesInfoFormData: TitledFormControlProps[] = [
     formfieldprops: {
       fields: [
         {
-          formfieldtype: 'ACheckbox' as FormFieldType,
+          formfieldtype: 'OneCheckbox' as FormFieldType,
           prevprops: {
-            textprops: {
-              text: '할인적용',
-            },
-            isCheck: false,
-          } as CheckboxProps,
+            checkboxes: discountCheckboxData,
+          } as CheckboxGroupProps,
         },
         {
-          formfieldtype: 'AFixedModifyInputBox' as FormFieldType,
+          formfieldtype: 'AVariableModifyInputBox' as FormFieldType,
           prevprops: {
             placeholder: '직접 입력',
             inputVariant: 'outlined',
-          } as AFixedModifyInputBoxProp<string>,
+          } as AVariableModifyInputBoxProp<string>,
         },
       ],
     },
@@ -96,11 +104,11 @@ export const salesInfoFormData: TitledFormControlProps[] = [
     formfieldprops: {
       fields: [
         {
-          formfieldtype: 'AFixedModifyInputBox' as FormFieldType,
+          formfieldtype: 'AVariableModifyInputBox' as FormFieldType,
           prevprops: {
             placeholder: '직접 입력',
             inputVariant: 'outlined',
-          } as AFixedModifyInputBoxProp<string>,
+          } as AVariableModifyInputBoxProp<string>,
         },
       ],
     },
@@ -112,11 +120,11 @@ export const salesInfoFormData: TitledFormControlProps[] = [
     formfieldprops: {
       fields: [
         {
-          formfieldtype: 'AFixedModifyInputBox' as FormFieldType,
+          formfieldtype: 'AVariableModifyInputBox' as FormFieldType,
           prevprops: {
             placeholder: '직접 입력',
             inputVariant: 'outlined',
-          } as AFixedModifyInputBoxProp<string>,
+          } as AVariableModifyInputBoxProp<string>,
         },
       ],
     },

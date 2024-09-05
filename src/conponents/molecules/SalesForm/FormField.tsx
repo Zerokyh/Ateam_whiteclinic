@@ -8,12 +8,16 @@ import AFixedModifyInputBox, {
 } from '@/conponents/molecules/Input/AFixedModifyInputBox';
 import ADropdownBox, { GenericDropdownBoxProps } from '@/conponents/atom/DropdownBox/ADropdownBox';
 import OneCheckbox, { CheckboxGroupProps } from '@/conponents/molecules/checkbox/OneCheckbox';
+import AVariableModifyInputBox, {
+  AVariableModifyInputBoxProp,
+} from '@/conponents/molecules/Input/AVariableModifyInputBox';
 
 export type FormFieldType =
   | 'ACustomButton'
   | 'ACheckbox'
   | 'OneCheckbox'
   | 'AFixedModifyInputBox'
+  | 'AVariableModifyInputBox'
   | 'ADropdownBox';
 
 export type FormFieldConfigProps = {
@@ -23,6 +27,7 @@ export type FormFieldConfigProps = {
     | CheckboxProps
     | CheckboxGroupProps
     | AFixedModifyInputBoxProp<string>
+    | AVariableModifyInputBoxProp<string>
     | GenericDropdownBoxProps;
 };
 
@@ -36,12 +41,13 @@ const fieldTypeToComponentMap: Record<FormFieldType, React.ElementType> = {
   ACheckbox,
   OneCheckbox,
   AFixedModifyInputBox,
+  AVariableModifyInputBox,
   ADropdownBox,
 };
 
 const FormField = ({ fields }: FormFieldProps) => {
   return (
-    <Box sx={{ display: 'flex', gap: '20px' }}>
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
       {fields.map((field, index) => {
         const Component = fieldTypeToComponentMap[field.formfieldtype];
 
