@@ -2,17 +2,17 @@
 
 import React from 'react';
 import { Box } from '@mui/material';
-import LabelCheckBox, { LabelCheckBoxProps } from './LabelCheckBox';
 import { TextProps } from 'recharts';
+
+import { useEngineerLabel } from '@/constants/EngineerEffect';
 import AText from '@/conponents/atom/Text/AText';
 import ACustomButton from '@/conponents/atom/Button/ACustomButton';
-
-import useEngineerData from '@/constants/EngineerEffect';
+import LabelCheckBox, { LabelCheckBoxProps } from '@/conponents/molecules/Engineer/LabelCheckBox';
 import AVOutlinedInput, { AVOutlinedInputProps } from './Input';
 
 type EngineerRegisterProps = {
   textProps: TextProps;
-  inputProps: AVOutlinedInputProps;
+  inputProps: Omit<AVOutlinedInputProps, 'value' | 'onChange'>;
   checkBoxProps: LabelCheckBoxProps;
   engneerObject: {
     [key: string]: {
@@ -23,61 +23,90 @@ type EngineerRegisterProps = {
 };
 
 const EngineerLabel: React.FC<EngineerRegisterProps> = ({
-  checkBoxProps,
   engneerObject,
   inputProps,
   textProps,
+  checkBoxProps,
 }) => {
-  const { engineerData, customSkill, handleCustomSkillChange, handleCustomSkillAdd } =
-    useEngineerData();
+  const { localData, handleInputChange, handleSkillChange, handleSave, handleCancel } =
+    useEngineerLabel();
 
   return (
-    <Box sx={{ maxWidth: '1200px', margin: '0 auto' }}>
-      {Object.entries(engneerObject).map(([key, value]) => (
-        <Box key={key} sx={{ display: 'flex', alignItems: 'center' }}>
+    <Box
+      sx={{ maxWidth: '1000px', margin: '0 auto', border: '1px solid #ccc', borderRadius: '4px' }}
+    >
+      {Object.entries(engneerObject).map(([key, value], index) => (
+        <Box
+          key={key}
+          sx={{
+            display: 'flex',
+            alignItems: 'stretch',
+            borderBottom: '1px solid #ccc',
+          }}
+        >
           <Box
             sx={{
-              width: 110,
-              height: value.type === 'checkbox' ? 143 : 56,
+              width: '100px',
+              padding: '16px',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
               bgcolor: '#F2F2F2',
-              borderRight: '1px solid #7F7F7F',
-              borderBottom: '1px solid #7F7F7F',
+              borderRight: '1px solid #ccc',
             }}
           >
             <AText {...textProps} text={value.title} />
           </Box>
           <Box
             sx={{
-              width: 1500,
+              flex: 1,
               display: 'flex',
-              p: 1,
-              gap: 1,
-              borderBottom: '1px solid #7F7F7F',
+              alignItems: 'center',
+              padding: '16px',
             }}
           >
             {value.type === 'input' ? (
               <AVOutlinedInput
                 {...inputProps}
                 placeholder={value.title}
-                value={
-                  engineerData && key !== 'items'
-                    ? (engineerData[key as keyof typeof engineerData] as string)
-                    : ''
-                }
-                onChange={() => console.log(`${key} changed`)}
+                value={localData ? (localData[key as keyof typeof localData] as string) : ''}
+                onValueChange={(newValue) => handleInputChange(key, newValue)}
               />
             ) : (
-              <LabelCheckBox {...checkBoxProps} option={engineerData?.items || []} />
+              <LabelCheckBox
+                {...checkBoxProps}
+                option={checkBoxProps.option}
+                checkBoxProps={{
+                  ...checkBoxProps.checkBoxProps,
+                  isCheck: (items: string) => localData?.items.includes(items) || false,
+                  onChange: (items: string) => () => handleSkillChange(items),
+                }}
+              />
             )}
           </Box>
         </Box>
       ))}
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2, gap: 2 }}>
-        <ACustomButton text="취소" variant="outlined" color="default" size="medium" />
-        <ACustomButton text="등록" variant="contained" color="primary" size="medium" />
+      <Box
+        sx={{
+          display: 'flex',
+          padding: '16px',
+          gap: 2,
+        }}
+      >
+        <ACustomButton
+          text="취소"
+          variant="outlined"
+          color="default"
+          size="medium"
+          onClick={handleCancel}
+        />
+        <ACustomButton
+          text="등록"
+          variant="contained"
+          color="primary"
+          size="medium"
+          onClick={handleSave}
+        />
       </Box>
     </Box>
   );

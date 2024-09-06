@@ -31,7 +31,7 @@ const LabelCheckBox: React.FC<LabelCheckBoxProps> = ({ checkBoxProps, inputProps
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Grid container spacing={0} wrap="wrap" gap={0}>
         {option.map((v) => (
           <Grid item xs={6} sm={3} key={v}>

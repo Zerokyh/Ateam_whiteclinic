@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { FormControl, OutlinedInput, InputAdornment, InputLabel, IconButton } from '@mui/material';
+import { FormControl, OutlinedInput, InputAdornment, IconButton } from '@mui/material';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 
 type heightSize = 'small' | 'medium';
@@ -13,8 +13,9 @@ export type AVOutlinedInputProps = {
   sx?: object;
   isMultiline?: boolean;
   inputHeightSize?: heightSize;
-  value?: string;
-  onChange?: () => void;
+  value: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+  onValueChange?: (value: string) => void;
 };
 
 const AVOutlinedInput = ({
@@ -27,6 +28,7 @@ const AVOutlinedInput = ({
   inputHeightSize = 'small',
   value,
   onChange,
+  onValueChange,
 }: AVOutlinedInputProps) => {
   const [isDisabled, setIsDisabled] = React.useState(isInvisible);
   const inputRef = React.useRef<HTMLInputElement | null>(null);
@@ -34,19 +36,27 @@ const AVOutlinedInput = ({
   React.useEffect(() => {
     if (inputRef.current) {
       const inputElement = inputRef.current;
-
       inputElement.style.width = '80px';
-
       const scrollWidth = inputElement.scrollWidth;
       const padding = 1;
       const newWidth = Math.max(width * 8, scrollWidth + padding);
-
       inputElement.style.width = `${newWidth}px`;
     }
-  }, [width]);
+  }, [value, width]);
 
   const handleChange = () => {
     setIsDisabled(!isDisabled);
+  };
+
+  const handleInputChange: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> = (
+    e
+  ) => {
+    if (onChange) {
+      onChange(e);
+    }
+    if (onValueChange) {
+      onValueChange(e.target.value);
+    }
   };
 
   return (
@@ -55,7 +65,7 @@ const AVOutlinedInput = ({
         type={type}
         value={value}
         sx={{ minWidth: '120px' }}
-        onChange={onChange}
+        onChange={handleInputChange}
         multiline={isMultiline}
         placeholder={placeholder}
         disabled={isDisabled}

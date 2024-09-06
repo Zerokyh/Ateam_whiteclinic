@@ -1,41 +1,51 @@
 'use client';
 
-import { useEffect, useState, ChangeEvent } from 'react';
-import { generateEngineerData, EngineerData } from './Engineer';
+import { useState, useEffect } from 'react';
+import { EngineerData, generateEngineerData } from '@/constants/Engineer';
 
-export const useEngineerData = () => {
+export const useEngineerLabel = () => {
   const [engineerData, setEngineerData] = useState<EngineerData | null>(null);
-  const [customSkill, setCustomSkill] = useState<string>('');
+  const [localData, setLocalData] = useState<EngineerData | null>(null);
 
   useEffect(() => {
-    setEngineerData(generateEngineerData());
+    const initialData = generateEngineerData();
+    setEngineerData(initialData);
+    setLocalData(initialData);
   }, []);
 
-  const handleCustomSkillChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setCustomSkill(event.target.value);
+  useEffect(() => {
+    setLocalData(engineerData);
+  }, [engineerData]);
+
+  const handleInputChange = (key: string, value: string) => {
+    setLocalData((prev) => (prev ? { ...prev, [key]: value } : null));
   };
 
-  const handleCustomSkillAdd = () => {
-    if (customSkill && engineerData) {
-      setEngineerData((prevData): EngineerData => {
-        if (prevData === null) {
-          return generateEngineerData();
-        }
-        return {
-          ...prevData,
-          items: [...prevData.items, customSkill],
-        };
-      });
-      setCustomSkill('');
+  const handleSkillChange = (skill: string) => {
+    setLocalData((prev) => {
+      if (!prev) return null;
+      const updatedItems = prev.items.includes(skill)
+        ? prev.items.filter((item) => item !== skill)
+        : [...prev.items, skill];
+      return { ...prev, items: updatedItems };
+    });
+  };
+
+  const handleSave = () => {
+    if (localData) {
+      setEngineerData(localData);
     }
   };
 
+  const handleCancel = () => {
+    setLocalData(engineerData);
+  };
+
   return {
-    engineerData,
-    customSkill,
-    handleCustomSkillChange,
-    handleCustomSkillAdd,
+    localData,
+    handleInputChange,
+    handleSkillChange,
+    handleSave,
+    handleCancel,
   };
 };
-
-export default useEngineerData;
