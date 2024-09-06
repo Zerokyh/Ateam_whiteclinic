@@ -1,53 +1,72 @@
 'use client';
 
 import ACheckbox, { CheckboxProps } from '@/conponents/atom/CheckBox/ACheckbox';
-import { CheckboxTextType } from '@/constants/textType';
 import { Box } from '@mui/material';
 import React, { useState } from 'react';
+import NormalWashModal from '../SalesForm/NormalWashModal';
+import { normalWashModalData } from '@/constants/salesData';
 
 export type CheckboxGroupProps = {
   checkboxes: { [key: string | number]: CheckboxProps };
 };
 
-export const checkboxData: { [key: string]: CheckboxProps } = {
-  comprehensiveWash: {
-    isCheck: false,
-    onChange: () => {},
-    textprops: { text: '종합세척' as CheckboxTextType },
-  },
-  normalWash: {
-    isCheck: false,
-    onChange: () => {},
-    textprops: { text: '일반세척' as CheckboxTextType },
-  },
-};
-
 const OneCheckbox = ({ checkboxes }: CheckboxGroupProps) => {
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  const handleChange = (key: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newKey = event.target.checked ? key : null;
-    setSelectedKey(newKey);
+  const handleCheckboxChange = (key: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    const checkboxText = checkboxes[key].textprops?.text || 'Unknown';
 
-    // 콘솔에 선택된 항목의 키와 라벨 출력
-    if (newKey !== null) {
-      console.log(`선택된 항목: ${checkboxData[newKey].textprops?.text}`);
+    if (event.target.checked) {
+      console.log(`${checkboxText} 체크됨`);
+      if (key === 'normalWash') {
+        setIsModalOpen(true);
+      }
+      setSelectedKey(key);
     } else {
-      console.log('선택된 항목이 해제되었습니다.');
+      console.log(`${checkboxText} 해제됨`);
+      setSelectedKey(null);
     }
   };
 
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedKey(null);
+  };
+
+  const handleRegister = () => {
+    setSelectedKey('normalWash');
+    setIsModalOpen(false);
+  };
+
+  const modalButtonProps = {
+    textprops: normalWashModalData.textprops,
+    buttongroupprops: {
+      abuttonprops: normalWashModalData.abuttonprops.map((modalButton, index) => ({
+        ...modalButton,
+        onClick: index === 0 ? handleCloseModal : handleRegister,
+      })),
+    },
+  };
+
   return (
-    <Box sx={{ display: 'flex', gap: 2 }}>
-      {Object.entries(checkboxes).map(([key, checkboxProps]) => (
-        <ACheckbox
-          key={key}
-          isCheck={selectedKey === key}
-          onChange={handleChange(key)}
-          textprops={checkboxProps.textprops}
-        />
-      ))}
-    </Box>
+    <>
+      <Box sx={{ display: 'flex' }}>
+        {Object.entries(checkboxes).map(([key, checkboxProps]) => (
+          <ACheckbox
+            key={key}
+            isCheck={selectedKey === key}
+            onChange={handleCheckboxChange(key)}
+            textprops={checkboxProps.textprops}
+          />
+        ))}
+      </Box>
+      <NormalWashModal
+        open={isModalOpen}
+        handleClose={handleCloseModal}
+        modalcontentprops={modalButtonProps}
+      />
+    </>
   );
 };
 

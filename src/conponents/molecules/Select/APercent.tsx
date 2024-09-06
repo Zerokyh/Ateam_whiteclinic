@@ -1,3 +1,5 @@
+'use client';
+
 import ADropdownBox from '@/conponents/atom/DropdownBox/ADropdownBox';
 import { Percentage } from '@/constants/Percentage';
 import { SelectChangeEvent } from '@mui/material';

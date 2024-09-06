@@ -33,8 +33,8 @@ type OptionsProps = {
 
 export type GenericDropdownBoxProps = {
   label: string;
-  value: string;
-  onChange: (event: SelectChangeEvent<string>) => void;
+  value?: string;
+  onChange?: (event: SelectChangeEvent<string>) => void;
   options: OptionsProps[];
   width?: widthOptions;
   color?: string;

@@ -1,5 +1,6 @@
 import ADropdownBox from "@/conponents/atom/DropdownBox/ADropdownBox";
-import { airConditionerCategories } from "@/constants/airConditionerCategories";
+import { airConditionerCategories } from "@/constants/productCategory";
+
 
 
 const AirConditionerSelector = () => {

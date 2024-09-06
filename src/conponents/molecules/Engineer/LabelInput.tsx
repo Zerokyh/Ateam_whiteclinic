@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, IconButton } from '@mui/material';
+import { Box } from '@mui/material';
 import LabelCheckBox, { LabelCheckBoxProps } from './LabelCheckBox';
 import { TextProps } from 'recharts';
 import ABasicInput, { ABasicInputProps } from '@/conponents/atom/Input/Basic/ABasicInput';
@@ -25,44 +25,57 @@ const EnginnerLabel: React.FC<EngineerRegisterProps> = ({
   textProps,
 }) => {
   return (
-    <Box sx={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <Box
+      sx={{ maxWidth: '1000px', margin: '0 auto', border: '1px solid #ccc', borderRadius: '4px' }}
+    >
       {Object.entries(engneerObject).map(([key, value], index) => (
-        <Box key={key} sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box
+          key={key}
+          sx={{
+            display: 'flex',
+            alignItems: 'stretch',
+            borderBottom: '1px solid #ccc',
+          }}
+        >
           <Box
             sx={{
-              width: 110,
-              height: value.type === 'checkbox' ? 143 : 56,
+              width: '100px',
+              padding: '16px',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
               bgcolor: '#F2F2F2',
-              borderRight: '1px solid #7F7F7F',
-              borderBottom: '1px solid #7F7F7F',
+              borderRight: '1px solid #ccc',
             }}
           >
             <AText {...textProps} text={value.title} />
           </Box>
           <Box
             sx={{
-              width: 1500,
+              flex: 1,
               display: 'flex',
-              p: 1,
-              gap: 1,
-              borderBottom: '1px solid #7F7F7F',
+              alignItems: 'center',
+              padding: '16px',
             }}
           >
             {value.type === 'input' ? (
-              <>
-                <ABasicInput {...inputProps} label={value.title} />
-              </>
+              <ABasicInput {...inputProps} label={value.title} />
             ) : (
               <LabelCheckBox {...checkBoxProps} />
             )}
           </Box>
         </Box>
       ))}
-      <ACustomButton text="취소" variant="outlined" color="default" size="medium" />
-      <ACustomButton text="등록" variant="contained" color="primary" size="medium" />
+      <Box
+        sx={{
+          display: 'flex',
+          padding: '16px',
+          gap: 2,
+        }}
+      >
+        <ACustomButton text="취소" variant="outlined" color="default" size="medium" />
+        <ACustomButton text="등록" variant="contained" color="primary" size="medium" />
+      </Box>
     </Box>
   );
 };

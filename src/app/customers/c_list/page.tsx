@@ -1,11 +1,18 @@
-import SalesInfoForm from '@/conponents/molecules/SalesForm/SalesInfoForm';
-import { salesInfoFormData } from '@/constants/salesInfoFromData';
+import SalesInfo from '@/conponents/organism/Sales/SalesInfo';
 import { Box } from '@mui/material';
 
 const Page = () => {
   return (
-    <Box>
-      <SalesInfoForm titledformcontrolprops={salesInfoFormData} />
+    <Box
+      sx={{
+        height: 'calc(100vh - 112px)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <SalesInfo />
     </Box>
   );
 };

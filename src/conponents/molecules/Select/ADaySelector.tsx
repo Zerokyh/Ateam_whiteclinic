@@ -1,3 +1,5 @@
+'use client';
+
 import ADropdownBox from '@/conponents/atom/DropdownBox/ADropdownBox';
 import { Days } from '@/constants/Days';
 import { SelectChangeEvent } from '@mui/material';

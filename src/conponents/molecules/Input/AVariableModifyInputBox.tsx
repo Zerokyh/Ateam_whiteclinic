@@ -13,7 +13,7 @@ type InputTextType<T extends string> = {
   password?: T;
 };
 
-type AVariableModifyInputBoxProp<T extends string> = {
+ export type AVariableModifyInputBoxProp<T extends string> = {
   type?: keyof InputTextType<T>;
   placeholder?: T;
   isInvisible?: boolean;
