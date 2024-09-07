@@ -7,7 +7,7 @@ const ASideMenuBox = () => {
   return (
     <>
       {Object.entries(sideBarMenuData).map(([key, menuItem]) => (
-        <div key={menuItem.title}>
+        <div key={key}>
           <TitleMenuBox
             iconprops={{ icon: <menuItem.icon />, color: colors.text.title }}
             labelprops={{ text: menuItem.title, color: colors.text.title }}

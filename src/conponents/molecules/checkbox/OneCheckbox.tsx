@@ -1,8 +1,10 @@
 'use client';
 
 import ACheckbox, { CheckboxProps } from '@/conponents/atom/CheckBox/ACheckbox';
+import { normalWashModalData } from '@/constants/salesData';
 import { Box } from '@mui/material';
 import React, { useState } from 'react';
+import NormalWashModal from '../SalesForm/NormalWashModal';
 
 export type CheckboxGroupProps = {
   checkboxes: { [key: string | number]: CheckboxProps };
