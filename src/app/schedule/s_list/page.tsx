@@ -1,7 +1,9 @@
 'use client';
 
 import ACustomButton from '@/conponents/atom/Button/ACustomButton';
-import OneCheckbox, { CheckboxGroupProps } from '@/conponents/molecules/checkbox/OneCheckbox';
+import { CheckboxGroupProps } from '@/conponents/molecules/checkbox/OneCheckbox';
+
+import WorkcerCheckbox from '@/conponents/molecules/checkbox/WorkerCheckbox';
 import AVariableModifyInputBox from '@/conponents/molecules/Input/AVariableModifyInputBox';
 import ADaySelector from '@/conponents/molecules/Select/ADaySelector';
 import APercent from '@/conponents/molecules/Select/APercent';
@@ -97,7 +99,7 @@ const Page = () => {
       </Box>
 
       <Box sx={{ backgroundColor: 'gold', padding: '10px', borderRadius: '4px' }}>
-        <OneCheckbox
+        <WorkcerCheckbox
           checkboxes={checkboxes}
           onChange={handleCheckboxChange}
           value={selectedWorker}
