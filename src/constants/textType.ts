@@ -45,4 +45,3 @@ export type TextType =
 
 // 체크 박스에서만
 export type CheckboxTextType = WashType | Discount;
-

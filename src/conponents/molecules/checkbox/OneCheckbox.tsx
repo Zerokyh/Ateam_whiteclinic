@@ -3,14 +3,14 @@
 import ACheckbox, { CheckboxProps } from '@/conponents/atom/CheckBox/ACheckbox';
 import { Box } from '@mui/material';
 import React, { useState } from 'react';
-import NormalWashModal from '../SalesForm/NormalWashModal';
-import { normalWashModalData } from '@/constants/salesData';
 
 export type CheckboxGroupProps = {
   checkboxes: { [key: string | number]: CheckboxProps };
+  onChange?: (selectedKey: string | null) => void;
+  value?: string | null;
 };
 
-const OneCheckbox = ({ checkboxes }: CheckboxGroupProps) => {
+const OneCheckbox = ({ checkboxes, onChange, value }: CheckboxGroupProps) => {
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
