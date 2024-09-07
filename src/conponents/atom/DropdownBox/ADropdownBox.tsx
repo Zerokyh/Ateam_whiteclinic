@@ -1,6 +1,5 @@
 'use client';
 
-import { airConditionerCategories } from '@/constants/airConditionerCategories';
 import { selectDate } from '@/constants/Dates';
 import { Days } from '@/constants/Days';
 import { Document } from '@/constants/Document';
@@ -8,6 +7,7 @@ import { Months } from '@/constants/Months';
 import { MonthsPlan } from '@/constants/MonthsPlan';
 import { Payment } from '@/constants/Payment';
 import { Percentage } from '@/constants/Percentage';
+import { airConditionerCategories } from '@/constants/productCategory';
 import { sizes } from '@/styles/sizes';
 import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { useState } from 'react';

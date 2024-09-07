@@ -1,9 +1,9 @@
 import ACustomButton from '@/conponents/atom/Button/ACustomButton';
 import AText from '@/conponents/atom/Text/AText';
-import WorkerCheckbox from '@/conponents/molecules/checkbox/WorkerCheckbox';
 import AVariableModifyInputBox from '@/conponents/molecules/Input/AVariableModifyInputBox';
 import ADaySelector from '@/conponents/molecules/Select/ADaySelector';
 import APercent from '@/conponents/molecules/Select/APercent';
+
 import { Box } from '@mui/material';
 
 const Page = () => {
