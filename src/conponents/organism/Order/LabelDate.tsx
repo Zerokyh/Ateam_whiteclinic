@@ -1,6 +1,6 @@
 import AText from '@/conponents/atom/Text/AText';
 import { Box } from '@mui/material';
-import DateDropList from './DateDropList';
+import DateDropList from '../../molecules/Order/DateDropList';
 
 type LabelDateProps = {
   labeltext?: string;
@@ -10,8 +10,8 @@ type LabelDateProps = {
 
 const LabelDate = ({
   labeltext,
-  borderBottom = '1px solid #7F7F7F', // border 제거 : '0'
-  borderRight = '1px solid #7F7F7F', // border 제거 : '0'
+  borderBottom = '1px solid #7F7F7F',
+  borderRight = '1px solid #7F7F7F',
 }: LabelDateProps) => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>

@@ -9,7 +9,6 @@ import APayment from '@/conponents/molecules/Select/APayment';
 import AEvidentialDocument from '@/conponents/molecules/Select/AEvidentialDocument';
 import AText from '@/conponents/atom/Text/AText';
 
-
 const components = {
   AMonthSelector,
   ADatesSelector,
@@ -31,8 +30,8 @@ type LabelDropProps = {
 const LabelDrop = ({
   labeltext,
   droptype,
-  borderBottom = '1px solid #7F7F7F', // border 제거 : '0'
-  borderRight = '1px solid #7F7F7F', // border 제거 : '0'
+  borderBottom = '1px solid #7F7F7F',
+  borderRight = '1px solid #7F7F7F',
 }: LabelDropProps) => {
   const DropComponent = components[droptype];
 

@@ -1,11 +1,9 @@
 import { timeSlots } from '@/constants/timeSlots';
 import { Box } from '@mui/material';
-import DateInfo from './DateInfo';
-import { useState } from 'react';
-import { formatDate } from '@/util/dateUtil';
+import DateInfo from '../../molecules/Schedule/DateInfo';
 
 type ScheduleInfoProps = {
-  selectedDate?: Date | null;
+  selectedDate: Date | null;
   engineerName?: string;
 };
 

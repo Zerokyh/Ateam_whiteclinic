@@ -23,8 +23,8 @@ const LabelTypingInput = ({
           justifyContent: 'center',
           alignItems: 'center',
           bgcolor: '#F2F2F2',
-          borderRight: { borderRight }, // border 제거 : '0'
-          borderBottom: { borderBottom }, // border 제거 : '0'
+          borderRight: { borderRight },
+          borderBottom: { borderBottom },
         }}
       >
         <AText text={labeltext} />
