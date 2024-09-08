@@ -2,17 +2,17 @@ import AText from '@/conponents/atom/Text/AText';
 import AVariableModifyInputBox from '@/conponents/molecules/Input/AVariableModifyInputBox';
 import { Box } from '@mui/material';
 
-type LabelTypingInputProps = {
+type LabeledTextInputProps = {
   labeltext: string;
   borderBottom?: string;
   borderRight?: string;
 };
 
-const LabelTypingInput = ({
+const LabeledTextInput = ({
   labeltext,
   borderBottom = '1px solid #7F7F7F',
   borderRight = '1px solid #7F7F7F',
-}: LabelTypingInputProps) => {
+}: LabeledTextInputProps) => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Box
@@ -42,4 +42,4 @@ const LabelTypingInput = ({
   );
 };
 
-export default LabelTypingInput;
+export default LabeledTextInput;

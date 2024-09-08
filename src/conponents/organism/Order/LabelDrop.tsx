@@ -18,7 +18,7 @@ const components = {
   AEvidentialDocument,
 };
 
-type dropDownListType = keyof typeof components;
+export type dropDownListType = keyof typeof components;
 
 type LabelDropProps = {
   labeltext: string;
