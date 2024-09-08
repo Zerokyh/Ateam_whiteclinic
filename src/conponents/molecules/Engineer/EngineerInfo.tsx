@@ -33,7 +33,13 @@ const EngineerLabel: React.FC<EngineerRegisterProps> = ({
 
   return (
     <Box
-      sx={{ maxWidth: '1000px', margin: '0 auto', border: '1px solid #ccc', borderRadius: '4px' }}
+      sx={{
+        maxWidth: '1000px',
+        margin: '0 auto',
+        border: '1px solid #ccc',
+        borderRadius: '4px',
+        overflow: 'hidden',
+      }}
     >
       {Object.entries(engneerObject).map(([key, value], index) => (
         <Box
@@ -42,12 +48,12 @@ const EngineerLabel: React.FC<EngineerRegisterProps> = ({
             display: 'flex',
             alignItems: 'stretch',
             borderBottom: '1px solid #ccc',
+            minHeight: '57px',
           }}
         >
           <Box
             sx={{
-              width: '100px',
-              padding: '16px',
+              width: '120px',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
@@ -62,7 +68,7 @@ const EngineerLabel: React.FC<EngineerRegisterProps> = ({
               flex: 1,
               display: 'flex',
               alignItems: 'center',
-              padding: '16px',
+              padding: '0px 8px',
             }}
           >
             {value.type === 'input' ? (
@@ -86,28 +92,10 @@ const EngineerLabel: React.FC<EngineerRegisterProps> = ({
           </Box>
         </Box>
       ))}
-      <Box
-        sx={{
-          display: 'flex',
-          padding: '16px',
-          gap: 2,
-        }}
-      >
-        <ACustomButton
-          text="취소"
-          variant="outlined"
-          color="default"
-          size="medium"
-          onClick={handleCancel}
-        />
-        <ACustomButton
-          text="등록"
-          variant="contained"
-          color="primary"
-          size="medium"
-          onClick={handleSave}
-        />
-      </Box>
+      <div style={{ display: 'flex' }}>
+        <ACustomButton text="취소" variant="outlined" color="default" size="full" />
+        <ACustomButton text="등록" variant="contained" color="primary" size="full" />
+      </div>
     </Box>
   );
 };

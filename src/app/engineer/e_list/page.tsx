@@ -5,24 +5,19 @@ import EngineerLabel from '@/conponents/molecules/Engineer/EngineerInfo';
 
 const EngineerRegistrationPage: React.FC = () => {
   return (
-    <Box sx={{ p: 3 }}>
-      <Typography variant="h4" component="h1" gutterBottom>
-        엔지니어 등록
-      </Typography>
-      <EngineerLabel
-        textProps={{}}
-        inputProps={{}}
-        checkBoxProps={{
-          option: EngineerWashingMachineCategory,
-          inputProps: {
-            label: '직접입력',
-            variant: 'outlined',
-          },
-          checkBoxProps: {},
-        }}
-        engneerObject={EngineerRegister}
-      />
-    </Box>
+    <EngineerLabel
+      textProps={{}}
+      inputProps={{}}
+      checkBoxProps={{
+        option: EngineerWashingMachineCategory,
+        inputProps: {
+          label: '직접입력',
+          variant: 'outlined',
+        },
+        checkBoxProps: {},
+      }}
+      engneerObject={EngineerRegister}
+    />
   );
 };
 

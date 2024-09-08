@@ -25,58 +25,61 @@ const EnginnerLabel: React.FC<EngineerRegisterProps> = ({
   textProps,
 }) => {
   return (
-    <Box
-      sx={{ maxWidth: '1000px', margin: '0 auto', border: '1px solid #ccc', borderRadius: '4px' }}
-    >
-      {Object.entries(engneerObject).map(([key, value], index) => (
-        <Box
-          key={key}
-          sx={{
-            display: 'flex',
-            alignItems: 'stretch',
-            borderBottom: '1px solid #ccc',
-          }}
-        >
-          <Box
-            sx={{
-              width: '100px',
-              padding: '16px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              bgcolor: '#F2F2F2',
-              borderRight: '1px solid #ccc',
-            }}
-          >
-            <AText {...textProps} text={value.title} />
-          </Box>
-          <Box
-            sx={{
-              flex: 1,
-              display: 'flex',
-              alignItems: 'center',
-              padding: '16px',
-            }}
-          >
-            {value.type === 'input' ? (
-              <ABasicInput {...inputProps} label={value.title} />
-            ) : (
-              <LabelCheckBox {...checkBoxProps} />
-            )}
-          </Box>
-        </Box>
-      ))}
+    <>
       <Box
         sx={{
-          display: 'flex',
-          padding: '16px',
-          gap: 2,
+          maxWidth: '1000px',
+          margin: '0 auto',
+          border: '1px solid #ccc',
+          borderRadius: '4px',
+          overflow: 'hidden',
         }}
       >
-        <ACustomButton text="취소" variant="outlined" color="default" size="medium" />
-        <ACustomButton text="등록" variant="contained" color="primary" size="medium" />
+        {Object.entries(engneerObject).map(([key, value], index) => (
+          <Box
+            key={key}
+            sx={{
+              display: 'flex',
+              alignItems: 'stretch',
+              borderBottom: '1px solid #ccc',
+              minHeight: '56px',
+            }}
+          >
+            <Box
+              sx={{
+                width: '120px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                bgcolor: '#F2F2F2',
+                borderRight: '1px solid #ccc',
+                padding: '8px',
+              }}
+            >
+              <AText {...textProps} text={value.title} />
+            </Box>
+            <Box
+              sx={{
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center',
+                padding: '8px 16px',
+              }}
+            >
+              {value.type === 'input' ? (
+                <ABasicInput {...inputProps} label={value.title} />
+              ) : (
+                <LabelCheckBox {...checkBoxProps} />
+              )}
+            </Box>
+          </Box>
+        ))}
+        <div style={{ display: 'flex' }}>
+          <ACustomButton text="취소" variant="outlined" color="default" size="full" />
+          <ACustomButton text="등록" variant="contained" color="primary" size="full" />
+        </div>
       </Box>
-    </Box>
+    </>
   );
 };
 
