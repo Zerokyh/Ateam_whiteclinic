@@ -9,6 +9,7 @@ import AText from '@/conponents/atom/Text/AText';
 import ACustomButton from '@/conponents/atom/Button/ACustomButton';
 import LabelCheckBox, { LabelCheckBoxProps } from '@/conponents/molecules/Engineer/LabelCheckBox';
 import AVOutlinedInput, { AVOutlinedInputProps } from './Input';
+import TwoButtons from '../Button/TwoButton';
 
 type EngineerRegisterProps = {
   textProps: TextProps;
@@ -92,10 +93,21 @@ const EngineerLabel: React.FC<EngineerRegisterProps> = ({
           </Box>
         </Box>
       ))}
-      <div style={{ display: 'flex' }}>
-        <ACustomButton text="취소" variant="outlined" color="default" size="full" />
-        <ACustomButton text="등록" variant="contained" color="primary" size="full" />
-      </div>
+
+      <TwoButtons
+        leftButton={{
+          text: '취소',
+          variant: 'contained',
+          color: 'default',
+          size: 'full',
+        }}
+        rightButton={{
+          text: '등록',
+          variant: 'contained',
+          color: 'primary',
+          size: 'full',
+        }}
+      />
     </Box>
   );
 };
