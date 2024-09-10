@@ -4,19 +4,14 @@ import LabelCheckBox, { LabelCheckBoxProps } from './LabelCheckBox';
 import { TextProps } from 'recharts';
 import ABasicInput, { ABasicInputProps } from '@/conponents/atom/Input/Basic/ABasicInput';
 import AText from '@/conponents/atom/Text/AText';
-import ACustomButton from '@/conponents/atom/Button/ACustomButton';
 import TwoButtons from '../Button/TwoButton';
+import { EngineerRegisterObjectType } from '@/constants/Engineer';
 
 type EngineerRegisterProps = {
   textProps: TextProps;
   inputProps: ABasicInputProps;
   checkBoxProps: LabelCheckBoxProps;
-  engneerObject: {
-    [key: string]: {
-      title: string;
-      type: 'input' | 'checkbox';
-    };
-  };
+  engneerObject: EngineerRegisterObjectType;
 };
 
 const EnginnerLabel: React.FC<EngineerRegisterProps> = ({

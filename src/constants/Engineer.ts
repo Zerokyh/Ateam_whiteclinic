@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-type EngineerRegisterObjectType = {
+export type EngineerRegisterObjectType = {
   [key: string]: {
     title: string;
     type: 'input' | 'checkbox';
