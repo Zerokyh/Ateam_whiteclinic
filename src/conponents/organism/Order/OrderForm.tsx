@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import LabelDate from './LabelDate';
 import LabelDrop, { dropDownListType } from './LabelDrop';
 import LabeledTextInput from './LabelTypingInput';

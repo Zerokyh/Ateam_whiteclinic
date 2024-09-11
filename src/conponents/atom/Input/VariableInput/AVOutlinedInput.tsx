@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { FormControl, OutlinedInput, InputAdornment, InputLabel, IconButton } from '@mui/material';
+import { FormControl, OutlinedInput, InputAdornment, IconButton } from '@mui/material';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 
 type heightSize = 'small' | 'medium';
@@ -13,6 +13,8 @@ type AVOutlinedInputProps = {
   sx?: object;
   isMultiline?: boolean;
   inputHeightSize?: heightSize;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const AVOutlinedInput = ({
@@ -23,44 +25,37 @@ const AVOutlinedInput = ({
   sx,
   isMultiline = false,
   inputHeightSize = 'small',
+  value,
+  onChange,
 }: AVOutlinedInputProps) => {
   const [isDisabled, setIsDisabled] = React.useState(isInvisible);
-  const [inputValue, setInputValue] = React.useState('');
-  const inputRef = React.useRef<HTMLInputElement | null>(null);
+  const [inputWidth, setInputWidth] = React.useState(`${width * 8}px`);
 
   React.useEffect(() => {
-    if (inputRef.current) {
-      const inputElement = inputRef.current;
-
-      inputElement.style.width = '80px';
-
-      const scrollWidth = inputElement.scrollWidth;
+    const calculateWidth = () => {
       const padding = 1;
+      const scrollWidth = value.length * 8; // 문자 길이에 따라 폭을 계산
       const newWidth = Math.max(width * 8, scrollWidth + padding);
+      setInputWidth(`${newWidth}px`);
+    };
 
-      inputElement.style.width = `${newWidth}px`;
-    }
-  }, [inputValue, width]);
+    calculateWidth();
+  }, [value, width]); // value가 바뀔 때마다 width를 재계산
 
   const handleChange = () => {
     setIsDisabled(!isDisabled);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
-
   return (
-    <FormControl sx={{ m: 1, width: `${width}`, ...sx }} variant="outlined" size={inputHeightSize}>
+    <FormControl sx={{ m: 1, width: inputWidth, ...sx }} variant="outlined" size={inputHeightSize}>
       <OutlinedInput
         type={type}
-        value={inputValue}
+        value={value}
         sx={{ minWidth: '120px' }}
-        onChange={handleInputChange}
+        onChange={onChange}
         multiline={isMultiline}
         placeholder={placeholder}
         disabled={isDisabled}
-        inputRef={inputRef}
         endAdornment={
           <InputAdornment position="end">
             <IconButton aria-label="toggle modify text" edge="end" onClick={handleChange}>

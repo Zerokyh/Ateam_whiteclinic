@@ -1,5 +1,6 @@
+import * as React from 'react';
 import AText from '@/conponents/atom/Text/AText';
-import AVariableModifyInputBox from '@/conponents/molecules/Input/AVariableModifyInputBox';
+import AVOutlinedInput from '@/conponents/molecules/Engineer/Input';
 import { Box } from '@mui/material';
 
 type LabeledTextInputProps = {
@@ -13,6 +14,10 @@ const LabeledTextInput = ({
   borderBottom = '1px solid #7F7F7F',
   borderRight = '1px solid #7F7F7F',
 }: LabeledTextInputProps) => {
+  const [inputValue, setInputValue] = React.useState('');
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Box
@@ -36,7 +41,12 @@ const LabeledTextInput = ({
           width: '462px',
         }}
       >
-        <AVariableModifyInputBox placeholder="직접수정" isInvisible={false} />
+        <AVOutlinedInput
+          value={inputValue}
+          onChange={handleInputChange}
+          placeholder="직접수정"
+          isInvisible={false}
+        />
       </Box>
     </Box>
   );
