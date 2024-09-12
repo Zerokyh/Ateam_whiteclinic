@@ -1,14 +1,14 @@
 'use client';
 
-import ACustomButton from '@/conponents/atom/Button/ACustomButton';
-import { CheckboxGroupProps } from '@/conponents/molecules/checkbox/OneCheckbox';
+import ACustomButton from '@/components/atom/Button/ACustomButton';
+import { CheckboxGroupProps } from '@/components/molecules/checkbox/OneCheckbox';
 
-import WorkcerCheckbox from '@/conponents/molecules/checkbox/WorkerCheckbox';
+import WorkcerCheckbox from '@/components/molecules/checkbox/WorkerCheckbox';
 import AVariableModifyInputBox from '@/conponents/molecules/Input/AVariableModifyInputBox';
-import ADaySelector from '@/conponents/molecules/Select/ADaySelector';
-import APercent from '@/conponents/molecules/Select/APercent';
-import LabelBox from '@/conponents/organism/yh/LabelBox';
-import Table from '@/conponents/organism/yh/Table';
+import ADaySelector from '@/components/molecules/Select/ADaySelector';
+import APercent from '@/components/molecules/Select/APercent';
+import LabelBox from '@/components/organism/yh/LabelBox';
+import Table from '@/components/organism/yh/Table';
 import { WorkerWage } from '@/constants/Workers';
 import { Box } from '@mui/material';
 import { useState } from 'react';

@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { Box } from '@mui/material';
-import TwoButtons from '@/conponents/organism/Order/TwoButtons';
-import OrderForm from '@/conponents/organism/Order/OrderForm';
+import TwoButtons from '@/components/organism/Order/TwoButtons';
+import OrderForm from '@/components/organism/Order/OrderForm';
 
 const containerStyle = {
   height: 'calc(100vh - 112px)',

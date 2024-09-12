@@ -1,4 +1,4 @@
-import SalesInfo from '@/conponents/organism/Sales/SalesInfo';
+import SalesInfo from '@/components/organism/Sales/SalesInfo';
 import CenteredLayout from './CenteredLayout';
 
 const Page = () => {
