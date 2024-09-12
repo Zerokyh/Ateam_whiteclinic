@@ -8,10 +8,9 @@ type heightSize = 'small' | 'medium';
 export type AVariableInputProps = {
   type?: string;
   placeholder?: string;
-  isInvisible?: boolean;
+  isEdit?: boolean;
   width?: number;
   sx?: object;
-  isMultiline?: boolean;
   inputHeightSize?: heightSize;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -20,15 +19,14 @@ export type AVariableInputProps = {
 const AVariableInput = ({
   type,
   placeholder,
-  isInvisible = true,
+  isEdit = true,
   width = 4,
   sx,
-  isMultiline = false,
   inputHeightSize = 'small',
   value,
   onChange,
 }: AVariableInputProps) => {
-  const [isDisabled, setIsDisabled] = React.useState(isInvisible);
+  const [isDisabled, setIsDisabled] = React.useState(isEdit);
   const [inputWidth, setInputWidth] = React.useState(`${width * 8}px`);
 
   React.useEffect(() => {
@@ -53,7 +51,6 @@ const AVariableInput = ({
         value={value}
         sx={{ minWidth: '120px' }}
         onChange={onChange}
-        multiline={isMultiline}
         placeholder={placeholder}
         disabled={isDisabled}
         endAdornment={
