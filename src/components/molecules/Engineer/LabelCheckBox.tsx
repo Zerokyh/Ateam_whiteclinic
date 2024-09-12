@@ -5,7 +5,6 @@ import { Box, Grid } from '@mui/material';
 import { EngineerWashingMachineCategory } from '@/constants/Engineer';
 import ACheckbox, { CheckboxProps } from '@/components/atom/CheckBox/ACheckbox';
 import AText, { TextProps } from '@/components/atom/Text/AText';
-import ABasicInput from '@/components/atom/Input/Basic/ABasicInput';
 
 export type LabelCheckBoxProps = {
   checkBoxProps?: Omit<CheckboxProps, 'isCheck' | 'onChange' | 'textprops'>;
@@ -61,7 +60,6 @@ const LabelCheckBox: React.FC<LabelCheckBoxProps> = ({ checkBoxProps, textProps 
               </Grid>
             ))}
           </Grid>
-          <ABasicInput label="특이사항" width="200px" multiline={true} />
         </Box>
       </Box>
     </>

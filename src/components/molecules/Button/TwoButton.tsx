@@ -1,10 +1,9 @@
-import ACustomButton from '@/components/atom/Button/ACustomButton';
-import { ACustomButtonProps } from '@/util/ButtonType';
+import AButton, { AButtonProps } from '@/components/atom/Button/AButton';
 import { Box } from '@mui/material';
 
 type TwoButtonsProps = {
-  leftButton: ACustomButtonProps;
-  rightButton: ACustomButtonProps;
+  leftButton: AButtonProps;
+  rightButton: AButtonProps;
 };
 
 const TwoButtons = ({ leftButton, rightButton }: TwoButtonsProps) => {
@@ -18,8 +17,8 @@ const TwoButtons = ({ leftButton, rightButton }: TwoButtonsProps) => {
         alignItems: 'center',
       }}
     >
-      <ACustomButton {...leftButton} />
-      <ACustomButton {...rightButton} />
+      <AButton {...leftButton} />
+      <AButton {...rightButton} />
     </Box>
   );
 };

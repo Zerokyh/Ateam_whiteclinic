@@ -1,8 +1,6 @@
 'use client';
 
-import ACustomButton from '@/components/atom/Button/ACustomButton';
-import ABasicInput from '@/components/atom/Input/Basic/ABasicInput';
-import AVOutlinedInput from '@/components/atom/Input/VariableInput/AVOutlinedInput';
+import AButton from '@/components/atom/Button/AButton';
 import ADatesSelector from '@/components/molecules/Select/ADateSelector';
 import { Box } from '@mui/material';
 import React, { useState } from 'react';
@@ -15,19 +13,11 @@ const Page = () => {
 
   return (
     <>
-      <ACustomButton text="급여사항확인" color="default" size="medium" />
-      <ACustomButton text="급여사항확인" color="primary" size="large" />
-      <ACustomButton text="급여사항확인" color="secondary" size="full" />
+      <AButton text="급여사항확인" color="default" size="medium" />
+      <AButton text="급여사항확인" color="primary" size="large" />
+      <AButton text="급여사항확인" color="secondary" size="full" />
       <ADatesSelector></ADatesSelector>
-      <ABasicInput label="테스트" multiline={true}></ABasicInput>
-      <Box sx={{ width: '1000px' }}>
-        <AVOutlinedInput
-          type=""
-          value={inputValue}
-          onChange={handleInputChange}
-          placeholder="직접수정"
-        />
-      </Box>
+      <Box sx={{ width: '1000px' }}></Box>
     </>
   );
 };

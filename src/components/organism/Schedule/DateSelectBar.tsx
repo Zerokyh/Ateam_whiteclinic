@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import ADropdownBox from '@/components/atom/DropdownBox/ADropdownBox';
 import { MonthsPlan } from '@/constants/MonthsPlan';
 import { formatDate, getMonthlyDates } from '@/util/dateUtil';
 import { Box, SelectChangeEvent } from '@mui/material';
+import ADropdown from '@/components/atom/DropdownBox/ADropdown';
 
 type DateSelectBarProps = {
   onSelectDate: (date: Date) => void;
@@ -36,7 +36,7 @@ const DateSelectBar = ({ onSelectDate }: DateSelectBarProps) => {
         overflowY: 'auto',
       }}
     >
-      <ADropdownBox
+      <ADropdown
         label=""
         options={MonthsPlanOption}
         width="medium"

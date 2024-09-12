@@ -1,6 +1,5 @@
 'use client';
 
-import ADropdownBox from '@/components/atom/DropdownBox/ADropdownBox';
 import { Days } from '@/constants/Days';
 import { SelectChangeEvent } from '@mui/material';
 
@@ -18,7 +17,7 @@ const ADaySelector = ({ value, onChange }: ADaySelectorProps) => {
     }
   };
 
-  return <ADropdownBox label="요일" value={value} onChange={handleChange} options={DayOptions} />;
+  return <ADropdown label="요일" value={value} onChange={handleChange} options={DayOptions} />;
 };
 
 export default ADaySelector;

@@ -49,7 +49,7 @@ const WorkcerCheckbox = ({ checkboxes, onChange, value }: WorkerCheckboxGroupPro
       {Object.entries(checkboxes).map(([key, checkboxProps]) => (
         <ACheckbox
           key={key}
-          isCheck={selectedKey === key}
+          isChecked={selectedKey === key}
           onChange={handleChange(key)}
           textprops={checkboxProps.textprops}
         />

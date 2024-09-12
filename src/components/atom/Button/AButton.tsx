@@ -1,7 +1,7 @@
 import { ButtonStyle } from '@/styles/ButtonStyle';
 import { Button } from '@mui/material';
 
-export type ACustomButtonProps = {
+export type AButtonProps = {
   variant?: 'text' | 'contained' | 'outlined';
   text: '등록중지' | '취소' | '등록' | '아니오' | '추가등록' | '급여사항확인';
   onClick?: () => void;
@@ -17,7 +17,7 @@ const AButton = ({
   color = 'default',
   size = 'medium',
   sx,
-}: ACustomButtonProps) => {
+}: AButtonProps) => {
   return (
     <Button
       variant={variant}

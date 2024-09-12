@@ -1,10 +1,9 @@
-import ACustomButton from '@/components/atom/Button/ACustomButton';
-import { ACustomButtonProps } from '@/util/ButtonType';
+import AButton, { AButtonProps } from '@/components/atom/Button/AButton';
 import { Box } from '@mui/material';
 
 type TwoButtonsProps = {
-  leftButton: ACustomButtonProps;
-  rightButton: ACustomButtonProps;
+  leftButton: AButtonProps;
+  rightButton: AButtonProps;
   onClose?: () => void;
   onAdd?: () => void;
 };
@@ -20,8 +19,8 @@ const ModalTwoButtons = ({ leftButton, rightButton, onClose, onAdd }: TwoButtons
         alignItems: 'center',
       }}
     >
-      <ACustomButton {...leftButton} onClick={onClose} />
-      <ACustomButton {...rightButton} onClick={onAdd} />
+      <AButton {...leftButton} onClick={onClose} />
+      <AButton {...rightButton} onClick={onAdd} />
     </Box>
   );
 };

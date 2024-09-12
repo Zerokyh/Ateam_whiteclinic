@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { FormControl, OutlinedInput, InputAdornment, InputLabel, IconButton } from '@mui/material';
+import { FormControl, OutlinedInput, InputAdornment, IconButton } from '@mui/material';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 
 type heightSize = 'small' | 'medium';
