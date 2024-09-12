@@ -1,12 +1,13 @@
-import ADropdownBox from "@/components/atom/DropdownBox/ADropdownBox";
-import { airConditionerCategories } from "@/constants/productCategory";
-
-
+import ADropdown from '@/components/atom/DropdownBox/ADropdown';
+import { airConditionerCategories } from '@/constants/productCategory';
 
 const AirConditionerSelector = () => {
-    const AirConditionerOption = airConditionerCategories.map((option) => ({text:option, value:option}))
+  const AirConditionerOption = airConditionerCategories.map((option) => ({
+    text: option,
+    value: option,
+  }));
 
-    return <ADropdownBox label="에어컨" options={AirConditionerOption} />;
-}
+  return <ADropdown label="에어컨" options={AirConditionerOption} />;
+};
 
 export default AirConditionerSelector;
