@@ -30,13 +30,8 @@ const AFixedInput = ({
   };
 
   return (
-    <FormControl
-      sx={{ m: 1, width: `${width}px`, ...sx }}
-      variant="outlined"
-      size={inputHeightSize}
-    >
+    <FormControl sx={{ width: `${width}px`, ...sx }} variant="outlined" size={inputHeightSize}>
       <OutlinedInput
-        sx={{ height: '20px' }}
         type={type}
         placeholder={placeholder}
         disabled={isDisabled}

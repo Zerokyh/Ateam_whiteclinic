@@ -1,3 +1,4 @@
+import AFixedInput from '@/components/atom/Input/FixedInput/AFixedInput';
 import ADatesSelector from '@/components/molecules/Select/ADateSelector';
 import AMonthSelector from '@/components/molecules/Select/AMonthSelector';
 
@@ -7,15 +8,15 @@ const DateDropList = () => {
   return (
     <Box
       sx={{
-        width: 462,
+        width: '100%',
         height: 57,
         display: 'flex',
-        p: 1,
+        alignItems: 'center',
         gap: 1,
         borderBottom: '1px solid #7F7F7F',
       }}
     >
-      {/* <ABasicInput label="년(4자)" variant="outlined" /> */}
+      <AFixedInput placeholder="년(4자)" width={140} />
       <AMonthSelector />
       <ADatesSelector />
     </Box>

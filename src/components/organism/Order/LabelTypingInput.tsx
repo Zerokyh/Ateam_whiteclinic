@@ -45,7 +45,7 @@ const LabeledTextInput = ({
           value={inputValue}
           onChange={handleInputChange}
           placeholder="직접수정"
-          isInvisible={false}
+          isEdit={false}
         />
       </Box>
     </Box>
