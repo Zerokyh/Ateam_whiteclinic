@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { Box } from '@mui/material';
-import TwoButtons from '@/components/organism/Order/TwoButtons';
 import OrderForm from '@/components/organism/Order/OrderForm';
+import TwoButtons from '@/components/molecules/Button/TwoButton';
 
 const containerStyle = {
   height: 'calc(100vh - 112px)',
@@ -26,7 +26,10 @@ const Page = () => {
       <Box sx={innerContainerStyle}>
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <OrderForm />
-          <TwoButtons />
+          <TwoButtons
+            leftButton={{ text: '취소', variant: 'text', color: 'default', size: 'full' }}
+            rightButton={{ text: '등록', variant: 'contained', color: 'primary', size: 'full' }}
+          />
         </Box>
       </Box>
     </Box>

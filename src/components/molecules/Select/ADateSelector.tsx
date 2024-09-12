@@ -4,7 +4,7 @@ import { selectDate } from '@/constants/Dates';
 const ADatesSelector = () => {
   const DatesOption = selectDate.map((date) => ({ text: date, value: date }));
 
-  return <ADropdown label="일" options={DatesOption} width="xlarge" />;
+  return <ADropdown label="일" options={DatesOption} />;
 };
 
 export default ADatesSelector;
