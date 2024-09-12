@@ -5,7 +5,7 @@ import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutli
 
 type heightSize = 'small' | 'medium';
 
-type AFixedInputProps = {
+export type AFixedInputProps = {
   type?: string;
   placeholder?: string;
   isInvisible?: boolean;

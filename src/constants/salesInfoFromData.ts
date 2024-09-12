@@ -1,11 +1,8 @@
-import { GenericDropdownBoxProps } from '@/components/atom/DropdownBox/ADropdownBox';
-import { CheckboxGroupProps } from '@/components/molecules/checkbox/OneCheckbox';
-import { FormFieldType } from '@/components/molecules/SalesForm/FormField';
-import { TitledFormControlProps } from '@/components/molecules/SalesForm/TitledFormControl';
-import { airConditionerCategories, washingMachineCategories } from './productCategory';
-import { AVariableModifyInputBoxProp } from '@/conponents/molecules/Input/AVariableModifyInputBox';
-import { discountCheckboxData, washCheckboxData } from './salesData';
-import { AVariableNumericInputBoxProps } from '@/components/molecules/SalesForm/AVariableNumericInputBox';
+import { FormFieldType } from "@/components/molecules/Form/FormField";
+import { TitledFormControlProps } from "@/components/molecules/Form/TitledFormControl";
+import { airConditionerCategories, washingMachineCategories } from "./productCategory";
+import { ADropdownProps } from "@/components/atom/DropdownBox/ADropdown";
+
 
 export const salesInfoFormData: TitledFormControlProps[] = [
   {
@@ -23,7 +20,7 @@ export const salesInfoFormData: TitledFormControlProps[] = [
               value: ac.category,
               text: ac.category,
             })),
-          } as GenericDropdownBoxProps,
+          } as ADropdownProps,
         },
         {
           formfieldtype: 'ADropdownBox' as FormFieldType,
@@ -34,7 +31,7 @@ export const salesInfoFormData: TitledFormControlProps[] = [
               value: wm.category,
               text: wm.category,
             })),
-          } as GenericDropdownBoxProps,
+          } as GenericDropdoADropdownPropswnBoxProps,
         },
         {
           formfieldtype: 'AVariableModifyInputBox' as FormFieldType,
