@@ -5,7 +5,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
 import 'dayjs/locale/ko';
 
-type ADatePickerProps = {
+export type ADatePickerProps = {
   label?: string;
   value?: Dayjs | null;
   onChange?: (newValue: Dayjs | null) => void;

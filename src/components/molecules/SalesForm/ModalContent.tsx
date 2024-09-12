@@ -1,13 +1,11 @@
 import { Box } from '@mui/material';
-import ButtonGroup, { ButtonGroupProps } from './ButtonGroup';
 import AText, { TextProps } from '@/components/atom/Text/AText';
 
 export type ModalContentProps = {
   textprops?: TextProps;
-  buttongroupprops?: ButtonGroupProps;
 };
 
-const ModalContent = ({ textprops, buttongroupprops }: ModalContentProps) => {
+const ModalContent = ({ textprops }: ModalContentProps) => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
       <Box
@@ -16,7 +14,6 @@ const ModalContent = ({ textprops, buttongroupprops }: ModalContentProps) => {
         <AText {...textprops} />
       </Box>
       <Box sx={{ display: 'flex', width: '100%' }}>
-        {buttongroupprops && <ButtonGroup {...buttongroupprops} />}
       </Box>
     </Box>
   );

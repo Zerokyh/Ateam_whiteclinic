@@ -1,6 +1,5 @@
 'use client';
 
-
 import ADropdown from '@/components/atom/DropdownBox/ADropdown';
 import { Percentage } from '@/constants/Percentage';
 import { SelectChangeEvent } from '@mui/material';
@@ -20,9 +19,7 @@ const APercent = ({ value, onChange }: APercentProps) => {
     }
   };
 
-  return (
-    <ADropdown label="수당률" options={PercentOption} value={value} onChange={handleChange} />
-  );
+  return <ADropdown label="수당률" options={PercentOption} value={value} onChange={handleChange} />;
 };
 
 export default APercent;
