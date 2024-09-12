@@ -1,4 +1,4 @@
-import { CheckboxProps } from '@/conponents/atom/CheckBox/ACheckbox';
+import { CheckboxProps } from '@/components/atom/CheckBox/ACheckbox';
 import { CheckboxTextType } from './textType';
 
 // 종합세척, 일반세척 체크박스

@@ -1,8 +1,7 @@
-import ACustomButton from '@/conponents/atom/Button/ACustomButton';
-import AText from '@/conponents/atom/Text/AText';
-import AVariableModifyInputBox from '@/conponents/molecules/Input/AVariableModifyInputBox';
-import ADaySelector from '@/conponents/molecules/Select/ADaySelector';
-import APercent from '@/conponents/molecules/Select/APercent';
+import AButton from '@/components/atom/Button/AButton';
+import AText from '@/components/atom/Text/AText';
+import ADaySelector from '@/components/molecules/Select/ADaySelector';
+import APercent from '@/components/molecules/Select/APercent';
 
 import { Box } from '@mui/material';
 
@@ -49,9 +48,7 @@ const Page = () => {
                   borderBottom: '1px solid #7F7F7F',
                   width: '392px',
                 }}
-              >
-                <AVariableModifyInputBox placeholder="직접수정" isInvisible={false} />
-              </Box>
+              ></Box>
             </Box>
 
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -118,18 +115,8 @@ const Page = () => {
                 alignItems: 'center',
               }}
             >
-              <ACustomButton
-                text="취소"
-                color="default"
-                variant="contained"
-                sx={{ width: '100%' }}
-              />
-              <ACustomButton
-                text="등록"
-                color="primary"
-                variant="contained"
-                sx={{ width: '100%' }}
-              />
+              <AButton text="취소" color="default" variant="contained" sx={{ width: '100%' }} />
+              <AButton text="등록" color="primary" variant="contained" sx={{ width: '100%' }} />
             </Box>
           </Box>
         </Box>

@@ -1,8 +1,7 @@
-import SalesInfo from '@/conponents/organism/Sales/SalesInfo';
-import CenteredLayout from './CenteredLayout';
+import CenteredLayout from '@/styles/layout/CenterLayout';
 
 const Page = () => {
-  return <CenteredLayout children={<SalesInfo />} />;
+  return;
 };
 
 export default Page;

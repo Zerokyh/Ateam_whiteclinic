@@ -6,8 +6,8 @@ import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import { DrawerMuiStyle, DrawerToolbarMuiStyle } from '@/styles/mui';
 import { logoData } from '@/constants/logoData';
-import AImageIcon from '@/conponents/atom/Icon/AImageIcon';
-import ASideMenuBox from '@/conponents/organism/Menu/ASideMenuBox';
+import ASideMenuBox from '@/components/organism/Menu/ASideMenuBox';
+import ALogoIcon from '@/components/atom/Icon/ALogoIcon';
 
 const SideNav = () => {
   return (
@@ -17,7 +17,7 @@ const SideNav = () => {
           ...DrawerToolbarMuiStyle,
         }}
       >
-        <AImageIcon {...logoData} />
+        <ALogoIcon {...logoData} />
       </Toolbar>
       <List>
         <ASideMenuBox />
