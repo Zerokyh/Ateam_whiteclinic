@@ -3,19 +3,21 @@ type DatePay = {
   pay: string;
 };
 
-export type Worker = {
+export type WorkerProps = {
   name: string;
-  tel?: string;
-  address?: string;
-  available?: string[];
-  datePay?: DatePay[];
+  tel: string;
+  address: string;
+  available: string[];
+  datePay: DatePay[];
+  percent: string;
+  payday: string;
 };
 
 export type WorkerType = {
-  [key: string]: Worker;
+  [key: string]: WorkerProps;
 };
 
-export const WorkerWage: WorkerType = {
+export const WorkerInfo: WorkerType = {
   worker1: {
     name: '홍길동',
     tel: '0101111111',
@@ -30,6 +32,8 @@ export const WorkerWage: WorkerType = {
       { date: '6월6일', pay: 70000 + '원' },
       { date: '6월7일', pay: 50000 + '원' },
     ],
+    percent: '50%',
+    payday: '금요일',
   },
   worker2: {
     name: '김철수',
@@ -45,6 +49,8 @@ export const WorkerWage: WorkerType = {
       { date: '6월6일', pay: 0 + '원' },
       { date: '6월7일', pay: 120000 + '원' },
     ],
+    percent: '60%',
+    payday: '목요일',
   },
   worker3: {
     name: '이영희',
@@ -60,6 +66,8 @@ export const WorkerWage: WorkerType = {
       { date: '6월6일', pay: 100000 + '원' },
       { date: '6월7일', pay: 100000 + '원' },
     ],
+    percent: '55%',
+    payday: '수요일',
   },
   worker4: {
     name: '박민수',
@@ -75,6 +83,8 @@ export const WorkerWage: WorkerType = {
       { date: '6월6일', pay: 180000 + '원' },
       { date: '6월7일', pay: 180000 + '원' },
     ],
+    percent: '65%',
+    payday: '화요일',
   },
   worker5: {
     name: '정수진',
@@ -90,6 +100,8 @@ export const WorkerWage: WorkerType = {
       { date: '6월6일', pay: 0 + '원' },
       { date: '6월7일', pay: 210000 + '원' },
     ],
+    percent: '70%',
+    payday: '월요일',
   },
   worker6: {
     name: '강지훈',
@@ -105,5 +117,7 @@ export const WorkerWage: WorkerType = {
       { date: '6월6일', pay: 0 + '원' },
       { date: '6월7일', pay: 0 + '원' },
     ],
+    percent: '75%',
+    payday: '토요일',
   },
 };
