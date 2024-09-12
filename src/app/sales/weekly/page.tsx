@@ -10,6 +10,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
 import 'dayjs/locale/ko';
 import { sizes } from '@/styles/sizes';
+import ADatePicker from '@/conponents/atom/Calendar/ADatePicker';
 
 // 일정 등록
 const registeredDates = [new Date('2024-09-01')];
@@ -62,14 +63,11 @@ const Page = () => {
   return (
     <Box sx={containerStyle}>
       <Box sx={{ p: 1 }}>
-        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko">
-          <DatePicker
-            label="날짜 선택"
-            value={selectedDate ? dayjs(selectedDate) : null}
-            onChange={handleDateChange}
-            format="YYYY년 MM월 DD일"
-          />
-        </LocalizationProvider>
+        <ADatePicker
+          label="날짜 선택"
+          value={selectedDate ? dayjs(selectedDate) : null}
+          onChange={handleDateChange}
+        />
       </Box>
       <Box sx={scheduleInfoContainerStyle}>
         <Box sx={dateDisplayStyle}>
