@@ -10,7 +10,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
 import 'dayjs/locale/ko';
 import { sizes } from '@/styles/sizes';
-import ADatePicker from '@/conponents/atom/Calendar/ADatePicker';
+import ADatePicker from '@/components/atom/Calendar/ADatePicker';
 
 // 일정 등록
 const registeredDates = [new Date('2024-09-01')];
