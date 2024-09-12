@@ -36,11 +36,12 @@ const AFixedInput = ({
       size={inputHeightSize}
     >
       <OutlinedInput
-        sx={{ height: '20px' }}
+        sx={{ minheight: '40px' }}
         type={type}
         placeholder={placeholder}
         disabled={isDisabled}
         multiline={isMultiline}
+        maxRows={4}
         endAdornment={
           <InputAdornment position="end">
             <IconButton aria-label="toggle modify text" edge="end" onClick={handleChange}>

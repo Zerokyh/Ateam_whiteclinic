@@ -28,39 +28,19 @@ const LabelCheckBox: React.FC<LabelCheckBoxProps> = ({ checkBoxProps, textProps 
 
   return (
     <>
-      <Box
-        sx={{
-          display: 'flex',
-          borderBottom: '1px solid #ccc',
-        }}
-      >
-        <Box
-          sx={{
-            width: '120px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            bgcolor: '#F2F2F2',
-            borderRight: '1px solid #ccc',
-            padding: '8px',
-          }}
-        >
-          <AText {...textProps} />
-        </Box>
-        <Box sx={{ display: 'flex', width: '80%', alignItems: 'center' }}>
-          <Grid container spacing={0}>
-            {EngineerWashingMachineCategory.map((v) => (
-              <Grid item xs={2} key={v} padding={'5px'}>
-                <ACheckbox
-                  isChecked={selectedKeys.includes(v)}
-                  onChange={handleChange(v)}
-                  textprops={{ text: v }}
-                  {...checkBoxProps}
-                />
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
+      <Box sx={{ display: 'flex', width: '80%', alignItems: 'center' }}>
+        <Grid container spacing={0}>
+          {EngineerWashingMachineCategory.map((v) => (
+            <Grid item xs={2} key={v} padding={'5px'}>
+              <ACheckbox
+                isChecked={selectedKeys.includes(v)}
+                onChange={handleChange(v)}
+                textprops={{ text: v }}
+                {...checkBoxProps}
+              />
+            </Grid>
+          ))}
+        </Grid>
       </Box>
     </>
   );

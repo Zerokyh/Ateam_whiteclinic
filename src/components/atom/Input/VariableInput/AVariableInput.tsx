@@ -13,8 +13,8 @@ export type AVariableInputProps = {
   sx?: object;
   isMultiline?: boolean;
   inputHeightSize?: heightSize;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  initialValue?: string;
+  onValueChange?: (value: string) => void;
 };
 
 const AVariableInput = ({
@@ -25,24 +25,33 @@ const AVariableInput = ({
   sx,
   isMultiline = false,
   inputHeightSize = 'small',
-  value,
-  onChange,
+  initialValue = '',
+  onValueChange,
 }: AVariableInputProps) => {
   const [isDisabled, setIsDisabled] = React.useState(isInvisible);
   const [inputWidth, setInputWidth] = React.useState(`${width * 8}px`);
+  const [value, setValue] = React.useState(initialValue);
 
   React.useEffect(() => {
     const calculateWidth = () => {
       const padding = 1;
-      const scrollWidth = value.length * 8; // 문자 길이에 따라 폭을 계산
+      const scrollWidth = value.length * 20; // 문자 길이에 따라 폭을 계산
       const newWidth = Math.max(width * 8, scrollWidth + padding);
       setInputWidth(`${newWidth}px`);
     };
 
     calculateWidth();
-  }, [value, width]); // value가 바뀔 때마다 width를 재계산
+  }, [value, width]);
 
-  const handleChange = () => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    setValue(newValue);
+    if (onValueChange) {
+      onValueChange(newValue);
+    }
+  };
+
+  const toggleDisabled = () => {
     setIsDisabled(!isDisabled);
   };
 
@@ -52,13 +61,13 @@ const AVariableInput = ({
         type={type}
         value={value}
         sx={{ minWidth: '120px' }}
-        onChange={onChange}
+        onChange={handleChange}
         multiline={isMultiline}
         placeholder={placeholder}
         disabled={isDisabled}
         endAdornment={
           <InputAdornment position="end">
-            <IconButton aria-label="toggle modify text" edge="end" onClick={handleChange}>
+            <IconButton aria-label="toggle modify text" edge="end" onClick={toggleDisabled}>
               <DriveFileRenameOutlineIcon />
             </IconButton>
           </InputAdornment>
