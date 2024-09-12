@@ -5,8 +5,6 @@ import '../../../styles/global.css';
 import { Box } from '@mui/material';
 import { formatDate } from '@/util/dateUtil';
 import ScheduleInfo from '@/components/organism/Schedule/ScheduleInfo';
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
 import 'dayjs/locale/ko';
 import { sizes } from '@/styles/sizes';
