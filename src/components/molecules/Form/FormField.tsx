@@ -47,6 +47,7 @@ export type FormFieldConfigProps = {
     | DiscountCheckboxProps
     | LabelCheckBoxProps
     | CheckboxDropdownSelectorProps;
+    
 };
 
 export type FormFieldProps = {

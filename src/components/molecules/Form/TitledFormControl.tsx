@@ -5,9 +5,10 @@ import FormField, { FormFieldProps } from './FormField';
 export type TitledFormControlProps = {
   titleprops?: TextProps;
   formfieldprops?: FormFieldProps;
+  onchange?: () => void;
 };
 
-const TitledFormControl = ({ titleprops, formfieldprops }: TitledFormControlProps) => {
+const TitledFormControl = ({ titleprops, formfieldprops, onchange }: TitledFormControlProps) => {
   return (
     <Box
       sx={{

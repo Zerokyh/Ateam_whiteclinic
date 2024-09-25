@@ -1,23 +1,36 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/material';
+import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
 import ACard from '@/components/atom/Card/ACard';
 import { WorkerInfo, WorkerProps } from '@/constants/Workers';
-import Table from '@/components/organism/yh/Table';
 import CenteredLayout from '@/styles/layout/CenterLayout';
-import ACardWrapLayout from '@/styles/layout/CenterLayout';
+import AFooter from '@/components/organism/yh/datagrid/AFooter';
 
 const Page = () => {
   const [selectedWorker, setSelectedWorker] = useState<WorkerProps | null>(null);
+  const [rows, setRows] = useState<any[]>([]);
 
   const handleCardClick = (worker: WorkerProps) => {
     setSelectedWorker(worker);
   };
 
-  const handleWageAmountChange = (newAmount: number) => {
-    console.log('New wage amount:', newAmount);
-  };
+  useEffect(() => {
+    if (selectedWorker && selectedWorker.datePay) {
+      const newRows = selectedWorker.datePay.map((dp, index) => ({
+        id: index,
+        date: dp.date,
+        pay: parseInt(dp.pay),
+      }));
+      setRows(newRows);
+    }
+  }, [selectedWorker]);
+
+  const columns: GridColDef[] = [
+    { field: 'date', headerName: '날짜', width: 150 },
+    { field: 'pay', headerName: '급여', width: 150, type: 'number' },
+  ];
 
   const calculateWageAmount = (worker: WorkerProps): number => {
     const totalWage = worker.datePay?.reduce((sum, dp) => sum + parseInt(dp.pay), 0) || 0;
@@ -27,7 +40,7 @@ const Page = () => {
 
   return (
     <CenteredLayout>
-      <Box sx={{ display: 'flex', flexWrap: 'row', gap: '20px', padding: '20px' }}>
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '20px', padding: '20px' }}>
         {Object.entries(WorkerInfo).map(([key, worker]) => (
           <ACard
             key={key}
@@ -42,20 +55,22 @@ const Page = () => {
       </Box>
 
       {selectedWorker && (
-        <Box
-          sx={{ marginTop: '20px', padding: '20px', border: '1px solid #ccc', borderRadius: '4px' }}
-        >
+        <Box sx={{ height: 400, width: '50%', marginTop: '20px' }}>
           <h2>{selectedWorker.name}의 정보</h2>
-          <Table
-            wage={
-              selectedWorker.datePay?.map((dp) => ({ date: dp.date, amount: parseInt(dp.pay) })) ||
-              []
-            }
-            totalWage={selectedWorker.datePay?.reduce((sum, dp) => sum + parseInt(dp.pay), 0) || 0}
-            wageRate={selectedWorker.percent}
-            wageAmount={calculateWageAmount(selectedWorker)}
-            paymentDay={selectedWorker.payday}
-            onWageAmountChange={handleWageAmountChange}
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            disableRowSelectionOnClick
+            slots={{
+              toolbar: GridToolbar,
+              footer: () => (
+                <AFooter
+                  selectedWorker={selectedWorker}
+                  calculateWageAmount={calculateWageAmount}
+                />
+              ),
+            }}
+            hideFooterPagination
           />
         </Box>
       )}

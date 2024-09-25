@@ -6,6 +6,7 @@ import { ADropdownProps } from '@/components/atom/DropdownBox/ADropdown';
 import { OneCheckboxProps } from '@/components/molecules/checkbox/OneCheckbox';
 import { publishedCheckboxData } from './customerData';
 import { paymentMethods, supportingDocuments } from './customerCategory';
+import { Function } from './Function';
 
 export const customerInfoFormData: TitledFormControlProps[] = [
   {
@@ -21,6 +22,7 @@ export const customerInfoFormData: TitledFormControlProps[] = [
             placeholder: '날짜 선택',
           } as ADatePickerProps,
         },
+
         {
           formfieldtype: 'AVariableInput' as FormFieldType,
           prevprops: {
