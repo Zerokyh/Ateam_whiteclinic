@@ -5,6 +5,8 @@ import { Box } from '@mui/material';
 import ACard from '@/components/atom/Card/ACard';
 import { WorkerInfo, WorkerProps } from '@/constants/Workers';
 import Table from '@/components/organism/yh/Table';
+import CenteredLayout from '@/styles/layout/CenterLayout';
+import ACardWrapLayout from '@/styles/layout/CenterLayout';
 
 const Page = () => {
   const [selectedWorker, setSelectedWorker] = useState<WorkerProps | null>(null);
@@ -24,8 +26,8 @@ const Page = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+    <CenteredLayout>
+      <Box sx={{ display: 'flex', flexWrap: 'row', gap: '20px', padding: '20px' }}>
         {Object.entries(WorkerInfo).map(([key, worker]) => (
           <ACard
             key={key}
@@ -57,7 +59,7 @@ const Page = () => {
           />
         </Box>
       )}
-    </Box>
+    </CenteredLayout>
   );
 };
 

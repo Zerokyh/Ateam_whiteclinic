@@ -1,3 +1,13 @@
-export default function Page() {
-  return <div>기사님 수정 하기</div>;
-}
+import CenteredLayout from "@/styles/layout/CenterLayout";
+
+const Page = () => {
+
+
+
+
+  return (<CenteredLayout>
+    
+  </CenteredLayout>)
+};
+
+export default Page;
