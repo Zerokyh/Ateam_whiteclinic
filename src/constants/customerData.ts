@@ -1,13 +1,9 @@
 import { CheckboxProps } from '@/components/atom/CheckBox/ACheckbox';
 import { CheckboxTextType } from './textType';
 
-// 종합세척, 일반세척 체크박스
-export const washCheckboxData: { [key: string]: CheckboxProps } = {
-  comprehensiveWash: {
-    textprops: { text: '종합세척' as CheckboxTextType },
-  },
-  normalWash: {
-    textprops: { text: '일반세척' as CheckboxTextType },
+export const publishedCheckboxData: { [key: string]: CheckboxProps } = {
+  published: {
+    textprops: { text: '발행완료' as CheckboxTextType },
   },
 };
 

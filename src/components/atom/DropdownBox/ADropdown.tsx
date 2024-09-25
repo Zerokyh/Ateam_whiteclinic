@@ -7,7 +7,8 @@ import { Months } from '@/constants/Months';
 import { MonthsPlan } from '@/constants/MonthsPlan';
 import { Payment } from '@/constants/Payment';
 import { Percentage } from '@/constants/Percentage';
-import { airConditionerCategories } from '@/constants/productCategory';
+import { productCategories } from '@/constants/productCategory';
+
 import { sizes } from '@/styles/sizes';
 import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 
@@ -20,7 +21,8 @@ type AllowedObjects =
   | (typeof Document)[number]
   | (typeof MonthsPlan)[number]
   | (typeof Payment)[number]
-  | (typeof airConditionerCategories)[number];
+  | (typeof productCategories.airConditioner.categories)[number]['category']
+  | (typeof productCategories.washingMachine.categories)[number]['category'];
 // | (typeof PaymentPlan)[number];
 
 type widthOptions = keyof typeof sizes.width;

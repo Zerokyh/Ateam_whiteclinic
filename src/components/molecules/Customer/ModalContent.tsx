@@ -13,8 +13,7 @@ const ModalContent = ({ textprops }: ModalContentProps) => {
       >
         <AText {...textprops} />
       </Box>
-      <Box sx={{ display: 'flex', width: '100%' }}>
-      </Box>
+      <Box sx={{ display: 'flex', width: '100%' }}></Box>
     </Box>
   );
 };
