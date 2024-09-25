@@ -1,3 +1,8 @@
-export default function Page() {
-  return <div>회원 등록하기</div>;
-}
+import CustomerRegister from '@/components/organism/Customer/CustomerRegister';
+import CenteredLayout from '@/styles/layout/CenterLayout';
+
+const Page = () => {
+  return <CenteredLayout children={<CustomerRegister />} />;
+};
+
+export default Page;

@@ -8,8 +8,15 @@ import LabelCheckBox, { LabelCheckBoxProps } from '@/components/molecules/Engine
 import AVariableInput, {
   AVariableInputProps,
 } from '@/components/atom/Input/VariableInput/AVariableInput';
-import OneCheckbox, { CheckboxGroupProps } from '@/components/molecules/checkbox/OneCheckbox';
+import OneCheckbox, { OneCheckboxProps } from '@/components/molecules/checkbox/OneCheckbox';
 import { Box } from '@mui/material';
+import ANumericInput, { ANumericInputProps } from '../input/ANumericInput';
+import DiscountCheckbox, {
+  DiscountCheckboxProps,
+} from '@/components/molecules/Customer/DiscountCheckbox';
+import CheckboxDropdownSelector, {
+  CheckboxDropdownSelectorProps,
+} from '@/components/molecules/Customer/CheckboxDropdownSelector';
 
 export type FormFieldType =
   | 'AButton'
@@ -18,9 +25,12 @@ export type FormFieldType =
   | 'ADropdownBox'
   | 'AFixedInput'
   | 'AVariableInput'
+  | 'ANumericInput'
   | 'OneCheckbox'
   | 'WorkcerCheckbox'
-  | 'LabelCheckBox';
+  | 'DiscountCheckbox'
+  | 'LabelCheckBox'
+  | 'CheckboxDropdownSelector';
 
 export type FormFieldConfigProps = {
   formfieldtype: FormFieldType;
@@ -31,9 +41,12 @@ export type FormFieldConfigProps = {
     | ADropdownProps
     | AFixedInputProps
     | AVariableInputProps
-    | CheckboxGroupProps
+    | ANumericInputProps
+    | OneCheckboxProps
     | WorkerCheckboxGroupProps
-    | LabelCheckBoxProps;
+    | DiscountCheckboxProps
+    | LabelCheckBoxProps
+    | CheckboxDropdownSelectorProps;
 };
 
 export type FormFieldProps = {
@@ -48,9 +61,12 @@ const fieldTypeToComponentMap: Record<FormFieldType, React.ElementType> = {
   ADropdownBox,
   AFixedInput,
   AVariableInput,
+  ANumericInput,
   OneCheckbox,
   WorkcerCheckbox,
+  DiscountCheckbox,
   LabelCheckBox,
+  CheckboxDropdownSelector,
 };
 
 const FormField = ({ fields }: FormFieldProps) => {

@@ -13,13 +13,14 @@ const TitledFormControl = ({ titleprops, formfieldprops }: TitledFormControlProp
       sx={{
         display: 'grid',
         gridTemplateColumns: '110px auto',
+        minWidth: '550px',
         width: '100%',
         borderBottom: '1px solid black',
       }}
     >
       <Box
         sx={{
-          height: '57px',
+          minHeight: '57px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -29,7 +30,7 @@ const TitledFormControl = ({ titleprops, formfieldprops }: TitledFormControlProp
       >
         {titleprops && <AText {...titleprops} />}
       </Box>
-      <Box sx={{ display: 'flex', alignItems: 'center', paddingX: '15px' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', paddingX: '15px', width: '100%' }}>
         {formfieldprops && <FormField {...formfieldprops} />}
       </Box>
     </Box>
