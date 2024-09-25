@@ -36,6 +36,7 @@ const columns: GridColDef<(typeof rows)[number]>[] = [
   },
 ];
 
+// 더미 - DB와 맞춰야함
 const rows = [
   { id: 1, lastName: 'Snow', firstName: 'Jon', age: 14 },
   { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 31 },
@@ -55,6 +56,7 @@ const Page = () => {
     rowLength: 4,
     maxColumns: 19,
   });
+
   return (
     <Box sx={{ height: '100%', width: '100%' }}>
       <DataGrid
