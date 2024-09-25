@@ -13,9 +13,11 @@ export type AFixedInputProps = {
   sx?: object;
   isMultiline?: boolean;
   inputHeightSize?: heightSize;
+  onChange?: () => void;
 };
 
 const AFixedInput = ({
+  onChange,
   type,
   placeholder,
   isInvisible,
@@ -32,6 +34,7 @@ const AFixedInput = ({
   return (
     <FormControl sx={{ width: `${width}px`, ...sx }} variant="outlined" size={inputHeightSize}>
       <OutlinedInput
+        onChange={onChange}
         sx={{ minheight: '40px' }}
         type={type}
         placeholder={placeholder}
