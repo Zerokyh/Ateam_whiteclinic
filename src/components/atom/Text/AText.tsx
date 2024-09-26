@@ -3,7 +3,7 @@ import { TextType } from '@/constants/textType';
 import { Typography } from '@mui/material';
 
 export type TextProps = {
-  text?: string;
+  text?: string | React.ReactNode;
   size?: keyof typeof sizes.fontSize;
 };
 

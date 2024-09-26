@@ -1,6 +1,6 @@
-import { Button, CardActions, CardContent } from '@mui/material';
+import { CardContent } from '@mui/material';
 import AText from '../Text/AText';
-import AButton from '../Button/AButton';
+
 
 type ACardProps = {
   name: string;
