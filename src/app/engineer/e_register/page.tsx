@@ -1,14 +1,15 @@
 'use client';
 
-import HolidayRegistration from '@/components/molecules/Engineer/Holiday';
 import Register from '@/components/molecules/Engineer/Register';
+import { Box } from '@mui/material';
 import React from 'react';
 
 export default function Page() {
   return (
     <>
-      <HolidayRegistration></HolidayRegistration>
-      <Register></Register>
+      <Box sx={{ maxWidth: '1000px', margin: '0 auto' }}>
+        <Register></Register>
+      </Box>
     </>
   );
 }

@@ -17,6 +17,8 @@ import DiscountCheckbox, {
 import CheckboxDropdownSelector, {
   CheckboxDropdownSelectorProps,
 } from '@/components/molecules/Customer/CheckboxDropdownSelector';
+import HolidayRegistration from '@/components/molecules/Engineer/HolidayRegistration';
+import Holiday from '@/components/molecules/Engineer/Holiday';
 
 import PaymentSelector from '../Select/PaymentSelector';
 
@@ -33,7 +35,9 @@ export type FormFieldType =
   | 'DiscountCheckbox'
   | 'LabelCheckBox'
   | 'CheckboxDropdownSelector'
-  | 'PaymentSelector';
+  | 'PaymentSelector'
+  | 'HolidayRegistration'
+  | 'Holiday';
 
 export type FormFieldConfigProps = {
   formfieldtype: FormFieldType;
@@ -71,6 +75,8 @@ const fieldTypeToComponentMap: Record<FormFieldType, React.ElementType> = {
   LabelCheckBox,
   CheckboxDropdownSelector,
   PaymentSelector,
+  HolidayRegistration,
+  Holiday,
 };
 
 const FormField = ({ fields }: FormFieldProps) => {

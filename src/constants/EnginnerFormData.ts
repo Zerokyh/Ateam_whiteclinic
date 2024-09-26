@@ -34,11 +34,11 @@ export const EngineerFormData: TitledFormControlProps[] = [
     formfieldprops: {
       fields: [
         {
-          formfieldtype: 'AVariableInput' as FormFieldType,
+          formfieldtype: 'AFixedInput' as FormFieldType,
           prevprops: {
             placeholder: '연락처',
             isInvisible: false,
-          } as AVariableInputProps,
+          } as AFixedInputProps,
         },
       ],
     },
@@ -141,32 +141,19 @@ export const EngineerFormData: TitledFormControlProps[] = [
     formfieldprops: {
       fields: [
         {
-          formfieldtype: 'ADatePicker' as FormFieldType,
-          prevprops: {
-            label: '선택',
-            width: 'medium',
-            options: Days.map((days) => ({
-              value: days,
-              text: days,
-            })),
-          } as ADatePickerProps,
+          formfieldtype: 'HolidayRegistration' as FormFieldType,
         },
+      ],
+    },
+  },
+  {
+    titleprops: {
+      text: '정기휴무',
+    },
+    formfieldprops: {
+      fields: [
         {
-          formfieldtype: 'ADropdownBox' as FormFieldType,
-          prevprops: {
-            options: Days.map((days) => ({
-              value: days,
-              text: days,
-            })),
-          } as ADropdownProps,
-        },
-        {
-          formfieldtype: 'AButton' as FormFieldType,
-          prevprops: {
-            text: '등록',
-            size: 'small',
-            color: 'primary',
-          } as AButtonProps,
+          formfieldtype: 'Holiday' as FormFieldType,
         },
       ],
     },
