@@ -2,10 +2,8 @@ import { TitledFormControlProps } from '@/components/molecules/Form/TitledFormCo
 import { FormFieldType } from '@/components/molecules/Form/FormField';
 import { ADatePickerProps } from '@/components/atom/Calendar/ADatePicker';
 import { AVariableInputProps } from '@/components/atom/Input/VariableInput/AVariableInput';
-import { ADropdownProps } from '@/components/atom/DropdownBox/ADropdown';
 import { OneCheckboxProps } from '@/components/molecules/checkbox/OneCheckbox';
 import { publishedCheckboxData } from './customerData';
-import { paymentMethods, supportingDocuments } from './customerCategory';
 
 export const customerInfoFormData: TitledFormControlProps[] = [
   {
@@ -99,15 +97,7 @@ export const customerInfoFormData: TitledFormControlProps[] = [
     formfieldprops: {
       fields: [
         {
-          formfieldtype: 'ADropdownBox' as FormFieldType,
-          prevprops: {
-            label: '선택',
-            width: 'medium',
-            options: paymentMethods.map((payment) => ({
-              value: payment,
-              text: payment,
-            })),
-          } as ADropdownProps,
+          formfieldtype: 'APayment' as FormFieldType,
         },
       ],
     },
@@ -119,15 +109,7 @@ export const customerInfoFormData: TitledFormControlProps[] = [
     formfieldprops: {
       fields: [
         {
-          formfieldtype: 'ADropdownBox' as FormFieldType,
-          prevprops: {
-            label: '선택',
-            width: 'medium',
-            options: supportingDocuments.map((receipt) => ({
-              value: receipt,
-              text: receipt,
-            })),
-          } as ADropdownProps,
+          formfieldtype: 'AEvidentialDocument' as FormFieldType,
         },
         {
           formfieldtype: 'OneCheckbox' as FormFieldType,

@@ -1,59 +1,68 @@
 'use client';
 
 import React, { useState } from 'react';
-import dayjs, { Dayjs } from 'dayjs';
-import ADatePicker, { ADatePickerProps } from '@/components/atom/Calendar/ADatePicker';
+import { Box, List, ListItem, ListItemText, SelectChangeEvent } from '@mui/material';
+import ADropdown from '@/components/atom/DropdownBox/ADropdown';
 import AButton, { AButtonProps } from '@/components/atom/Button/AButton';
+import { Days } from '@/constants/Days';
 
-const HolidayRegistration = () => {
-  const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
-  const [registeredHolidays, setRegisteredHolidays] = useState<Dayjs[]>([]);
+const DaySelector = () => {
+  const [selectedDay, setSelectedDay] = useState<string>('');
+  const [registeredDays, setRegisteredDays] = useState<string[]>([]);
 
-  const handleDateChange: ADatePickerProps['onChange'] = (newValue) => {
-    setSelectedDate(newValue);
+  const DayOptions = Days.map((day) => ({ text: day, value: day }));
+
+  const handleDayChange = (event: SelectChangeEvent<string>) => {
+    setSelectedDay(event.target.value as string);
   };
 
   const handleRegister: AButtonProps['onClick'] = () => {
-    if (selectedDate) {
-      const isDuplicate = registeredHolidays.some((date) => date.isSame(selectedDate, 'day'));
+    if (selectedDay) {
+      const isDuplicate = registeredDays.includes(selectedDay);
       if (isDuplicate) {
-        alert('이미 등록된 날짜입니다.');
+        alert('이미 등록된 요일입니다.');
         return;
       }
 
-      const newHolidays = [...registeredHolidays, selectedDate];
-      newHolidays.sort((a, b) => a.valueOf() - b.valueOf());
-      setRegisteredHolidays(newHolidays);
-      setSelectedDate(null);
+      const newDays = [...registeredDays, selectedDay];
+      // Days 배열의 순서대로 정렬
+      newDays.sort((a, b) => Days.indexOf(a) - Days.indexOf(b));
+      setRegisteredDays(newDays);
+      setSelectedDay('');
     }
   };
 
   return (
-    <div className="p-4">
-      <div className="flex items-center space-x-4 mb-4">
-        <ADatePicker
-          label="선택"
-          value={selectedDate}
-          onChange={handleDateChange}
-          format="YYYY년 MM월 DD일"
-          size="small"
+    <Box sx={{ display: 'flex' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <ADropdown
+          label="요일"
+          value={selectedDay}
+          onChange={handleDayChange}
+          options={DayOptions}
         />
-        <AButton
-          text="등록"
-          onClick={handleRegister}
-          color="primary"
-          size="small"
-          variant="contained"
-        />
-      </div>
+        <Box sx={{ mx: 2 }}>
+          <AButton
+            text="등록"
+            onClick={handleRegister}
+            color="primary"
+            size="small"
+            variant="contained"
+          />
+        </Box>
+      </Box>
 
-      <div className="mt-4">
-        {registeredHolidays.map((holiday, index) => (
-          <div key={index}>{holiday.format('YYYY년 MM월 DD일')}</div>
-        ))}
-      </div>
-    </div>
+      <Box sx={{ maxHeight: 200, overflow: 'auto', border: '1px solid #e0e0e0', borderRadius: 1 }}>
+        <List dense>
+          {registeredDays.map((day, index) => (
+            <ListItem key={index}>
+              <ListItemText primary={day} />
+            </ListItem>
+          ))}
+        </List>
+      </Box>
+    </Box>
   );
 };
 
-export default HolidayRegistration;
+export default DaySelector;

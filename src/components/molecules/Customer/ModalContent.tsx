@@ -9,7 +9,13 @@ const ModalContent = ({ textprops }: ModalContentProps) => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
       <Box
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingY: '20px' }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          paddingY: '30px',
+          paddingX: '20px',
+        }}
       >
         <AText {...textprops} />
       </Box>

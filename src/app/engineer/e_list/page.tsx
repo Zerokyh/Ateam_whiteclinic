@@ -8,7 +8,6 @@ import { WorkerInfo, WorkerProps } from '@/constants/Workers';
 import CenteredLayout from '@/styles/layout/CenterLayout';
 import AFooter from '@/components/organism/yh/datagrid/AFooter';
 
-
 const Page = () => {
   const [selectedWorker, setSelectedWorker] = useState<WorkerProps | null>(null);
   const [rows, setRows] = useState<any[]>([]);
