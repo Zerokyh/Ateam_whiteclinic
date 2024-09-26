@@ -1,8 +1,5 @@
 import { AVariableInputProps } from '@/components/atom/Input/VariableInput/AVariableInput';
 import { FormFieldType } from '@/components/molecules/Form/FormField';
-import { Percentage } from './Percentage';
-import { ADropdownProps } from '@/components/atom/DropdownBox/ADropdown';
-import { Days } from './Days';
 
 export const PaymentInfo = [
   {
@@ -27,15 +24,7 @@ export const PaymentInfo = [
     formfieldprops: {
       fields: [
         {
-          formfieldtype: 'ADropdownBox' as FormFieldType,
-          prevprops: {
-            label: '선택',
-            width: 'medium',
-            options: Percentage.map((payment) => ({
-              value: payment,
-              text: payment,
-            })),
-          } as ADropdownProps,
+          formfieldtype: 'APercent' as FormFieldType,
         },
       ],
     },
@@ -47,15 +36,7 @@ export const PaymentInfo = [
     formfieldprops: {
       fields: [
         {
-          formfieldtype: 'ADropdownBox' as FormFieldType,
-          prevprops: {
-            label: '선택',
-            width: 'medium',
-            options: Days.map((days) => ({
-              value: days,
-              text: days,
-            })),
-          } as ADropdownProps,
+          formfieldtype: 'ADaySelector' as FormFieldType,
         },
       ],
     },

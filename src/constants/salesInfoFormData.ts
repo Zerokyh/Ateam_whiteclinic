@@ -8,6 +8,7 @@ import { CheckboxDropdownSelectorProps } from '@/components/molecules/Customer/C
 import { productCategories } from './productCategory';
 import { OneCheckboxProps } from '@/components/molecules/checkbox/OneCheckbox';
 import { ADropdownProps } from '@/components/atom/DropdownBox/ADropdown';
+import { DiscountCheckboxProps } from '@/components/molecules/Customer/DiscountCheckbox';
 
 export const salesInfoFormData: TitledFormControlProps[] = [
   {
@@ -70,16 +71,16 @@ export const salesInfoFormData: TitledFormControlProps[] = [
           formfieldtype: 'DiscountCheckbox' as FormFieldType,
           prevprops: {
             checkboxprops: {
-              isChecked: false, // 초기 상태는 false
-              textprops: { text: '할인 적용' }, // 체크박스 텍스트 설정
+              isChecked: false,
+              textprops: { text: '할인 적용' },
             } as CheckboxProps,
             anumericInputprops: {
               avariableinputprops: {
-                isInvisible: false, // 숫자 입력 필드는 항상 보이도록 설정
+                isInvisible: false,
               },
-              max: 100000, // 숫자 입력 필드의 최대값 설정
+              max: 100000,
             } as ANumericInputProps,
-          },
+          } as DiscountCheckboxProps,
         },
       ],
     },

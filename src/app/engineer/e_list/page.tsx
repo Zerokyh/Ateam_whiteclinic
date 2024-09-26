@@ -8,7 +8,7 @@ import { WorkerInfo, WorkerProps } from '@/constants/Workers';
 import CenteredLayout from '@/styles/layout/CenterLayout';
 import AFooter from '@/components/organism/yh/datagrid/AFooter';
 import ANumericInput from '@/components/molecules/input/ANumericInput';
-import PaymentSelector from '@/components/molecules/Select/PaymentSelector';
+import PaymentSelector from '@/components/molecules/Select/delete/PaymentSelector';
 
 const Page = () => {
   const [selectedWorker, setSelectedWorker] = useState<WorkerProps | null>(null);

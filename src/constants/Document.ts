@@ -5,3 +5,8 @@ export const Document: string[] = [
   '카드영수증',
   '필요없음',
 ];
+
+export const DocumentsOption = Document.map((supportingDocuments) => ({
+  text: supportingDocuments,
+  value: supportingDocuments,
+}));
