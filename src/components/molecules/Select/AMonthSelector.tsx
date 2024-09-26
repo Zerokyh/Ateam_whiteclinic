@@ -1,9 +1,12 @@
 import ADropdown from '@/components/atom/DropdownBox/ADropdown';
-import { Months } from '@/constants/Months';
+import { MonthsOption } from '@/constants/Months';
 
 const AMonthSelector = () => {
-  const MonthsOption = Months.map((month) => ({ text: month, value: month }));
-  return <ADropdown label="월" options={MonthsOption} />;
+  const handleClick = () => {
+    console.log('click');
+  };
+
+  return <ADropdown label="월" options={MonthsOption} onChange={handleClick} />;
 };
 
 export default AMonthSelector;

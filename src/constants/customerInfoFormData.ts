@@ -6,7 +6,6 @@ import { ADropdownProps } from '@/components/atom/DropdownBox/ADropdown';
 import { OneCheckboxProps } from '@/components/molecules/checkbox/OneCheckbox';
 import { publishedCheckboxData } from './customerData';
 import { paymentMethods, supportingDocuments } from './customerCategory';
-import { Function } from './Function';
 
 export const customerInfoFormData: TitledFormControlProps[] = [
   {

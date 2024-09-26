@@ -1,3 +1,5 @@
+'use client';
+
 import { ButtonStyle } from '@/styles/ButtonStyle';
 import { Button } from '@mui/material';
 

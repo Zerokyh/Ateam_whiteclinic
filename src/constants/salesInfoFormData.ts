@@ -93,8 +93,7 @@ export const salesInfoFormData: TitledFormControlProps[] = [
         {
           formfieldtype: 'ANumericInput' as FormFieldType,
           prevprops: {
-            avariableinputprops: {
-            },
+            avariableinputprops: {},
           } as ANumericInputProps,
         },
       ],
