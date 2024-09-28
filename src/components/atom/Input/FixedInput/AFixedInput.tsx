@@ -13,7 +13,8 @@ export type AFixedInputProps = {
   sx?: object;
   isMultiline?: boolean;
   inputHeightSize?: heightSize;
-  onChange?: () => void;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const AFixedInput = ({
@@ -25,6 +26,7 @@ const AFixedInput = ({
   sx,
   isMultiline,
   inputHeightSize = 'small',
+  value = '',
 }: AFixedInputProps) => {
   const [isDisabled, setIsDisabled] = React.useState(isInvisible);
   const handleChange = () => {
@@ -35,6 +37,7 @@ const AFixedInput = ({
     <FormControl sx={{ width: `${width}px`, ...sx }} variant="outlined" size={inputHeightSize}>
       <OutlinedInput
         onChange={onChange}
+        value={value}
         sx={{ minheight: '40px' }}
         type={type}
         placeholder={placeholder}

@@ -22,7 +22,7 @@ import Holiday from '@/components/molecules/Engineer/Holiday';
 import AEvidentialDocument from '@/components/molecules/Select/AEvidentialDocument';
 import APercent from '@/components/molecules/Select/APercent';
 import ADaySelector from '@/components/molecules/Select/ADaySelector';
-import APayment from '@/components/molecules/Select/APayment';
+import APayment, { SelectProps } from '@/components/molecules/Select/APayment';
 
 export type FormFieldType =
   | 'AButton'
@@ -58,7 +58,8 @@ export type FormFieldConfigProps = {
     | WorkerCheckboxGroupProps
     | DiscountCheckboxProps
     | LabelCheckBoxProps
-    | CheckboxDropdownSelectorProps;
+    | CheckboxDropdownSelectorProps
+    | SelectProps;
 };
 
 export type FormFieldProps = {

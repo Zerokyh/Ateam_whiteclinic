@@ -33,11 +33,11 @@ export const productCategories: ProductCategoryProps  = {
       },
       {
         category: '스탠드', // 12만~16만
-        price: null,
+        price: 0,
       },
       {
         category: '투인원', // 18만~23만
-        price: null,
+        price: 0,
       },
       {
         category: '원형 360',

@@ -1,10 +1,17 @@
-import ADropdown from '@/components/atom/DropdownBox/ADropdown';
+'use client';
+
+import React from 'react';
+import ADropdown, { ADropdownProps } from '@/components/atom/DropdownBox/ADropdown';
 import { Payment } from '@/constants/Payment';
 
-const APayment = () => {
-  const PayOption = Payment.map((pay) => ({ text: pay, value: pay }));
+export type SelectProps = {
+  adropdownprops: Omit<ADropdownProps, 'options'>;
+};
 
-  return <ADropdown label="선택" options={PayOption} width="medium" />;
+const APayment = ({ adropdownprops }: SelectProps) => {
+  const payOptions = Payment.map((pay) => ({ text: pay, value: pay }));
+
+  return <ADropdown {...adropdownprops} options={payOptions} />;
 };
 
 export default APayment;

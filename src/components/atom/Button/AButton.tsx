@@ -18,6 +18,7 @@ export type AButtonProps = {
   size?: keyof typeof ButtonStyle.size;
   color?: keyof typeof ButtonStyle.color;
   sx?: object;
+  disabled?: boolean;
 };
 
 const AButton = ({
@@ -27,11 +28,13 @@ const AButton = ({
   color = 'default',
   size = 'medium',
   sx,
+  disabled = false,
 }: AButtonProps) => {
   return (
     <Button
       variant={variant}
       onClick={onClick}
+      disabled={disabled}
       sx={{
         ...ButtonStyle.size[size],
         ...ButtonStyle.color[color],
