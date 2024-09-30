@@ -3,52 +3,53 @@
 import * as React from 'react';
 import { useDemoData } from '@mui/x-data-grid-generator';
 import { DataGrid, GridToolbar, GridColDef } from '@mui/x-data-grid';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+import { CustomerInfo } from '@/constants/CustomerInfo';
+import CenteredLayout from '@/styles/layout/CenterLayout';
 
-const columns: GridColDef<(typeof rows)[number]>[] = [
-  { field: 'id', headerName: 'ID', width: 90 },
+const columns: GridColDef[] = [
   {
-    field: 'firstName',
-    headerName: 'First name',
-    width: 150,
-    editable: true,
-  },
-  {
-    field: 'lastName',
-    headerName: 'Last name',
-    width: 150,
-    editable: true,
-  },
-  {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
+    field: 'name',
+    headerName: '고객성함',
     width: 110,
-    editable: true,
   },
   {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
+    field: 'tel',
+    headerName: '연락처',
+    width: 150,
+  },
+  {
+    field: 'address',
+    headerName: '주소',
+    width: 500,
+  },
+  {
+    field: 'info',
+    headerName: '결제정보',
+    width: 150,
+  },
+  {
+    field: 'bookingDate',
+    headerName: '예약일',
+    width: 100,
+  },
+  {
+    field: 'engineer',
+    headerName: '엔지니어',
+    width: 110,
+  },
+  {
+    field: 'cleaning',
+    headerName: '청소유형',
+    width: 150,
   },
 ];
 
 // 더미 - DB와 맞춰야함
-const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 14 },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 31 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 31 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 11 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: 80 },
-  { id: 6, lastName: 'Melisandre', firstName: 'Maxwell', age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-  { id: 10, lastName: 'Ruin', firstName: 'Myus', age: 47 },
-];
+const rows = Object.entries(CustomerInfo).map(([key, customer]) => ({
+  id: key, // 객체의 키를 id로 사용
+  ...customer,
+}));
 
 const Page = () => {
   const { data, loading } = useDemoData({
@@ -58,7 +59,10 @@ const Page = () => {
   });
 
   return (
-    <Box sx={{ height: '100%', width: '100%' }}>
+    <CenteredLayout>
+      <Box sx={{ width: '78%', height: 50 }}>
+        <Typography variant="h5">스케줄 보기</Typography>
+      </Box>
       <DataGrid
         rows={rows}
         columns={columns}
@@ -75,7 +79,7 @@ const Page = () => {
         loading={loading}
         slots={{ toolbar: GridToolbar }}
       />
-    </Box>
+    </CenteredLayout>
   );
 };
 
