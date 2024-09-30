@@ -31,7 +31,7 @@ const ScheduleInfo = ({ selectedDate, engineerName }: ScheduleInfoProps) => {
       >
         {engineerName} 기사
       </Box>
-      <Box sx={{ display: 'flex', flexDirection: 'column', py: 1 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         {timeSlots.map((slot, index) => (
           <DateInfo key={index} time={slot} timeslotschedule={'일정 입력'} />
         ))}
