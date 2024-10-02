@@ -17,8 +17,10 @@ import DiscountCheckbox, {
 import CheckboxDropdownSelector, {
   CheckboxDropdownSelectorProps,
 } from '@/components/molecules/Customer/CheckboxDropdownSelector';
-import HolidayRegistration from '@/components/molecules/Engineer/HolidayRegistration';
-import Holiday from '@/components/molecules/Engineer/Holiday';
+import HolidayRegistration, {
+  HolidayRegistrationProps,
+} from '@/components/molecules/Engineer/HolidayRegistration';
+import Holiday, { HolidayProps } from '@/components/molecules/Engineer/Holiday';
 import AEvidentialDocument from '@/components/molecules/Select/AEvidentialDocument';
 import APercent from '@/components/molecules/Select/APercent';
 import ADaySelector from '@/components/molecules/Select/ADaySelector';
@@ -59,7 +61,9 @@ export type FormFieldConfigProps = {
     | DiscountCheckboxProps
     | LabelCheckBoxProps
     | CheckboxDropdownSelectorProps
-    | SelectProps;
+    | SelectProps
+    | HolidayProps
+    | HolidayRegistrationProps;
 };
 
 export type FormFieldProps = {
@@ -85,7 +89,7 @@ const fieldTypeToComponentMap: Record<FormFieldType, React.ElementType> = {
   Holiday,
   AEvidentialDocument,
   APercent,
-  ADaySelector
+  ADaySelector,
 };
 
 const FormField = ({ fields }: FormFieldProps) => {

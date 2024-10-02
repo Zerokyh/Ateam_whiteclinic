@@ -47,12 +47,8 @@ const CheckboxDropdownSelector = ({
     : [];
 
   return (
-    <Box sx={{ display: 'flex', justifyContent:'center', alignItems:'center'}}>
-      <OneCheckbox
-        {...onecheckboxprops}
-        onChange={handleCheckboxChange}
-        value={selectedCategory}
-      />
+    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <OneCheckbox {...onecheckboxprops} onChange={handleCheckboxChange} value={selectedCategory} />
 
       <ADropdown
         label={dropdownprops?.label}
