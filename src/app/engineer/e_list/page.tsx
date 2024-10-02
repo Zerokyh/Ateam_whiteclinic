@@ -10,6 +10,8 @@ import { getFooterData } from '@/constants/yh/WorkerFooterData';
 import AFooter from '@/components/molecules/datagrid/AFooter';
 import { workerColumns } from '@/constants/yh/ColumnData';
 import CardFilter from '@/components/organism/yh/CardFilter';
+import { YStyle } from '@/styles/yh';
+import { sizes } from '@/styles/sizes';
 
 const Page = () => {
   const [selectedWorker, setSelectedWorker] = useState<WorkerProps | null>(null);
@@ -52,27 +54,28 @@ const Page = () => {
     width: '100%',
   };
 
+  const cardFilterProps = {
+    data: filteredWorkers,
+    filter: filter,
+    onFilterChange: handleFilterChange,
+    onItemClick: handleCardClick,
+  };
+
   return (
     <CenteredLayout>
-      <CardFilter
-        data={filteredWorkers}
-        filter={filter}
-        onFilterChange={handleFilterChange}
-        onItemClick={handleCardClick}
-      />
+      <CardFilter {...cardFilterProps} />
 
       {selectedWorker && (
-        <Box sx={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '20px' }}>
-          <Box sx={{ width: '500px' }}>
+        <Box sx={YStyle.one}>
+          <Box sx={{ width: sizes.width.xxlarge }}>
             <ADataGrid {...workerDataProps} />
           </Box>
-          <Box sx={{ width: '200px', display: 'flex', alignItems: 'center' }}>
+          <Box sx={YStyle.two}>
             <AFooter data={getFooterData(selectedWorker)} />
           </Box>
           <AButton text="등록" onClick={submit} />
         </Box>
       )}
-      <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}></Box>
     </CenteredLayout>
   );
 };

@@ -30,6 +30,7 @@ export const sizes = {
     medium: '150px',
     large: '200px',
     xlarge: '250px',
+    xxlarge: '500px',
   },
   inputWidth: {
     default: '200px',
