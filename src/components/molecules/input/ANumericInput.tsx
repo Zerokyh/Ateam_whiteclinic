@@ -6,7 +6,12 @@ import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutli
 import { AVariableInputProps } from '@/components/atom/Input/VariableInput/AVariableInput';
 
 export type ANumericInputProps = {
-  avariableinputprops?: Omit<AVariableInputProps, 'type'>;
+  avariableinputprops?: Omit<AVariableInputProps, 'type' | 'value' | 'onValueChange'> & {
+    value?: string;
+    onValueChange?: (value: string) => void;
+    isInvisible?: boolean;
+    disabled?: boolean;
+  };
   type?: 'number';
   min?: number;
   max?: number;
@@ -18,11 +23,9 @@ const ANumericInput = ({
   min = 0,
   max,
 }: ANumericInputProps) => {
-  const [isDisabled, setIsDisabled] = React.useState(false);
+  const [isDisabled, setIsDisabled] = React.useState(avariableinputprops?.disabled || false);
   const [inputWidth, setInputWidth] = React.useState('32px');
-  const [value, setValue] = React.useState<number>(
-    avariableinputprops?.initialValue ? Number(avariableinputprops.initialValue) : 0
-  ); // 숫자 값으로 처리
+  const value = avariableinputprops?.value || '';
 
   React.useEffect(() => {
     const calculateWidth = () => {
@@ -36,21 +39,29 @@ const ANumericInput = ({
   }, [value]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = Number(e.target.value); // 입력값을 숫자로 변환
+    let newValue = e.target.value;
 
-    if (
-      !isNaN(newValue) &&
-      (min === undefined || newValue >= min) &&
-      (max === undefined || newValue <= max)
-    ) {
-      setValue(newValue);
+    if (newValue.length > 1 && newValue.startsWith('0')) {
+      newValue = newValue.replace(/^0+/, '');
+    }
 
-      // 부모 컴포넌트로 숫자 값 전달
+    if (newValue === '') {
       if (avariableinputprops?.onValueChange) {
-        avariableinputprops.onValueChange(newValue.toString()); // 문자열로 변환하여 전달
+        avariableinputprops.onValueChange('0');
+      }
+      return;
+    }
+
+    const numericValue = Number(newValue);
+    if (
+      !isNaN(numericValue) &&
+      (min === undefined || numericValue >= min) &&
+      (max === undefined || numericValue <= max)
+    ) {
+      if (avariableinputprops?.onValueChange) {
+        avariableinputprops.onValueChange(numericValue.toString());
       }
     }
-    console.log('change');
   };
 
   const toggleDisabled = () => {
@@ -65,7 +76,7 @@ const ANumericInput = ({
         sx={{ minWidth: '150px' }}
         onChange={handleChange}
         placeholder=""
-        disabled={isDisabled}
+        disabled={isDisabled || avariableinputprops?.disabled}
         inputProps={{
           min,
           max,

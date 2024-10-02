@@ -1,8 +1,7 @@
 import AFixedInput from '@/components/atom/Input/FixedInput/AFixedInput';
-import ADatesSelector from '@/components/molecules/Select/ADateSelector';
-import AMonthSelector from '@/components/molecules/Select/AMonthSelector';
-
 import { Box } from '@mui/material';
+import AMonthSelector from '../Select/delete/AMonthSelector';
+import ADatesSelector from '../Select/delete/ADateSelector';
 
 const DateDropList = () => {
   return (

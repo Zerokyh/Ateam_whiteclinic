@@ -5,7 +5,7 @@ import { Box } from '@mui/material';
 import InfoForm from '@/components/molecules/Form/InfoForm';
 import TwoButtons from '@/components/molecules/Button/TwoButton';
 import { CustomerInfoFormData } from '@/constants/customerInfoFormData';
-import dayjs, { Dayjs } from 'dayjs';
+import { Dayjs } from 'dayjs';
 
 export type CustomerInfoValues = {
   reservationDate: Dayjs | string | null;
@@ -36,6 +36,8 @@ const CustomerInfo = ({ onRegister }: CustomerInfoProps) => {
     payment: '',
   });
 
+  const [resetCounter, setResetCounter] = useState(0);
+
   const resetFormValues = () => {
     setFormValues({
       reservationDate: null,
@@ -48,6 +50,7 @@ const CustomerInfo = ({ onRegister }: CustomerInfoProps) => {
       published: '',
       payment: '',
     });
+    setResetCounter((prev) => prev + 1);
   };
 
   const handleFieldChange = (fieldName: keyof CustomerInfoValues, value: any) => {
@@ -74,14 +77,17 @@ const CustomerInfo = ({ onRegister }: CustomerInfoProps) => {
   // 등록 버튼 클릭 시 호출되는 함수
   const handleSubmit = () => {
     console.log('등록된 데이터:', formValues);
-    
+
     // 등록 버튼 클릭 시 세척품목쪽 활성화인데 아직 구현 안 함
     onRegister();
   };
 
   return (
     <Box>
-      <InfoForm titledformcontrolprops={CustomerInfoFormData(formValues, handleFieldChange)} />
+      <InfoForm
+        key={resetCounter}
+        titledformcontrolprops={CustomerInfoFormData(formValues, handleFieldChange)}
+      />
       <TwoButtons
         leftButton={{ text: '취소', size: 'full', onClick: resetFormValues }}
         rightButton={{

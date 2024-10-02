@@ -6,15 +6,36 @@ import SalesModal from './SalesModal';
 type TwoButtonsProps = {
   leftButton: AButtonProps;
   rightButton: AButtonProps;
+  onLeftButtonClick?: () => void;
+  onRightButtonClick?: () => void;
 };
 
-const ModalButton = ({ leftButton, rightButton }: TwoButtonsProps) => {
-  // 모달 창 열림 상태를 관리
+const ModalButton = ({ leftButton, rightButton, onLeftButtonClick, onRightButtonClick }: TwoButtonsProps) => {
   const [open, setOpen] = useState(false);
 
-  // 모달 열기 및 닫기 핸들러
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  // 취소 버튼 클릭 핸들러
+  const handleLeftButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (leftButton.onClick) {
+      leftButton.onClick(e);
+    }
+    if (onLeftButtonClick) {
+      onLeftButtonClick();
+    }
+  };
+
+  // 등록 버튼 클릭 핸들러
+  const handleRightButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (rightButton.onClick) {
+      rightButton.onClick(e);
+    }
+    if (onRightButtonClick) {
+      onRightButtonClick();
+    }
+    handleOpen();
+  };
 
   return (
     <Box
@@ -26,9 +47,8 @@ const ModalButton = ({ leftButton, rightButton }: TwoButtonsProps) => {
         alignItems: 'center',
       }}
     >
-      <AButton {...leftButton} />
-      <AButton {...rightButton} onClick={handleOpen} />
-
+      <AButton {...leftButton} onClick={handleLeftButtonClick} />
+      <AButton {...rightButton} onClick={handleRightButtonClick} />
       <SalesModal
         open={open}
         handleClose={handleClose}
