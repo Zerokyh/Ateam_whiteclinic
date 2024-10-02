@@ -5,13 +5,12 @@ import { AVariableInputProps } from '@/components/atom/Input/VariableInput/AVari
 import { OneCheckboxProps } from '@/components/molecules/checkbox/OneCheckbox';
 import { publishedCheckboxData } from './customerData';
 import dayjs, { Dayjs } from 'dayjs';
-
 import { CustomerInfoValues } from '@/components/organism/Customer/CustomerInfo';
 import { SelectProps } from '@/components/molecules/Select/APayment';
 
 export const CustomerInfoFormData = (
   formValues: CustomerInfoValues,
-  handleFieldChange: (fieldName: keyof CustomerInfoValues, value: string) => void
+  handleFieldChange: (fieldName: keyof CustomerInfoValues, value: any) => void
 ): TitledFormControlProps[] => [
   {
     titleprops: {
@@ -35,7 +34,7 @@ export const CustomerInfoFormData = (
           prevprops: {
             placeholder: '시간',
             isInvisible: false,
-            value: formValues.time || '',
+            initialValue: formValues.time || '',
             onValueChange: (value: string) => {
               handleFieldChange('time', value);
             },
@@ -54,7 +53,7 @@ export const CustomerInfoFormData = (
           formfieldtype: 'AVariableInput' as FormFieldType,
           prevprops: {
             isInvisible: false,
-            value: formValues.name || '',
+            initialValue: formValues.name || '',
             onValueChange: (value: string) => {
               handleFieldChange('name', value);
             },
@@ -73,7 +72,7 @@ export const CustomerInfoFormData = (
           formfieldtype: 'AVariableInput' as FormFieldType,
           prevprops: {
             isInvisible: false,
-            value: formValues.phoneNumber || '',
+            initialValue: formValues.phoneNumber || '',
             onValueChange: (value: string) => {
               handleFieldChange('phoneNumber', value);
             },
@@ -92,7 +91,7 @@ export const CustomerInfoFormData = (
           formfieldtype: 'AVariableInput' as FormFieldType,
           prevprops: {
             isInvisible: false,
-            value: formValues.address || '',
+            initialValue: formValues.address || '',
             onValueChange: (value: string) => {
               handleFieldChange('address', value);
             },
@@ -111,7 +110,7 @@ export const CustomerInfoFormData = (
           formfieldtype: 'AVariableInput' as FormFieldType,
           prevprops: {
             isInvisible: false,
-            value: formValues.uniqueDetails || '',
+            initialValue: formValues.uniqueDetails || '',
             onValueChange: (value: string) => {
               handleFieldChange('uniqueDetails', value);
             },

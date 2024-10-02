@@ -14,7 +14,7 @@ export type AButtonProps = {
     | '급여사항확인'
     | '휴무등록'
     | '추가등록';
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   size?: keyof typeof ButtonStyle.size;
   color?: keyof typeof ButtonStyle.color;
   sx?: object;

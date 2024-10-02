@@ -5,41 +5,27 @@ import { Box } from '@mui/material';
 import OneCheckbox, { OneCheckboxProps } from '../checkbox/OneCheckbox';
 import ADropdown, { ADropdownProps } from '@/components/atom/DropdownBox/ADropdown';
 import { productCategories } from '@/constants/productCategory';
-import { SelectChangeEvent } from '@mui/material';
-import AVariableInput from '@/components/atom/Input/VariableInput/AVariableInput'; // Variable Input Import
+import AVariableInput from '@/components/atom/Input/VariableInput/AVariableInput';
 
 export type CheckboxDropdownSelectorProps = {
   onecheckboxprops: OneCheckboxProps;
   dropdownprops?: ADropdownProps;
+  customInputValue?: string;
+  onProductChange?: (value: string) => void;
 };
 
 const CheckboxDropdownSelector = ({
   onecheckboxprops,
   dropdownprops,
+  customInputValue,
+  onProductChange,
 }: CheckboxDropdownSelectorProps) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('');
-  const [selectedDropdownValue, setSelectedDropdownValue] = useState<string>('');
-  const [customInputValue, setCustomInputValue] = useState<string>('');
+  const { value: selectedCategory, onChange: handleCheckboxChange, checkboxes } = onecheckboxprops;
+  const { value: selectedDropdownValue, onChange: handleDropdownChange, label } = dropdownprops || {};
 
-  const handleCheckboxChange = (key: string) => {
-    console.log(`체크박스 선택: ${key}`);
-    setSelectedCategory(key);
-    setSelectedDropdownValue('');
-  };
-
-  const handleDropdownChange = (event: SelectChangeEvent<string>) => {
-    const newValue = event.target.value;
-    console.log(`드롭다운 선택: ${newValue}`);
-    setSelectedDropdownValue(newValue);
-  };
-
-  const handleCustomInputChange = (value: string) => {
-    console.log(`Input: ${value}`);
-    setCustomInputValue(value);
-  };
-
-  const categoryKey = selectedCategory as keyof typeof productCategories;
-  const categoryData = productCategories[categoryKey];
+  const categoryData = selectedCategory
+    ? productCategories[selectedCategory as keyof typeof productCategories]
+    : null;
 
   const dropdownOptions: ADropdownProps['options'] = categoryData
     ? categoryData.categories.map((product) => ({
@@ -49,11 +35,12 @@ const CheckboxDropdownSelector = ({
     : [];
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <OneCheckbox {...onecheckboxprops} onChange={handleCheckboxChange} value={selectedCategory} />
+    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
+      <OneCheckbox checkboxes={checkboxes} value={selectedCategory} onChange={handleCheckboxChange} />
 
       <ADropdown
-        label={dropdownprops?.label}
+        key={selectedCategory}
+        label={label}
         value={selectedDropdownValue}
         options={dropdownOptions}
         width="xlarge"
@@ -62,10 +49,11 @@ const CheckboxDropdownSelector = ({
 
       {(selectedDropdownValue === '스탠드' || selectedDropdownValue === '투인원') && (
         <AVariableInput
+          key={selectedDropdownValue}
           placeholder="세부 사항 입력"
           isInvisible={false}
-          initialValue={customInputValue}
-          onValueChange={handleCustomInputChange}
+          initialValue={customInputValue || ''}
+          onValueChange={onProductChange || (() => {})}
         />
       )}
     </Box>
