@@ -2,15 +2,15 @@
 
 import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/material';
-import ACard from '@/components/molecules/Card/ACard';
 import { WorkerInfo, WorkerProps } from '@/constants/Workers';
 import CenteredLayout from '@/styles/layout/CenterLayout';
-import AFixedInput from '@/components/atom/Input/FixedInput/AFixedInput';
 import AButton from '@/components/atom/Button/AButton';
 import ADataGrid from '@/components/molecules/datagrid/ADataGrid';
 import { getFooterData } from '@/constants/yh/WorkerFooterData';
 import AFooter from '@/components/molecules/datagrid/AFooter';
 import { workerColumns } from '@/constants/yh/ColumnData';
+import WorkerFilter from '@/components/organism/yh/WorkerFilter';
+import CardFilter from '@/components/organism/yh/CardFilter';
 
 const Page = () => {
   const [selectedWorker, setSelectedWorker] = useState<WorkerProps | null>(null);
@@ -53,36 +53,12 @@ const Page = () => {
 
   return (
     <CenteredLayout>
-      <AFixedInput
-        placeholder="이름, 주소 또는 전화번호로 검색"
-        value={filter}
-        onChange={handleFilterChange}
-        width={300}
-        sx={{ mb: 2 }}
-        inputHeightSize="medium"
+      <CardFilter
+        data={filteredWorkers}
+        filter={filter}
+        onFilterChange={handleFilterChange}
+        onItemClick={handleCardClick}
       />
-      <Box
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '20px',
-          padding: '20px',
-          overflowY: 'auto',
-          height: '500px',
-        }}
-      >
-        {filteredWorkers.map(([key, worker]) => (
-          <ACard
-            key={key}
-            name={worker.name}
-            tel={worker.tel}
-            address={worker.address}
-            available={worker.available.join(', ')}
-            remark=""
-            onClick={() => handleCardClick(worker)}
-          />
-        ))}
-      </Box>
 
       {selectedWorker && (
         <Box sx={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '20px' }}>
