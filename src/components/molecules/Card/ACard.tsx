@@ -1,5 +1,5 @@
 import { CardContent } from '@mui/material';
-import AText from '../Text/AText';
+import AText from '../../atom/Text/AText';
 
 type ACardProps = {
   name: string;

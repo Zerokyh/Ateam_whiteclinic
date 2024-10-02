@@ -3,21 +3,15 @@ import React from 'react';
 import { Box } from '@mui/material';
 import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
 
-interface ADataGridProps {
+type ADataGridProps = {
   rows: any[];
   columns: GridColDef[];
   title?: string;
   height?: number | string;
   width?: number | string;
-}
+};
 
-const ADataGrid: React.FC<ADataGridProps> = ({
-  rows,
-  columns,
-  title,
-  height = 400,
-  width = '100%',
-}) => {
+const ADataGrid = ({ rows, columns, title, height = 400, width = '100%' }: ADataGridProps) => {
   return (
     <Box sx={{ height, width }}>
       {<h2>{title}</h2>}
@@ -25,7 +19,6 @@ const ADataGrid: React.FC<ADataGridProps> = ({
         rows={rows}
         columns={columns}
         disableRowSelectionOnClick
-        autoHeight
         slots={{
           toolbar: GridToolbar,
         }}

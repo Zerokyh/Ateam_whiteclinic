@@ -16,10 +16,9 @@ const AFooter = ({ data }: AFooterProps) => {
     <Box
       sx={{
         padding: '20px',
-
         display: 'flex',
         flexWrap: 'wrap',
-        gap: '16px', // 아이템 간 간격
+        gap: '16px', 
         width: '150px',
       }}
     >

@@ -2,15 +2,15 @@
 
 import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/material';
-import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
-import ACard from '@/components/atom/Card/ACard';
+import ACard from '@/components/molecules/Card/ACard';
 import { WorkerInfo, WorkerProps } from '@/constants/Workers';
 import CenteredLayout from '@/styles/layout/CenterLayout';
 import AFixedInput from '@/components/atom/Input/FixedInput/AFixedInput';
 import AButton from '@/components/atom/Button/AButton';
-import AFooter, { FooterItem } from '@/components/organism/yh/datagrid/AFooter';
-import ADataGrid from '@/components/organism/yh/datagrid/ADataGrid';
-import ACheckbox from '@/components/atom/CheckBox/ACheckbox';
+import ADataGrid from '@/components/molecules/datagrid/ADataGrid';
+import { getFooterData } from '@/constants/yh/WorkerFooterData';
+import AFooter from '@/components/molecules/datagrid/AFooter';
+import { workerColumns } from '@/constants/yh/ColumnData';
 
 const Page = () => {
   const [selectedWorker, setSelectedWorker] = useState<WorkerProps | null>(null);
@@ -36,11 +36,6 @@ const Page = () => {
     }
   }, [selectedWorker]);
 
-  const columns: GridColDef[] = [
-    { field: 'date', headerName: '날짜', width: 150 },
-    { field: 'pay', headerName: '급여', width: 150, type: 'number' },
-  ];
-
   const calculateWageAmount = (worker: WorkerProps): number => {
     const totalWage = worker.datePay?.reduce((sum, dp) => sum + parseInt(dp.pay), 0) || 0;
     const percentageRate = parseInt(worker.percent) / 100;
@@ -54,34 +49,6 @@ const Page = () => {
 
   const submit = () => {
     console.log('제출');
-  };
-
-  const getFooterData = (worker: WorkerProps): FooterItem[] => {
-    const totalWage = worker.datePay?.reduce((sum, dp) => sum + parseInt(dp.pay), 0) || 0;
-    const wageAmount = calculateWageAmount(worker);
-
-    return [
-      { label: '합계 급여', value: `${totalWage.toLocaleString()}원` },
-      { label: '수당률', value: worker.percent },
-      { label: '수당 금액', value: `${wageAmount.toLocaleString()}원` },
-      { label: '지급일', value: worker.payday },
-      { label: '전화번호', value: worker.tel },
-      { label: '주소', value: worker.address },
-      { label: '가능 품목', value: worker.available.join(', ') },
-      {
-        label: '지급 여부',
-        value: worker.ispaid,
-        renderValue: (value) => (
-          <ACheckbox
-            isChecked={value as boolean}
-            onChange={(event) => {
-              // 여기에 체크박스 상태 변경 로직을 추가합니다.
-              console.log(`클릭`);
-            }}
-          />
-        ),
-      },
-    ];
   };
 
   return (
@@ -122,7 +89,7 @@ const Page = () => {
           <Box sx={{ width: '500px' }}>
             <ADataGrid
               rows={rows}
-              columns={columns}
+              columns={workerColumns}
               title={`${selectedWorker.name}의 정보`}
               height={400}
               width="100%"

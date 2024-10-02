@@ -11,7 +11,7 @@ export type WorkerProps = {
   datePay: DatePay[];
   percent: string;
   payday: string;
-  ispaid: boolean; // 새로 추가된 필드
+  ispaid: boolean; 
 };
 
 export type WorkerType = {
