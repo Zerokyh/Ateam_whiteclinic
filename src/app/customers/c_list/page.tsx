@@ -13,16 +13,18 @@ const Page = () => {
     ...customer,
   }));
 
+  const customerDataProps = {
+    rows,
+    columns: customerColumns,
+    title: `고객 정보`,
+    height: 'auto',
+    width: '80%',
+  };
+
   return (
     <CenteredLayout>
       <Box sx={{ overflowY: 'auto' }}>
-        <ADataGrid
-          rows={rows}
-          columns={customerColumns}
-          title="고객 정보"
-          height="auto"
-          width="80%"
-        />
+        <ADataGrid {...customerDataProps} />
         <AButton text="등록" />
       </Box>
     </CenteredLayout>

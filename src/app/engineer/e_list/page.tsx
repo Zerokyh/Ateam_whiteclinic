@@ -9,7 +9,6 @@ import ADataGrid from '@/components/molecules/datagrid/ADataGrid';
 import { getFooterData } from '@/constants/yh/WorkerFooterData';
 import AFooter from '@/components/molecules/datagrid/AFooter';
 import { workerColumns } from '@/constants/yh/ColumnData';
-import WorkerFilter from '@/components/organism/yh/WorkerFilter';
 import CardFilter from '@/components/organism/yh/CardFilter';
 
 const Page = () => {
@@ -36,12 +35,6 @@ const Page = () => {
     }
   }, [selectedWorker]);
 
-  const calculateWageAmount = (worker: WorkerProps): number => {
-    const totalWage = worker.datePay?.reduce((sum, dp) => sum + parseInt(dp.pay), 0) || 0;
-    const percentageRate = parseInt(worker.percent) / 100;
-    return Math.round(totalWage * percentageRate);
-  };
-
   const filteredWorkers = Object.entries(WorkerInfo).filter(
     ([_, worker]) =>
       worker.name.toLowerCase().includes(filter.toLowerCase()) || worker.available.includes(filter)
@@ -49,6 +42,14 @@ const Page = () => {
 
   const submit = () => {
     console.log('제출');
+  };
+
+  const workerDataProps = {
+    rows,
+    columns: workerColumns,
+    title: `${selectedWorker?.name}의 정보`,
+    height: 400,
+    width: '100%',
   };
 
   return (
@@ -63,13 +64,7 @@ const Page = () => {
       {selectedWorker && (
         <Box sx={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '20px' }}>
           <Box sx={{ width: '500px' }}>
-            <ADataGrid
-              rows={rows}
-              columns={workerColumns}
-              title={`${selectedWorker.name}의 정보`}
-              height={400}
-              width="100%"
-            />
+            <ADataGrid {...workerDataProps} />
           </Box>
           <Box sx={{ width: '200px', display: 'flex', alignItems: 'center' }}>
             <AFooter data={getFooterData(selectedWorker)} />

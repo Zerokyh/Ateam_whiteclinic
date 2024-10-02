@@ -6,6 +6,9 @@ export const workerColumns: GridColDef[] = [
   { field: 'pay', headerName: '급여', width: 150, type: 'number' },
 ];
 
+
+
+
 export const customerColumns: GridColDef[] = [
   { field: 'name', headerName: '이름', width: 150 },
   { field: 'tel', headerName: '전화번호', width: 150 },
