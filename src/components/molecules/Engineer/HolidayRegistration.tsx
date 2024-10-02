@@ -4,11 +4,18 @@ import React, { useState } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
 import ADatePicker, { ADatePickerProps } from '@/components/atom/Calendar/ADatePicker';
 import AButton, { AButtonProps } from '@/components/atom/Button/AButton';
-import { Box, List, ListItem, ListItemText, Paper, Typography } from '@mui/material';
+import { Box, List, ListItem, ListItemText } from '@mui/material';
 
-const HolidayRegistration = () => {
+export type HolidayRegistrationProps = {
+  registeredHolidays: Dayjs[];
+  onHolidaysChange: (newHolidays: Dayjs[]) => void;
+};
+
+const HolidayRegistration: React.FC<HolidayRegistrationProps> = ({
+  registeredHolidays,
+  onHolidaysChange,
+}) => {
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
-  const [registeredHolidays, setRegisteredHolidays] = useState<Dayjs[]>([]);
 
   const handleDateChange: ADatePickerProps['onChange'] = (newValue) => {
     setSelectedDate(newValue);
@@ -24,7 +31,7 @@ const HolidayRegistration = () => {
 
       const newHolidays = [...registeredHolidays, selectedDate];
       newHolidays.sort((a, b) => a.valueOf() - b.valueOf());
-      setRegisteredHolidays(newHolidays);
+      onHolidaysChange(newHolidays);
       setSelectedDate(null);
     }
   };

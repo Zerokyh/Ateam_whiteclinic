@@ -1,15 +1,31 @@
+import { TitledFormControlProps } from '@/components/molecules/Form/TitledFormControl';
+import { FormFieldType } from '@/components/molecules/Form/FormField';
 import { ADropdownProps } from '@/components/atom/DropdownBox/ADropdown';
 import { AFixedInputProps } from '@/components/atom/Input/FixedInput/AFixedInput';
-import { AVariableInputProps } from '@/components/atom/Input/VariableInput/AVariableInput';
 import { LabelCheckBoxProps } from '@/components/molecules/Engineer/LabelCheckBox';
-import { FormFieldType } from '@/components/molecules/Form/FormField';
-import { TitledFormControlProps } from '@/components/molecules/Form/TitledFormControl';
 import { Days } from './Days';
 import { Percentage } from './Percentage';
-import { ADatePickerProps } from '@/components/atom/Calendar/ADatePicker';
-import { AButtonProps } from '@/components/atom/Button/AButton';
+import dayjs, { Dayjs } from 'dayjs';
+import { HolidayProps } from '@/components/molecules/Engineer/Holiday';
+import { HolidayRegistrationProps } from '@/components/molecules/Engineer/HolidayRegistration';
 
-export const EngineerFormData: TitledFormControlProps[] = [
+export type EngineerFormValues = {
+  name: string;
+  phoneNumber: string;
+  residenceArea: string;
+  Items: string[];
+  ItemsSpecialNotes: string;
+  specialNotes: string;
+  allowanceRate: string;
+  paymentDay: string;
+  holidayRegistration: Dayjs[];
+  regularHoliday: string[];
+};
+
+export const EngineerFormData = (
+  formValues: EngineerFormValues,
+  handleFieldChange: (fieldName: keyof EngineerFormValues, value: any) => void
+): TitledFormControlProps[] => [
   {
     titleprops: {
       text: '기사성함',
@@ -21,7 +37,9 @@ export const EngineerFormData: TitledFormControlProps[] = [
           prevprops: {
             placeholder: '기사성함',
             isInvisible: false,
-            value: '',
+            value: formValues.name,
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+              handleFieldChange('name', e.target.value),
           } as AFixedInputProps,
         },
       ],
@@ -38,6 +56,9 @@ export const EngineerFormData: TitledFormControlProps[] = [
           prevprops: {
             placeholder: '연락처',
             isInvisible: false,
+            value: formValues.phoneNumber,
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+              handleFieldChange('phoneNumber', e.target.value),
           } as AFixedInputProps,
         },
       ],
@@ -51,7 +72,13 @@ export const EngineerFormData: TitledFormControlProps[] = [
       fields: [
         {
           formfieldtype: 'AFixedInput' as FormFieldType,
-          prevprops: { placeholder: '거주지역', isInvisible: false } as AFixedInputProps,
+          prevprops: {
+            placeholder: '거주지역',
+            isInvisible: false,
+            value: formValues.residenceArea,
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+              handleFieldChange('residenceArea', e.target.value),
+          } as AFixedInputProps,
         },
       ],
     },
@@ -64,7 +91,10 @@ export const EngineerFormData: TitledFormControlProps[] = [
       fields: [
         {
           formfieldtype: 'LabelCheckBox' as FormFieldType,
-          prevprops: {} as LabelCheckBoxProps,
+          prevprops: {
+            selectedItems: formValues.Items,
+            onItemsChange: (newItems: string[]) => handleFieldChange('Items', newItems),
+          } as LabelCheckBoxProps,
         },
         {
           formfieldtype: 'AFixedInput' as FormFieldType,
@@ -72,6 +102,9 @@ export const EngineerFormData: TitledFormControlProps[] = [
             placeholder: '특이사항',
             isInvisible: false,
             isMultiline: true,
+            value: formValues.ItemsSpecialNotes,
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+              handleFieldChange('ItemsSpecialNotes', e.target.value),
           } as AFixedInputProps,
         },
       ],
@@ -89,6 +122,9 @@ export const EngineerFormData: TitledFormControlProps[] = [
             placeholder: '특이사항',
             isInvisible: false,
             isMultiline: true,
+            value: formValues.specialNotes,
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+              handleFieldChange('specialNotes', e.target.value),
           } as AFixedInputProps,
         },
       ],
@@ -109,6 +145,9 @@ export const EngineerFormData: TitledFormControlProps[] = [
               value: payment,
               text: payment,
             })),
+            value: formValues.allowanceRate,
+            onChange: (e: React.ChangeEvent<{ value: unknown }>) =>
+              handleFieldChange('allowanceRate', e.target.value as string),
           } as ADropdownProps,
         },
       ],
@@ -129,11 +168,15 @@ export const EngineerFormData: TitledFormControlProps[] = [
               value: days,
               text: days,
             })),
+            value: formValues.paymentDay,
+            onChange: (e: React.ChangeEvent<{ value: unknown }>) =>
+              handleFieldChange('paymentDay', e.target.value as string),
           } as ADropdownProps,
         },
       ],
     },
   },
+
   {
     titleprops: {
       text: '휴무등록',
@@ -142,10 +185,16 @@ export const EngineerFormData: TitledFormControlProps[] = [
       fields: [
         {
           formfieldtype: 'HolidayRegistration' as FormFieldType,
+          prevprops: {
+            registeredHolidays: formValues.holidayRegistration,
+            onHolidaysChange: (newDays: Dayjs[]) =>
+              handleFieldChange('holidayRegistration', newDays),
+          } as HolidayRegistrationProps,
         },
       ],
     },
   },
+
   {
     titleprops: {
       text: '정기휴무',
@@ -154,6 +203,10 @@ export const EngineerFormData: TitledFormControlProps[] = [
       fields: [
         {
           formfieldtype: 'Holiday' as FormFieldType,
+          prevprops: {
+            selectedDays: formValues.regularHoliday,
+            onDaysChange: (newDays: string[]) => handleFieldChange('regularHoliday', newDays),
+          } as HolidayProps,
         },
       ],
     },
