@@ -1,19 +1,18 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Box } from '@mui/material';
-import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
 
-import { CustomerInfo, CustomerProps } from '@/constants/CustomerInfo';
 import CenteredLayout from '@/styles/layout/CenterLayout';
-import InfoCard from '@/components/atom/Card/GenericCard';
+import ADataGrid from '@/components/organism/yh/datagrid/ADataGrid';
+import { GridColDef } from '@mui/x-data-grid';
+import { CustomerInfo } from '@/constants/CustomerInfo';
+import AButton from '@/components/atom/Button/AButton';
+import { Box } from '@mui/material';
+import AFooter from '@/components/organism/yh/datagrid/AFooter';
+import ACheckbox from '@/components/atom/CheckBox/ACheckbox';
 
 const Page = () => {
-  const [selectedCustomer, setSelectedCustomer] = useState<CustomerProps | null>(null);
-
-  const handleCardClick = (customer: CustomerProps) => {
-    setSelectedCustomer(customer);
-  };
+  const [isChecked, setIsChecked] = useState(false);
 
   const columns: GridColDef[] = [
     { field: 'name', headerName: '이름', width: 150 },
@@ -23,36 +22,33 @@ const Page = () => {
     { field: 'bookingDate', headerName: '예약일', width: 150 },
     { field: 'engineer', headerName: '엔지니어', width: 150 },
     { field: 'cleaning', headerName: '청소 유형', width: 150 },
+    {
+      field: 'bill',
+      headerName: '영수증 발행',
+      width: 150,
+      renderCell: (params) => (
+        <ACheckbox
+          isChecked={params.value}
+          onChange={() => {
+            console.log(`클릭`);
+          }}
+          textprops={{ text: '' }} // 텍스트 없이 체크박스만 표시
+        />
+      ),
+    },
+    // 나중에 금액 관련 컬럼 추가
   ];
 
   const rows = Object.entries(CustomerInfo).map(([key, customer]) => ({
-    id: key, // 객체의 키를 id로 사용
+    id: key,
     ...customer,
   }));
 
   return (
     <CenteredLayout>
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '20px', padding: '20px' }}>
-        {Object.entries(CustomerInfo).map(([key, customer]) => (
-          <InfoCard
-            key={key}
-            data={customer}
-            type="customer"
-            onClick={() => handleCardClick(customer)}
-          />
-        ))}
-      </Box>
-
-      <Box sx={{ height: 400, width: '80%', marginTop: '20px' }}>
-        <h2>고객 정보</h2>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          disableRowSelectionOnClick
-          slots={{
-            toolbar: GridToolbar,
-          }}
-        />
+      <Box sx={{ overflowY: 'auto' }}>
+        <ADataGrid rows={rows} columns={columns} title="고객 정보" height="auto" width="80%" />
+        <AButton text="등록" />
       </Box>
     </CenteredLayout>
   );

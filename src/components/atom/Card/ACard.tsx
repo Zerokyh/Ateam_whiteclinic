@@ -1,7 +1,6 @@
 import { CardContent } from '@mui/material';
 import AText from '../Text/AText';
 
-
 type ACardProps = {
   name: string;
   tel: string;
@@ -18,8 +17,8 @@ const ACard = ({ name, tel, address, available, remark, onClick }: ACardProps) =
         onClick={onClick}
         sx={{
           border: '1px solid black',
-          width: '300px',
-          height: 'auto',
+          width: '215px',
+          height: '215px',
           '&:hover': {
             cursor: 'pointer',
           },

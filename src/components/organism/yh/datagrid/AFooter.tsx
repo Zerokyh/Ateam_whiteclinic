@@ -1,50 +1,36 @@
 import React from 'react';
-import { Box, Typography, Grid } from '@mui/material';
-import { WorkerProps } from '@/constants/Workers';
+import { Box, Typography } from '@mui/material';
 
-type AFooterProps = {
-  selectedWorker: WorkerProps;
-  calculateWageAmount: (worker: WorkerProps) => number;
+export type FooterItem = {
+  label: string;
+  value: string | number | boolean;
+  renderValue?: (value: string | number | boolean) => React.ReactNode;
 };
 
-const AFooter = ({ selectedWorker, calculateWageAmount }: AFooterProps) => {
-  const totalWage = selectedWorker.datePay?.reduce((sum, dp) => sum + parseInt(dp.pay), 0) || 0;
-  const wageAmount = calculateWageAmount(selectedWorker);
+type AFooterProps = {
+  data: FooterItem[];
+};
 
-  const footerData = [
-    { label: '총 급여', value: `${totalWage.toLocaleString()}원`, xs: 6, md: 3 },
-    { label: '급여 비율', value: `${selectedWorker.percent}%`, xs: 6, md: 3 },
-    { label: '급여 금액', value: `${wageAmount.toLocaleString()}원`, xs: 6, md: 3 },
-    { label: '지급일', value: selectedWorker.payday, xs: 6, md: 3 },
-    { label: '전화번호', value: selectedWorker.tel, xs: 6, md: 3 },
-    { label: '주소', value: selectedWorker.address, xs: 6, md: 3 },
-    { label: '가능 요일', value: selectedWorker.available.join(', '), xs: 12, md: 6 },
-  ];
-
+const AFooter = ({ data }: AFooterProps) => {
   return (
     <Box
       sx={{
         padding: '20px',
-        borderTop: '1px solid gray',
 
-        '& .MuiDataGrid-virtualScroller': {
-          overflowY: 'auto',
-        },
-        '& .MuiDataGrid-footerContainer': {
-          display: 'block',
-          border: 'none',
-        },
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '16px', // 아이템 간 간격
+        width: '150px',
       }}
     >
-      <Grid container spacing={2}>
-        {footerData.map((item, index) => (
-          <Grid item xs={item.xs} md={item.md} key={index}>
-            <Typography>
-              <strong>{item.label}:</strong> {item.value}
-            </Typography>
-          </Grid>
-        ))}
-      </Grid>
+      {data.map((item, index) => (
+        <Box key={index}>
+          <Typography>
+            <strong>{item.label}:</strong>{' '}
+            {item.renderValue ? item.renderValue(item.value) : item.value}
+          </Typography>
+        </Box>
+      ))}
     </Box>
   );
 };

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Box } from '@mui/material';
 import OneCheckbox, { OneCheckboxProps } from '../checkbox/OneCheckbox';
@@ -47,12 +49,8 @@ const CheckboxDropdownSelector = ({
     : [];
 
   return (
-    <Box sx={{ display: 'flex', justifyContent:'center', alignItems:'center'}}>
-      <OneCheckbox
-        {...onecheckboxprops}
-        onChange={handleCheckboxChange}
-        value={selectedCategory}
-      />
+    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <OneCheckbox {...onecheckboxprops} onChange={handleCheckboxChange} value={selectedCategory} />
 
       <ADropdown
         label={dropdownprops?.label}
