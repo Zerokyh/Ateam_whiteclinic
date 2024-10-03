@@ -1,22 +1,13 @@
 'use client';
 
-import TwoButtons from '@/components/molecules/Button/TwoButton';
-import InfoForm from '@/components/molecules/Form/InfoForm';
-import { PaymentInfo } from '@/constants/PaymentInfo';
-import CenteredLayout from '@/styles/layout/CenterLayout';
+import Register from '@/components/molecules/Engineer/Register';
 import { Box } from '@mui/material';
 import React from 'react';
 
 export default function Page() {
   return (
-    <CenteredLayout>
-      <Box>
-        <InfoForm titledformcontrolprops={PaymentInfo} />
-        <TwoButtons
-          leftButton={{ text: '취소', size: 'full' }}
-          rightButton={{ text: '등록', color: 'primary', size: 'full' }}
-        />
-      </Box>
-    </CenteredLayout>
+    <>
+      <Box sx={{ maxWidth: '1000px', margin: '0 auto' }}>{/* <Register></Register> */}</Box>
+    </>
   );
 }
