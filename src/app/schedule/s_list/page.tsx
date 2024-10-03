@@ -9,6 +9,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import 'dayjs/locale/ko';
 import { sizes } from '@/styles/sizes';
 import ADatePicker from '@/components/atom/Calendar/ADatePicker';
+import AButton from '@/components/atom/Button/AButton';
 
 // 일정 등록
 const registeredDates = [new Date('2024-09-01')];
@@ -63,12 +64,13 @@ const Page = () => {
       <Box>
         <Typography variant="h5">스케줄 추가</Typography>
       </Box>
-      <Box sx={{ p: 1 }}>
+      <Box sx={{ p: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
         <ADatePicker
           label="날짜 선택"
           value={selectedDate ? dayjs(selectedDate) : null}
           onChange={handleDateChange}
         />
+        <AButton text="수정" variant="contained" color="primary" />
       </Box>
       <Box sx={scheduleInfoContainerStyle}>
         <Box sx={dateDisplayStyle}>
