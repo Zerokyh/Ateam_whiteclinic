@@ -1,85 +1,85 @@
 'use client';
-
 import * as React from 'react';
-import { useDemoData } from '@mui/x-data-grid-generator';
-import { DataGrid, GridToolbar, GridColDef } from '@mui/x-data-grid';
+import { useState } from 'react';
+import '../../../styles/global.css';
 import { Box, Typography } from '@mui/material';
-import { CustomerInfo } from '@/constants/CustomerInfo';
-import CenteredLayout from '@/styles/layout/CenterLayout';
+import { formatDate } from '@/util/dateUtil';
+import ScheduleInfo from '@/components/organism/Schedule/ScheduleInfo';
+import dayjs, { Dayjs } from 'dayjs';
+import 'dayjs/locale/ko';
+import { sizes } from '@/styles/sizes';
+import ADatePicker from '@/components/atom/Calendar/ADatePicker';
 
-const columns: GridColDef[] = [
-  {
-    field: 'name',
-    headerName: '고객성함',
-    width: 110,
-  },
-  {
-    field: 'tel',
-    headerName: '연락처',
-    width: 150,
-  },
-  {
-    field: 'address',
-    headerName: '주소',
-    width: 500,
-  },
-  {
-    field: 'info',
-    headerName: '결제정보',
-    width: 150,
-  },
-  {
-    field: 'bookingDate',
-    headerName: '예약일',
-    width: 100,
-  },
-  {
-    field: 'engineer',
-    headerName: '엔지니어',
-    width: 110,
-  },
-  {
-    field: 'cleaning',
-    headerName: '청소유형',
-    width: 150,
-  },
-];
+// 일정 등록
+const registeredDates = [new Date('2024-09-01')];
+const engineers = ['김의덕', '이몽룡', '강철'];
 
-// 더미 - DB와 맞춰야함
-const rows = Object.entries(CustomerInfo).map(([key, customer]) => ({
-  id: key, // 객체의 키를 id로 사용
-  ...customer,
-}));
+const isRegisteredDate = (date: Date | null) => {
+  if (!date) return false;
+  return registeredDates.some(
+    (registeredDate) => date.toDateString() === registeredDate.toDateString()
+  );
+};
+
+const containerStyle = {
+  width: 'calc(100vw - 240px)',
+  height: 'calc(100vh - 65px)',
+  display: 'flex',
+  flexDirection: 'column',
+  bgcolor: '#f2f2f2',
+};
+
+const scheduleInfoContainerStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  width: '100%',
+  overflowY: 'auto',
+};
+
+const dateDisplayStyle = {
+  width: '100%',
+  minHeight: '40px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  color: '#3F4D67',
+  fontSize: sizes.fontSize.large,
+  fontWeight: 800,
+};
 
 const Page = () => {
-  const { data, loading } = useDemoData({
-    dataSet: 'Commodity',
-    rowLength: 4,
-    maxColumns: 19,
-  });
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const handleDateChange = (newValue: Dayjs | null) => {
+    setSelectedDate(newValue ? newValue.toDate() : null);
+  };
+
+  const displayDate = selectedDate ? formatDate(selectedDate) : '';
+  const displayDayOfWeek = selectedDate
+    ? selectedDate.toLocaleDateString('ko-KR', { weekday: 'long' })
+    : '';
 
   return (
-    <CenteredLayout>
-      <Box sx={{ width: '78%', height: 50 }}>
-        <Typography variant="h5">스케줄 보기</Typography>
+    <Box sx={containerStyle}>
+      <Box>
+        <Typography variant="h5">스케줄 추가</Typography>
       </Box>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 10,
-            },
-          },
-        }}
-        pageSizeOptions={[5]}
-        checkboxSelection
-        disableRowSelectionOnClick
-        loading={loading}
-        slots={{ toolbar: GridToolbar }}
-      />
-    </CenteredLayout>
+      <Box sx={{ p: 1 }}>
+        <ADatePicker
+          label="날짜 선택"
+          value={selectedDate ? dayjs(selectedDate) : null}
+          onChange={handleDateChange}
+        />
+      </Box>
+      <Box sx={scheduleInfoContainerStyle}>
+        <Box sx={dateDisplayStyle}>
+          {displayDate} {displayDayOfWeek}
+        </Box>
+        {isRegisteredDate(selectedDate) &&
+          engineers.map((engineer, index) => (
+            <ScheduleInfo key={index} selectedDate={selectedDate} engineerName={engineer} />
+          ))}
+      </Box>
+    </Box>
   );
 };
 
