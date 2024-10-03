@@ -5,7 +5,7 @@ import ADropdown, { ADropdownProps } from '@/components/atom/DropdownBox/ADropdo
 import { Payment } from '@/constants/Payment';
 
 export type SelectProps = {
-  adropdownprops: Omit<ADropdownProps, 'options'>;
+  adropdownprops?: Omit<ADropdownProps, 'options'>;
 };
 
 const APayment = ({ adropdownprops }: SelectProps) => {

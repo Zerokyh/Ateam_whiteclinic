@@ -46,8 +46,7 @@ const SalesInfo = () => {
       setSalesFormData((prev) => ({
         ...prev,
         [key]: isNumber ? Number(value) : value,
-        ...(key !== 'isFinalPriceManual' &&
-          key !== 'finalPrice' && { isFinalPriceManual: false }), // 금액 자동 계산으로 전환
+        ...(key !== 'isFinalPriceManual' && key !== 'finalPrice' && { isFinalPriceManual: false }), // 금액 자동 계산으로 전환
       }));
     };
 
@@ -110,9 +109,7 @@ const SalesInfo = () => {
 
     // 선택된 품목의 가격을 계산
     const category = productCategories[selectedCategory];
-    const foundItem = category.categories.find(
-      (item) => item.category === selectedDropdownValue
-    );
+    const foundItem = category.categories.find((item) => item.category === selectedDropdownValue);
 
     if (foundItem?.price) {
       itemPrice = foundItem.price;
@@ -148,6 +145,7 @@ const SalesInfo = () => {
     SalesFormData.discountAmount,
     SalesFormData.isDiscountApplied,
     SalesFormData.isFinalPriceManual,
+    SalesFormData,
   ]);
 
   // 폼 초기화 함수

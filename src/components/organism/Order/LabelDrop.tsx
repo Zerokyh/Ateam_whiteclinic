@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Box } from '@mui/material';
 
-import AMonthSelector from '@/components/molecules/Select/AMonthSelector';
-import ADatesSelector from '@/components/molecules/Select/ADateSelector';
 import ADaySelector from '@/components/molecules/Select/ADaySelector';
 import APercent from '@/components/molecules/Select/APercent';
 import APayment from '@/components/molecules/Select/APayment';
 import AEvidentialDocument from '@/components/molecules/Select/AEvidentialDocument';
 import AText from '@/components/atom/Text/AText';
+import AMonthSelector from '@/components/molecules/Select/delete/AMonthSelector';
+import ADatesSelector from '@/components/molecules/Select/delete/ADateSelector';
 
 const components = {
   AMonthSelector,
