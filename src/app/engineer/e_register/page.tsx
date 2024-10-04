@@ -7,7 +7,9 @@ import React from 'react';
 export default function Page() {
   return (
     <>
-      <Box sx={{ maxWidth: '1000px', margin: '0 auto' }}>{/* <Register></Register> */}</Box>
+      <Box sx={{ maxWidth: '1000px', margin: '0 auto' }}>
+        <Register></Register>
+      </Box>
     </>
   );
 }

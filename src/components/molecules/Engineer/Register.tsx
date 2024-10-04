@@ -8,7 +8,7 @@ import { EngineerFormData, EngineerFormValues } from '@/constants/EnginnerFormDa
 import CenteredLayout from '@/styles/layout/CenterLayout';
 
 type RegisterProps = {
-  onRegister: () => void;
+  onRegister?: () => void;
 };
 
 const Register = ({ onRegister }: RegisterProps) => {
@@ -62,7 +62,6 @@ const Register = ({ onRegister }: RegisterProps) => {
   // 등록 버튼 클릭 시 호출되는 함수
   const handleSubmit = () => {
     console.log('등록된 데이터:', formValues);
-    onRegister();
   };
 
   return (
