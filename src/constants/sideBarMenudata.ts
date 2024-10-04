@@ -34,7 +34,7 @@ export const sideBarMenuData = {
         icon: FormatListBulletedIcon,
       },
       {
-        name: '등록하기',
+        name: '예약하기',
         href: '/customers/c_register',
         icon: PlaylistAddIcon,
       },
@@ -50,8 +50,8 @@ export const sideBarMenuData = {
         href: '/schedule/s_list',
         icon: FormatListBulletedIcon,
       },
-      // { name: '추가하기', href: '/schedule/s_register', icon: PlaylistAddIcon },
-      // { name: '수정하기', href: '/schedule/s_modify', icon: SettingsIcon },
+      // { name: '등록하기', href: '/schedule/s_register', icon: PlaylistAddIcon },
+      { name: '수정하기', href: '/schedule/s_modify', icon: SettingsIcon },
     ],
   },
   sales: {

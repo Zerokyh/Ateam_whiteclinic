@@ -8,50 +8,39 @@ type heightSize = 'small' | 'medium';
 export type AVariableInputProps = {
   type?: string;
   placeholder?: string;
-  isInvisible?: boolean;
+  isEdit?: boolean;
   width?: number;
   sx?: object;
-  isMultiline?: boolean;
   inputHeightSize?: heightSize;
-  initialValue?: string;
-  onValueChange?: (value: string) => void;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const AVariableInput = ({
   type,
   placeholder,
-  isInvisible = true,
+  isEdit = true,
   width = 4,
   sx,
-  isMultiline = false,
   inputHeightSize = 'small',
-  initialValue = '',
-  onValueChange,
+  value,
+  onChange,
 }: AVariableInputProps) => {
-  const [isDisabled, setIsDisabled] = React.useState(isInvisible);
+  const [isDisabled, setIsDisabled] = React.useState(isEdit);
   const [inputWidth, setInputWidth] = React.useState(`${width * 8}px`);
-  const [value, setValue] = React.useState(initialValue);
 
   React.useEffect(() => {
     const calculateWidth = () => {
       const padding = 1;
-      const scrollWidth = value.length * 20; // 문자 길이에 따라 폭을 계산
+      const scrollWidth = value.length * 24; // 문자 길이에 따라 폭을 계산
       const newWidth = Math.max(width * 8, scrollWidth + padding);
       setInputWidth(`${newWidth}px`);
     };
 
     calculateWidth();
-  }, [value, width]);
+  }, [value, width]); // value가 바뀔 때마다 width를 재계산
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
-    setValue(newValue);
-    if (onValueChange) {
-      onValueChange(newValue);
-    }
-  };
-
-  const toggleDisabled = () => {
+  const handleChange = () => {
     setIsDisabled(!isDisabled);
   };
 
@@ -59,15 +48,14 @@ const AVariableInput = ({
     <FormControl sx={{ m: 1, width: inputWidth, ...sx }} variant="outlined" size={inputHeightSize}>
       <OutlinedInput
         type={type}
-        value={value}
-        sx={{ minWidth: '120px' }}
-        onChange={handleChange}
-        multiline={isMultiline}
+        value={value} // 외부에서 전달된 value 사용
+        sx={{ minWidth: '140px' }}
+        onChange={onChange} // 외부에서 전달된 onChange 사용
         placeholder={placeholder}
         disabled={isDisabled}
         endAdornment={
           <InputAdornment position="end">
-            <IconButton aria-label="toggle modify text" edge="end" onClick={toggleDisabled}>
+            <IconButton aria-label="toggle modify text" edge="end" onClick={handleChange}>
               <DriveFileRenameOutlineIcon />
             </IconButton>
           </InputAdornment>

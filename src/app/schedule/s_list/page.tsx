@@ -10,6 +10,7 @@ import 'dayjs/locale/ko';
 import { sizes } from '@/styles/sizes';
 import ADatePicker from '@/components/atom/Calendar/ADatePicker';
 import AButton from '@/components/atom/Button/AButton';
+import CenteredLayout from '@/styles/layout/CenterLayout';
 
 // 일정 등록
 const registeredDates = [new Date('2024-09-01')];
@@ -60,7 +61,7 @@ const Page = () => {
     : '';
 
   return (
-    <Box sx={containerStyle}>
+    <CenteredLayout>
       <Box>
         <Typography variant="h5">스케줄 추가</Typography>
       </Box>
@@ -81,7 +82,7 @@ const Page = () => {
             <ScheduleInfo key={index} selectedDate={selectedDate} engineerName={engineer} />
           ))}
       </Box>
-    </Box>
+    </CenteredLayout>
   );
 };
 
