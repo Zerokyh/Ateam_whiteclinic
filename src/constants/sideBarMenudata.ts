@@ -21,7 +21,7 @@ export const sideBarMenuData = {
         href: '/engineer/e_register',
         icon: PlaylistAddIcon,
       },
-      // { name: '수정하기', href: '/engineer/e_modify', icon: SettingsIcon },
+      { name: '수정하기', href: '/engineer/e_modify', icon: SettingsIcon },
     ],
   },
   member: {
@@ -38,7 +38,7 @@ export const sideBarMenuData = {
         href: '/customers/c_register',
         icon: PlaylistAddIcon,
       },
-      // { name: '수정하기', href: '/customers/c_modify', icon: SettingsIcon },
+      { name: '수정하기', href: '/customers/c_modify', icon: SettingsIcon },
     ],
   },
   schedule: {
@@ -50,7 +50,7 @@ export const sideBarMenuData = {
         href: '/schedule/s_list',
         icon: FormatListBulletedIcon,
       },
-      // { name: '등록하기', href: '/schedule/s_register', icon: PlaylistAddIcon },
+      { name: '등록하기', href: '/schedule/s_register', icon: PlaylistAddIcon },
       { name: '수정하기', href: '/schedule/s_modify', icon: SettingsIcon },
     ],
   },
