@@ -25,6 +25,7 @@ import AEvidentialDocument from '@/components/molecules/Select/AEvidentialDocume
 import APercent from '@/components/molecules/Select/APercent';
 import ADaySelector from '@/components/molecules/Select/ADaySelector';
 import APayment, { SelectProps } from '@/components/molecules/Select/APayment';
+import ADateTimePicker, { ADateTimePickerProps } from '../ADateTimePicker/ADateTimePicker';
 
 export type FormFieldType =
   | 'AButton'
@@ -44,7 +45,8 @@ export type FormFieldType =
   | 'Holiday'
   | 'AEvidentialDocument'
   | 'APercent'
-  | 'ADaySelector';
+  | 'ADaySelector'
+  | 'ADateTimePicker';
 
 export type FormFieldConfigProps = {
   formfieldtype: FormFieldType;
@@ -63,7 +65,8 @@ export type FormFieldConfigProps = {
     | CheckboxDropdownSelectorProps
     | SelectProps
     | HolidayProps
-    | HolidayRegistrationProps;
+    | HolidayRegistrationProps
+    | ADateTimePickerProps;
 };
 
 export type FormFieldProps = {
@@ -90,6 +93,7 @@ const fieldTypeToComponentMap: Record<FormFieldType, React.ElementType> = {
   AEvidentialDocument,
   APercent,
   ADaySelector,
+  ADateTimePicker,
 };
 
 const FormField = ({ fields }: FormFieldProps) => {

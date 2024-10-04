@@ -140,8 +140,9 @@ export const salesInfoFormData = ({
           {
             formfieldtype: 'AFixedInput' as FormFieldType,
             prevprops: {
-              placeholder: '직접 입력',
+              placeholder: '특이사항',
               isInvisible: false,
+              isMultiline: true,
               value: uniqueDetails,
               onChange: (event) => onUniqueDetailsChange(event.target.value),
             } as AFixedInputProps,
