@@ -69,11 +69,11 @@ const Register = ({ onRegister }: RegisterProps) => {
       <Box>
         <InfoForm titledformcontrolprops={EngineerFormData(formValues, handleFieldChange)} />
         <TwoButtons
-          leftButton={{ text: '취소', color: 'default', size: 'full', onClick: resetFormValues }}
+          leftButton={{ text: '취소', color: 'default', size: 'large', onClick: resetFormValues }}
           rightButton={{
             text: '등록',
             color: 'primary',
-            size: 'full',
+            size: 'large',
             onClick: handleSubmit,
             disabled: !isFormValid(),
           }}

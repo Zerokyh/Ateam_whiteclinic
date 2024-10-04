@@ -1,4 +1,5 @@
-import { Box } from '@mui/material';
+import React from 'react';
+import { Box, ThemeProvider, createTheme } from '@mui/material';
 import AText, { TextProps } from '@/components/atom/Text/AText';
 import FormField, { FormFieldProps } from './FormField';
 
@@ -8,33 +9,64 @@ export type TitledFormControlProps = {
   onchange?: () => void;
 };
 
-const TitledFormControl = ({ titleprops, formfieldprops, onchange }: TitledFormControlProps) => {
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#3F4D67',
+      light: '#42a5f5',
+      dark: '#1565c0',
+    },
+  },
+});
+
+const TitledFormControl: React.FC<TitledFormControlProps> = ({
+  titleprops,
+  formfieldprops,
+  onchange,
+}) => {
   return (
-    <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: '110px auto',
-        minWidth: '550px',
-        width: '100%',
-        borderBottom: '1px solid black',
-      }}
-    >
+    <ThemeProvider theme={theme}>
       <Box
         sx={{
-          minHeight: '57px',
           display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          bgcolor: '#F2F2F2',
-          borderRight: '1px solid black',
+          width: '100%',
+          minWidth: '550px',
+          borderRadius: '8px',
+          overflow: 'hidden',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+          mb: 2,
+          '&:hover': {
+            boxShadow: '0 4px 8px rgba(0,0,0,0.15)',
+          },
         }}
       >
-        {titleprops && <AText {...titleprops} />}
+        <Box
+          sx={{
+            width: '150px',
+            minWidth: '150px',
+            display: 'flex',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+            bgcolor: 'primary.main',
+            color: 'white',
+            px: 3,
+          }}
+        >
+          {titleprops && <AText {...titleprops} size="large" />}
+        </Box>
+        <Box
+          sx={{
+            flex: 1,
+            display: 'flex',
+            alignItems: 'center',
+            p: 2,
+            bgcolor: 'background.paper',
+          }}
+        >
+          {formfieldprops && <FormField {...formfieldprops} />}
+        </Box>
       </Box>
-      <Box sx={{ display: 'flex', alignItems: 'center', paddingX: '15px', width: '100%' }}>
-        {formfieldprops && <FormField {...formfieldprops} />}
-      </Box>
-    </Box>
+    </ThemeProvider>
   );
 };
 

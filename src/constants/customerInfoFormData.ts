@@ -7,6 +7,8 @@ import { publishedCheckboxData } from './customerData';
 import dayjs, { Dayjs } from 'dayjs';
 import { CustomerInfoValues } from '@/components/organism/Customer/CustomerInfo';
 import { SelectProps } from '@/components/molecules/Select/APayment';
+import { AFixedInputProps } from '@/components/atom/Input/FixedInput/AFixedInput';
+import { ADateTimePickerProps } from '@/components/molecules/ADateTimePicker/ADateTimePicker';
 
 export const CustomerInfoFormData = (
   formValues: CustomerInfoValues,
@@ -19,27 +21,17 @@ export const CustomerInfoFormData = (
     formfieldprops: {
       fields: [
         {
-          formfieldtype: 'ADatePicker' as FormFieldType,
+          formfieldtype: 'ADateTimePicker' as FormFieldType,
           prevprops: {
-            label: '예약일',
-            placeholder: '날짜 선택',
-            value: formValues.reservationDate ? dayjs(formValues.reservationDate) : null,
-            onChange: (newValue: Dayjs | null) => {
-              handleFieldChange('reservationDate', newValue ? newValue.format('YYYY-MM-DD') : '');
-            },
-          } as ADatePickerProps,
+            dateLabel: '예약 날짜',
+            timeLabel: '예약 시간',
+            value: formValues.reservationDateTime,
+            onChange: (newValue: Dayjs | null) =>
+              handleFieldChange('reservationDateTime', newValue),
+            size: 'small',
+          } as ADateTimePickerProps,
         },
-        {
-          formfieldtype: 'AVariableInput' as FormFieldType,
-          prevprops: {
-            placeholder: '시간',
-            isInvisible: false,
-            initialValue: formValues.time || '',
-            onValueChange: (value: string) => {
-              handleFieldChange('time', value);
-            },
-          } as AVariableInputProps,
-        },
+        
       ],
     },
   },
@@ -50,14 +42,14 @@ export const CustomerInfoFormData = (
     formfieldprops: {
       fields: [
         {
-          formfieldtype: 'AVariableInput' as FormFieldType,
+          formfieldtype: 'AFixedInput' as FormFieldType,
           prevprops: {
+            placeholder: '고객성함',
             isInvisible: false,
-            initialValue: formValues.name || '',
-            onValueChange: (value: string) => {
-              handleFieldChange('name', value);
-            },
-          } as AVariableInputProps,
+            value: formValues.name,
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+              handleFieldChange('name', e.target.value),
+          } as AFixedInputProps,
         },
       ],
     },
@@ -69,14 +61,14 @@ export const CustomerInfoFormData = (
     formfieldprops: {
       fields: [
         {
-          formfieldtype: 'AVariableInput' as FormFieldType,
+          formfieldtype: 'AFixedInput' as FormFieldType,
           prevprops: {
+            placeholder: '연락처',
             isInvisible: false,
-            initialValue: formValues.phoneNumber || '',
-            onValueChange: (value: string) => {
-              handleFieldChange('phoneNumber', value);
-            },
-          } as AVariableInputProps,
+            value: formValues.phoneNumber,
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+              handleFieldChange('phoneNumber', e.target.value),
+          } as AFixedInputProps,
         },
       ],
     },
@@ -88,14 +80,14 @@ export const CustomerInfoFormData = (
     formfieldprops: {
       fields: [
         {
-          formfieldtype: 'AVariableInput' as FormFieldType,
+          formfieldtype: 'AFixedInput' as FormFieldType,
           prevprops: {
+            placeholder: '방문주소',
             isInvisible: false,
-            initialValue: formValues.address || '',
-            onValueChange: (value: string) => {
-              handleFieldChange('address', value);
-            },
-          } as AVariableInputProps,
+            value: formValues.address,
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+              handleFieldChange('address', e.target.value),
+          } as AFixedInputProps,
         },
       ],
     },
@@ -107,14 +99,15 @@ export const CustomerInfoFormData = (
     formfieldprops: {
       fields: [
         {
-          formfieldtype: 'AVariableInput' as FormFieldType,
+          formfieldtype: 'AFixedInput' as FormFieldType,
           prevprops: {
+            placeholder: '특이사항',
             isInvisible: false,
-            initialValue: formValues.uniqueDetails || '',
-            onValueChange: (value: string) => {
-              handleFieldChange('uniqueDetails', value);
-            },
-          } as AVariableInputProps,
+            isMultiline: true,
+            value: formValues.uniqueDetails,
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+              handleFieldChange('uniqueDetails', e.target.value),
+          } as AFixedInputProps,
         },
       ],
     },
@@ -130,6 +123,7 @@ export const CustomerInfoFormData = (
           prevprops: {
             adropdownprops: {
               label: '결제방식 선택',
+              width: 'medium',
               value: formValues.payment || '',
               onChange: (event: React.ChangeEvent<{ value: string }>) => {
                 handleFieldChange('payment', event.target.value);
@@ -151,6 +145,7 @@ export const CustomerInfoFormData = (
           prevprops: {
             adropdownprops: {
               label: '증빙서류 선택',
+              width: 'medium',
               value: formValues.document || '',
               onChange: (event: React.ChangeEvent<{ value: string }>) => {
                 handleFieldChange('document', event.target.value);

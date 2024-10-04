@@ -1,7 +1,6 @@
 import { Box } from '@mui/material';
 import TitledFormControl, { TitledFormControlProps } from './TitledFormControl';
 
-
 type SalesInfoFormProps = {
   titledformcontrolprops: TitledFormControlProps[];
 };

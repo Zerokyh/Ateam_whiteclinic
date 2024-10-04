@@ -8,8 +8,7 @@ import { CustomerInfoFormData } from '@/constants/customerInfoFormData';
 import { Dayjs } from 'dayjs';
 
 export type CustomerInfoValues = {
-  reservationDate: Dayjs | string | null;
-  time: string;
+  reservationDateTime: Dayjs | null;
   name: string;
   phoneNumber: string;
   address: string;
@@ -25,8 +24,7 @@ type CustomerInfoProps = {
 
 const CustomerInfo = ({ onRegister }: CustomerInfoProps) => {
   const [formValues, setFormValues] = useState<CustomerInfoValues>({
-    reservationDate: null,
-    time: '',
+    reservationDateTime: null,
     name: '',
     phoneNumber: '',
     address: '',
@@ -40,8 +38,7 @@ const CustomerInfo = ({ onRegister }: CustomerInfoProps) => {
 
   const resetFormValues = () => {
     setFormValues({
-      reservationDate: null,
-      time: '',
+      reservationDateTime: null,
       name: '',
       phoneNumber: '',
       address: '',
@@ -63,7 +60,7 @@ const CustomerInfo = ({ onRegister }: CustomerInfoProps) => {
   // 필수 입력 항목이 모두 채워져 있는지 확인하는 함수
   const isFormValid = () => {
     const requiredFields: (keyof CustomerInfoValues)[] = [
-      'reservationDate',
+      'reservationDateTime',
       'name',
       'phoneNumber',
       'address',
