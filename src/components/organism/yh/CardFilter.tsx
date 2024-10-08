@@ -9,7 +9,7 @@ type FilterProps = {
   filter: string;
   onFilterChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onItemClick: (item: WorkerProps) => void;
-}
+};
 
 const CardFilter = ({ data, filter, onFilterChange, onItemClick }: FilterProps) => {
   return (
@@ -18,18 +18,18 @@ const CardFilter = ({ data, filter, onFilterChange, onItemClick }: FilterProps) 
         placeholder="이름, 주소 또는 전화번호로 검색"
         value={filter}
         onChange={onFilterChange}
-        width={300}
+        width={200}
         sx={{ mb: 2 }}
         inputHeightSize="medium"
       />
       <Box
         sx={{
           display: 'flex',
-          flexWrap: 'wrap',
+          flexDirection: 'column',
           gap: '20px',
           padding: '20px',
           overflowY: 'auto',
-          height: '500px',
+          height: '90%',
         }}
       >
         {data.map(([key, worker]) => (
@@ -38,8 +38,6 @@ const CardFilter = ({ data, filter, onFilterChange, onItemClick }: FilterProps) 
             name={worker.name}
             tel={worker.tel}
             address={worker.address}
-            available={worker.available.join(', ')}
-            remark=""
             onClick={() => onItemClick(worker)}
           />
         ))}

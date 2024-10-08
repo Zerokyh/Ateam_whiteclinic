@@ -1,5 +1,6 @@
 import { CardContent } from '@mui/material';
 import AText from '../../atom/Text/AText';
+import { colors } from '@/styles/colors';
 
 type ACardProps = {
   name: string;
@@ -10,25 +11,27 @@ type ACardProps = {
   onClick: () => void;
 };
 
-const ACard = ({ name, tel, address, available, remark, onClick }: ACardProps) => {
+const ACard = ({ name, tel, address, onClick }: ACardProps) => {
   return (
     <>
       <CardContent
         onClick={onClick}
         sx={{
           border: '1px solid black',
-          width: '215px',
-          height: '215px',
+          width: '200px',
+          height: 'auto',
           '&:hover': {
             cursor: 'pointer',
+            backgroundColor: colors.background.drawer,
+            color: 'white',
           },
+          borderRadius: '20px',
         }}
       >
         <AText text={`이름: ${name}`} />
         <AText text={`연락처: ${tel}`} />
-        <AText text={`거주지역: ${address}`} />
-        <AText text={`가능품목: ${available}`} />
-        <AText text={`비고: ${remark}`} />
+        <AText text={`거주지역: `} />
+        <AText text={`${address}`} />
       </CardContent>
     </>
   );

@@ -50,7 +50,7 @@ const Page = () => {
     rows,
     columns: workerColumns,
     title: `${selectedWorker?.name}의 정보`,
-    height: 400,
+    height: 'auto',
     width: '100%',
   };
 
@@ -62,21 +62,62 @@ const Page = () => {
   };
 
   return (
-    <CenteredLayout>
-      <CardFilter {...cardFilterProps} />
-
-      {selectedWorker && (
-        <Box sx={YStyle.one}>
-          <Box sx={{ width: sizes.width.xxlarge }}>
-            <ADataGrid {...workerDataProps} />
-          </Box>
-          <Box sx={YStyle.two}>
-            <AFooter data={getFooterData(selectedWorker)} />
-          </Box>
-          <AButton text="등록" onClick={submit} />
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100vh',
+        width: '100%',
+        overflow: 'hidden',
+      }}
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          flexGrow: 1,
+          overflow: 'hidden',
+        }}
+      >
+        <Box
+          sx={{
+            width: '300px',
+            height: '100%',
+            overflowY: 'auto',
+            borderRight: '1px solid #e0e0e0',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <CardFilter {...cardFilterProps} />
         </Box>
-      )}
-    </CenteredLayout>
+        <Box
+          sx={{
+            flexGrow: 1,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+            overflowY: 'auto',
+            padding: '20px',
+          }}
+        >
+          {selectedWorker && (
+            <Box
+              sx={{
+                width: '100%',
+                maxWidth: '800px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '20px',
+              }}
+            >
+              <ADataGrid {...workerDataProps} />
+              <AFooter data={getFooterData(selectedWorker)} />
+            </Box>
+          )}
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
