@@ -2,6 +2,7 @@ import * as React from 'react';
 import AFixedInput from '@/components/atom/Input/FixedInput/AFixedInput';
 import { TimeSlot } from '@/constants/timeSlots';
 import { Box } from '@mui/material';
+import { sizes } from '@/styles/sizes';
 
 type DateInfoProps = {
   time?: TimeSlot;
@@ -18,16 +19,27 @@ const DateInfo = ({ time, timeslotschedule }: DateInfoProps) => {
   };
 
   return (
-    <Box sx={{ display: 'flex', borderBottom: '1px solid #3F4D67' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        //  borderBottom: '1px solid #dbdbdb'
+
+        gap: 1,
+      }}
+    >
       <Box
         sx={{
           width: '140px',
           height: '40px',
           display: 'flex',
+          justifyContent: 'center',
           alignItems: 'center',
-          borderRight: '1px solid #3F4D67',
+          // borderRight: '1px solid #dbdbdb',
           position: 'relative',
-          left: 10,
+          // left: 10,
+          py: 1,
+          bgcolor: 'white',
+          borderRadius: sizes.borderRadius.xs,
         }}
       >
         {time}
@@ -38,12 +50,20 @@ const DateInfo = ({ time, timeslotschedule }: DateInfoProps) => {
           height: '40px',
           display: 'flex',
           alignItems: 'center',
-          position: 'relative',
-          left: 20,
+          bgcolor: 'white',
         }}
       >
         {/* {timeslotschedule} */}
-        <AFixedInput value={inputValue} onChange={handleInputChange} />
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%',
+            borderRadius: sizes.borderRadius.xs,
+          }}
+        >
+          <AFixedInput value={inputValue} onChange={handleInputChange} sx={{ width: `100%` }} />
+        </Box>
       </Box>
     </Box>
   );

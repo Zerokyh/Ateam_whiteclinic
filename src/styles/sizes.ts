@@ -36,4 +36,7 @@ export const sizes = {
     default: '200px',
     large: '600px',
   },
+  borderRadius: {
+    xs: '8px',
+  },
 };

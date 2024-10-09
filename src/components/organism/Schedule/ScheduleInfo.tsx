@@ -23,15 +23,22 @@ const ScheduleInfo = ({ selectedDate, engineerName }: ScheduleInfoProps) => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          bgcolor: '#3F4D67',
+          bgcolor: '#1565C0',
           color: 'white',
           fontSize: sizes.fontSize.large,
           fontWeight: 800,
+          borderRadius: sizes.borderRadius.xs,
         }}
       >
         {engineerName} 기사
       </Box>
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 1,
+        }}
+      >
         {timeSlots.map((slot, index) => (
           <DateInfo key={index} time={slot} timeslotschedule={'일정 입력'} />
         ))}

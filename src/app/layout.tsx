@@ -51,7 +51,16 @@ const RootLayout = ({
             }}
           >
             <Toolbar />
-            <div className="flex-grow p-6 md:overflow-y-auto md:p-12">{children}</div>
+            <Box
+              sx={{
+                flexGrow: 1,
+                overflowY: { md: 'auto' },
+                height: '93.2vh',
+                bgcolor: '#F4F7FA',
+              }}
+            >
+              {children}
+            </Box>
           </Box>
         </Box>
       </body>

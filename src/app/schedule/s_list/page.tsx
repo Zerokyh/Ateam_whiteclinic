@@ -13,7 +13,7 @@ import AButton from '@/components/atom/Button/AButton';
 import CenteredLayout from '@/styles/layout/CenterLayout';
 
 // 일정 등록
-const registeredDates = [new Date('2024-09-01')];
+const registeredDates = [new Date('2024-10-10')];
 const engineers = ['김의덕', '이몽룡', '강철'];
 
 const isRegisteredDate = (date: Date | null) => {
@@ -23,19 +23,12 @@ const isRegisteredDate = (date: Date | null) => {
   );
 };
 
-const containerStyle = {
-  width: 'calc(100vw - 240px)',
-  height: 'calc(100vh - 65px)',
-  display: 'flex',
-  flexDirection: 'column',
-  bgcolor: '#f2f2f2',
-};
-
 const scheduleInfoContainerStyle = {
   display: 'flex',
   flexDirection: 'column',
-  width: '100%',
-  overflowY: 'auto',
+  width: '90%',
+  gap: 2,
+  my: 2,
 };
 
 const dateDisplayStyle = {
@@ -44,7 +37,7 @@ const dateDisplayStyle = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  color: '#3F4D67',
+  color: '#1565C0',
   fontSize: sizes.fontSize.large,
   fontWeight: 800,
 };
@@ -61,9 +54,9 @@ const Page = () => {
     : '';
 
   return (
-    <CenteredLayout>
-      <Box>
-        <Typography variant="h5">스케줄 추가</Typography>
+    <>
+      <Box sx={{ ml: 2 }}>
+        <Typography variant="h6">스케줄 추가</Typography>
       </Box>
       <Box sx={{ p: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
         <ADatePicker
@@ -73,16 +66,18 @@ const Page = () => {
         />
         <AButton text="수정" variant="contained" color="primary" />
       </Box>
-      <Box sx={scheduleInfoContainerStyle}>
-        <Box sx={dateDisplayStyle}>
-          {displayDate} {displayDayOfWeek}
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <Box sx={scheduleInfoContainerStyle}>
+          <Box sx={dateDisplayStyle}>
+            {displayDate} {displayDayOfWeek}
+          </Box>
+          {isRegisteredDate(selectedDate) &&
+            engineers.map((engineer, index) => (
+              <ScheduleInfo key={index} selectedDate={selectedDate} engineerName={engineer} />
+            ))}
         </Box>
-        {isRegisteredDate(selectedDate) &&
-          engineers.map((engineer, index) => (
-            <ScheduleInfo key={index} selectedDate={selectedDate} engineerName={engineer} />
-          ))}
       </Box>
-    </CenteredLayout>
+    </>
   );
 };
 
