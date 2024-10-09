@@ -1,7 +1,9 @@
 'use client';
 
+import ScheduleShowTable from '@/components/organism/Schedule/ScheduleShowTable';
+
 const Page = () => {
-  return;
+  return <ScheduleShowTable />;
 };
 
 export default Page;
