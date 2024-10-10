@@ -3,6 +3,7 @@ import AFixedInput from '@/components/atom/Input/FixedInput/AFixedInput';
 import { TimeSlot } from '@/constants/timeSlots';
 import { Box } from '@mui/material';
 import { sizes } from '@/styles/sizes';
+import AText from '@/components/atom/Text/AText';
 
 type DateInfoProps = {
   time?: TimeSlot;
@@ -62,7 +63,8 @@ const DateInfo = ({ time, timeslotschedule }: DateInfoProps) => {
             borderRadius: sizes.borderRadius.xs,
           }}
         >
-          <AFixedInput value={inputValue} onChange={handleInputChange} sx={{ width: `100%` }} />
+          {/* <AFixedInput value={inputValue} onChange={handleInputChange} sx={{ width: `100%` }} /> */}
+          <AText text="입력" />
         </Box>
       </Box>
     </Box>
