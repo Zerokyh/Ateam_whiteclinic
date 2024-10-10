@@ -2,30 +2,10 @@
 
 import * as React from 'react';
 import { Box } from '@mui/material';
+import ACalendar from '@/components/atom/Calendar/ACalendar';
 
 const Home = () => {
-  return (
-    <Box
-      sx={{
-        height: 'calc(100vh - 112px)',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>메인페이지입니다.</Box>
-      </Box>
-    </Box>
-  );
+  return <ACalendar></ACalendar>;
 };
 
 export default Home;
