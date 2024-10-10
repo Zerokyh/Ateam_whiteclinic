@@ -32,6 +32,7 @@ const CDatePicker = ({
           slotProps={{
             textField: {
               placeholder: '연 / 월 / 일',
+              size: 'small',
             },
           }}
           label={label}

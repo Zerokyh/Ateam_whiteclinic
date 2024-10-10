@@ -62,13 +62,18 @@ const ScheduleShowTable = () => {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        // alignItems: 'center',
-        height: '95vh',
         width: '100%',
-        overflow: 'hidden',
+        height: '100%',
+        overflowY: 'hidden',
       }}
     >
-      <Box sx={{ display: 'flex', flexGrow: 1, overflow: 'hidden' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexGrow: 1,
+          overflow: 'hidden',
+        }}
+      >
         <Box
           sx={{
             width: '300px',
@@ -94,19 +99,17 @@ const ScheduleShowTable = () => {
           sx={{
             display: 'flex',
             justifyContent: 'center',
-            width: '1200px',
+            width: '100%',
             gap: 2,
             p: 1,
-            overflow: 'scroll',
-            mx: 30,
+            overflowY: 'scroll',
           }}
         >
           <Box
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              width: '100%',
-              alignContent: 'center',
+              width: '80%',
             }}
           >
             <Box sx={dateDisplayStyle}>
