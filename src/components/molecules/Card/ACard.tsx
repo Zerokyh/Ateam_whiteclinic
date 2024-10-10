@@ -1,6 +1,9 @@
-import { CardContent } from '@mui/material';
+import { Box, CardContent } from '@mui/material';
 import AText from '../../atom/Text/AText';
 import { colors } from '@/styles/colors';
+import PersonIcon from '@mui/icons-material/Person';
+import PhoneIcon from '@mui/icons-material/Phone';
+import HomeIcon from '@mui/icons-material/Home';
 
 type ACardProps = {
   name: string;
@@ -17,7 +20,7 @@ const ACard = ({ name, tel, address, onClick }: ACardProps) => {
       <CardContent
         onClick={onClick}
         sx={{
-          border: '1px solid black',
+          // border: '1px solid black',
           width: '200px',
           height: 'auto',
           '&:hover': {
@@ -25,13 +28,25 @@ const ACard = ({ name, tel, address, onClick }: ACardProps) => {
             backgroundColor: colors.background.drawer,
             color: 'white',
           },
+          backgroundColor: 'white',
           borderRadius: '20px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 1,
         }}
       >
-        <AText text={`이름: ${name}`} />
-        <AText text={`연락처: ${tel}`} />
-        <AText text={`거주지역: `} />
-        <AText text={`${address}`} />
+        <Box sx={{ display: 'flex', gap: 1 }}>
+          <PersonIcon />
+          <AText text={name} />
+        </Box>
+        <Box sx={{ display: 'flex', gap: 1 }}>
+          <PhoneIcon />
+          <AText text={tel} />
+        </Box>
+        <Box sx={{ display: 'flex', gap: 1 }}>
+          <HomeIcon />
+          <AText text={address} />
+        </Box>
       </CardContent>
     </>
   );
