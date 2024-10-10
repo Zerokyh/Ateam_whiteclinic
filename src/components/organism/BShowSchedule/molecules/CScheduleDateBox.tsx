@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import CTitleContent from './CTitleContent';
 import { Dayjs } from 'dayjs';
-import { CScheduleDateBoxProps, StyledTitleBox, TODAY } from './CShowScheduleDef';
+import { CScheduleDateBoxProps, StyledTitleBox, TODAY } from '../ts/CShowScheduleDef';
 
 //날짜 제목 컴포넌트
 

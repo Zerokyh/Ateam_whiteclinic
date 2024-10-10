@@ -1,10 +1,8 @@
 import { Box, ThemeProvider } from '@mui/material';
 import CEngineerTitle from './CEngineerTitle';
+import { CScheduleTimeLineProps, StyledScheduleTimeline } from '../ts/CShowScheduleDef';
+import { theme } from '../ts/theme';
 import CScheduleTimeMapping from './CScheduleTimeMapping';
-import { Dayjs } from 'dayjs';
-
-import { CScheduleTimeLineProps, StyledScheduleTimeline } from './CShowScheduleDef';
-import { theme } from './theme';
 
 const CScheduleTimeLine = ({ engineerName, selectDate, orderInfo }: CScheduleTimeLineProps) => {
   console.log('timeLineData:', engineerName, selectDate, orderInfo);

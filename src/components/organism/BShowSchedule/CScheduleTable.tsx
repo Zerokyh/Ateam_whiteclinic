@@ -7,11 +7,12 @@ import {
   SchInfoModel,
   StyledScheduleTable,
   TODAY,
-} from './CShowScheduleDef';
-import { theme } from './theme';
-import CScheduleTimeLineList from './CScheduleTimeLineList';
-import CDatePicker from './CDatePicker';
-import CScheduleDateBox from './CScheduleDateBox';
+} from './ts/CShowScheduleDef';
+import { theme } from './ts/theme';
+import CDatePicker from './molecules/CDatePicker';
+import CScheduleDateBox from './molecules/CScheduleDateBox';
+import CScheduleTimeLineList from './molecules/CScheduleTimeLineList';
+import { dummyCustomers, dummyEngineers } from './ts/editDummy';
 
 const CScheduleTable = () => {
   // const [selectedDate, setSelectedDate] = useState<Dayjs | null>(TODAY);

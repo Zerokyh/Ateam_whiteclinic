@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { CustomerInfoProps, priceRender, StyledCustomerInfo } from './CShowScheduleDef';
+import { CustomerInfoProps, priceRender, StyledCustomerInfo } from '../ts/CShowScheduleDef';
 
 //스케쥴 표에 나오는 사용자 정보
 const CCustomerInfoContent = ({ customer }: CustomerInfoProps) => {

@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import CTitleContent from './CTitleContent';
-import { StyledTitleBox } from './CShowScheduleDef';
+import { StyledTitleBox } from '../ts/CShowScheduleDef';
 
 //기사 이름 타이틀 컴포넌트
 //backgroundcolor, color 따로 빼기.

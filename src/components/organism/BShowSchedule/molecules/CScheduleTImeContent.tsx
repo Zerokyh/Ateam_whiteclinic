@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { CScheduleTimeContentProps, StyledTimeContent } from './CShowScheduleDef';
+import { CScheduleTimeContentProps, StyledTimeContent } from '../ts/CShowScheduleDef';
 
 const CScheduleTimeContent = ({ content }: CScheduleTimeContentProps) => {
   return (

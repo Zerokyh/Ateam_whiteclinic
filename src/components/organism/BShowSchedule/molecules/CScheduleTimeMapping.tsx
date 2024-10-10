@@ -1,6 +1,6 @@
-import CScheduleTimeSlot from './CScheduleTimeSlot';
 import { Box, Typography } from '@mui/material';
-import { CustomerTimeMappingProps, workTimeLine } from './CShowScheduleDef';
+import { CustomerTimeMappingProps, workTimeLine } from '../ts/CShowScheduleDef';
+import CScheduleTimeSlot from './CScheduleTimeSlot';
 
 //사용자의 예약 시간과 예약 날짜 정보를 timeslot의 시간대와 기사의 날짜에 대입하여 mapping
 //데이터 확정되면 enginnerInfo 타입을 추가해서 해당 타입과 customer 정보를 비교해서 집어넣는 것으로 수정할 예정
