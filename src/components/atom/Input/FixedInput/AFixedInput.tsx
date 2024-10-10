@@ -1,6 +1,13 @@
 'use client';
 import * as React from 'react';
-import { FormControl, OutlinedInput, InputAdornment, IconButton } from '@mui/material';
+import {
+  FormControl,
+  OutlinedInput,
+  InputAdornment,
+  IconButton,
+  TextField,
+  Input,
+} from '@mui/material';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 
 type heightSize = 'small' | 'medium';
@@ -34,8 +41,8 @@ const AFixedInput = ({
   };
 
   return (
-    <FormControl sx={{ width: `${width}px`, ...sx }} variant="outlined" size={inputHeightSize}>
-      <OutlinedInput
+    <FormControl sx={{ width: `${width}px`, ...sx }}>
+      {/* <OutlinedInput
         onChange={onChange}
         value={value}
         sx={{ minheight: '40px' }}
@@ -51,6 +58,27 @@ const AFixedInput = ({
             </IconButton>
           </InputAdornment>
         }
+      /> */}
+      <TextField
+        onChange={onChange}
+        value={value}
+        sx={{ minheight: '40px' }}
+        variant="outlined"
+        type={type}
+        placeholder={placeholder}
+        disabled={isDisabled}
+        multiline={isMultiline}
+        maxRows={4}
+        size={inputHeightSize}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton aria-label="toggle modify text" edge="end" onClick={handleChange}>
+                <DriveFileRenameOutlineIcon />
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
       />
     </FormControl>
   );
