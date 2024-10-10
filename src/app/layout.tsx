@@ -34,13 +34,7 @@ const RootLayout = ({
               boxShadow: 'none',
               bgcolor: '#F4F7FA',
             }}
-          >
-            <Toolbar>
-              <Typography variant="h6" noWrap component="div" sx={{ color: '#888888' }}>
-                White Clinic 관리자
-              </Typography>
-            </Toolbar>
-          </AppBar>
+          ></AppBar>
           <SideNav />
           <Box
             component="main"

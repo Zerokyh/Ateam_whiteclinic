@@ -2,7 +2,7 @@ import { Box, CardContent } from '@mui/material';
 import AText from '../../atom/Text/AText';
 import { colors } from '@/styles/colors';
 import PersonIcon from '@mui/icons-material/Person';
-import PhoneIcon from '@mui/icons-material/Phone';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import HomeIcon from '@mui/icons-material/Home';
 
 type ACardProps = {
@@ -21,30 +21,35 @@ const ACard = ({ name, tel, address, onClick }: ACardProps) => {
         onClick={onClick}
         sx={{
           // border: '1px solid black',
-          width: '200px',
+          width: '300px',
           height: 'auto',
-          '&:hover': {
-            cursor: 'pointer',
-            backgroundColor: colors.background.drawer,
-            color: 'white',
-          },
           backgroundColor: 'white',
-          borderRadius: '20px',
+          borderRadius: '10px',
           display: 'flex',
           flexDirection: 'column',
+          alignContent: 'center',
           gap: 1,
+          '&:hover': {
+            cursor: 'pointer',
+            backgroundColor: colors.test.third,
+          },
         }}
       >
-        <Box sx={{ display: 'flex', gap: 1 }}>
-          <PersonIcon />
-          <AText text={name} />
+        <Box sx={{ display: 'flex', gap: 1, ml: '10px' }}>
+          <PersonIcon fontSize="small" sx={{ color: colors.text.primary }} />
+          <AText text={'이름: '} color="third" />
+          <AText text={name} color="fourth" />
         </Box>
-        <Box sx={{ display: 'flex', gap: 1 }}>
-          <PhoneIcon />
+
+        <Box sx={{ display: 'flex', gap: 1, ml: '10px' }}>
+          <PhoneAndroidIcon fontSize="small" sx={{ color: colors.text.primary }} />
+          <AText text={'번호: '} color="second" />
           <AText text={tel} />
         </Box>
-        <Box sx={{ display: 'flex', gap: 1 }}>
-          <HomeIcon />
+
+        <Box sx={{ display: 'flex', gap: 1, ml: '10px' }}>
+          <HomeIcon fontSize="small" sx={{ color: colors.text.primary }} />
+          <AText text={'주소: '} color="first" />
           <AText text={address} />
         </Box>
       </CardContent>

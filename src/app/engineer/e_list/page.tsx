@@ -80,7 +80,7 @@ const Page = () => {
       >
         <Box
           sx={{
-            width: '300px',
+            width: '400px',
             height: '100%',
             overflowY: 'auto',
             borderRight: '1px solid #e0e0e0',

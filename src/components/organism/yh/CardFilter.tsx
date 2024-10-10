@@ -18,7 +18,7 @@ const CardFilter = ({ data, filter, onFilterChange, onItemClick }: FilterProps) 
         placeholder="이름, 주소 또는 전화번호로 검색"
         value={filter}
         onChange={onFilterChange}
-        width={200}
+        width={350}
         sx={{ mb: 2 }}
         inputHeightSize="medium"
       />
