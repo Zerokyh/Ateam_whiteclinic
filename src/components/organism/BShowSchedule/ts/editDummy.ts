@@ -1,4 +1,4 @@
-import { CustomerInfo, engineerInfo } from './CShowScheduleDef';
+import { CustomerInfo, engineerInfo } from './BEditScheduleDef';
 
 export const dummyCustomers: CustomerInfo[] = [
   {

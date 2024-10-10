@@ -5,7 +5,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import 'dayjs/locale/ko';
-import { DatePickerProps, MIN_DATE, TODAY } from '../ts/CShowScheduleDef';
+import { DatePickerProps, MIN_DATE, TODAY } from '../ts/BEditScheduleDef';
 
 /**
  * @param label 일정 선택 문자열로 타입 고정 되어있음
