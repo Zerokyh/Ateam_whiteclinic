@@ -20,7 +20,7 @@ const CardFilter = ({ data, filter, onFilterChange, onItemClick }: FilterProps) 
         onChange={onFilterChange}
         width={350}
         sx={{ mb: 2 }}
-        inputHeightSize="medium"
+        inputHeightSize="small"
       />
       <Box
         sx={{

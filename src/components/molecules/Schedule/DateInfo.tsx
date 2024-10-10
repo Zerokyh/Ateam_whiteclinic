@@ -23,8 +23,6 @@ const DateInfo = ({ time, timeslotschedule }: DateInfoProps) => {
     <Box
       sx={{
         display: 'flex',
-        //  borderBottom: '1px solid #dbdbdb'
-
         gap: 1,
       }}
     >
@@ -35,9 +33,7 @@ const DateInfo = ({ time, timeslotschedule }: DateInfoProps) => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          // borderRight: '1px solid #dbdbdb',
           position: 'relative',
-          // left: 10,
           py: 1,
           bgcolor: 'white',
           borderRadius: sizes.borderRadius.xs,
@@ -52,6 +48,7 @@ const DateInfo = ({ time, timeslotschedule }: DateInfoProps) => {
           display: 'flex',
           alignItems: 'center',
           bgcolor: 'white',
+          borderRadius: sizes.borderRadius.xs,
         }}
       >
         {/* {timeslotschedule} */}
@@ -60,7 +57,6 @@ const DateInfo = ({ time, timeslotschedule }: DateInfoProps) => {
             display: 'flex',
             justifyContent: 'center',
             width: '100%',
-            borderRadius: sizes.borderRadius.xs,
           }}
         >
           {/* <AFixedInput value={inputValue} onChange={handleInputChange} sx={{ width: `100%` }} /> */}

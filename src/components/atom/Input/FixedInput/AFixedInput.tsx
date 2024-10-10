@@ -34,7 +34,7 @@ const AFixedInput = ({
   };
 
   return (
-    <FormControl sx={{ width: `${width}px`, ...sx }}>
+    <FormControl sx={{ width: `${width}px`, ...sx }} size={inputHeightSize}>
       <OutlinedInput
         onChange={onChange}
         value={value}
