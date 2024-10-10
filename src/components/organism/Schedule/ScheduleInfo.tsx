@@ -25,7 +25,7 @@ const ScheduleInfo = ({ selectedDate, engineerName }: ScheduleInfoProps) => {
           alignItems: 'center',
           bgcolor: '#1565C0',
           color: 'white',
-          fontSize: sizes.fontSize.large,
+          fontSize: sizes.fontSize.xlarge,
           fontWeight: 800,
           borderRadius: sizes.borderRadius.xs,
         }}
