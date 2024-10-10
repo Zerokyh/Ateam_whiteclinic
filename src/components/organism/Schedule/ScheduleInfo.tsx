@@ -19,7 +19,7 @@ const ScheduleInfo = ({ selectedDate, engineerName }: ScheduleInfoProps) => {
       <Box
         sx={{
           width: '100%',
-          height: '40px',
+          height: '50px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',

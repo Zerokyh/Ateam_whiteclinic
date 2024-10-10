@@ -7,6 +7,7 @@ import { formatDate } from '@/util/dateUtil';
 import ADatePicker from '@/components/atom/Calendar/ADatePicker';
 import ScheduleInfo from './ScheduleInfo';
 import { sizes } from '@/styles/sizes';
+import CenteredLayout from '@/styles/layout/CenterLayout';
 
 //스케쥴 확인 페이지 - 나중에 컴포넌트 분리 예정
 
@@ -61,6 +62,7 @@ const ScheduleShowTable = () => {
       sx={{
         display: 'flex',
         flexDirection: 'column',
+        // alignItems: 'center',
         height: '95vh',
         width: '100%',
         overflow: 'hidden',
@@ -88,10 +90,24 @@ const ScheduleShowTable = () => {
           </Box>
           <CardFilter {...cardFilterProps} />
         </Box>
-
-        <Box sx={{ display: 'flex', width: '1000px', gap: 2, p: 1, overflow: 'scroll' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            width: '1200px',
+            gap: 2,
+            p: 1,
+            overflow: 'scroll',
+            mx: 30,
+          }}
+        >
           <Box
-            sx={{ display: 'flex', flexDirection: 'column', width: '100%', alignContent: 'center' }}
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              width: '100%',
+              alignContent: 'center',
+            }}
           >
             <Box sx={dateDisplayStyle}>
               {displayDate} {displayDayOfWeek}
