@@ -111,7 +111,7 @@ const CEditSchedule = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ width: '1200px', marginLeft: 1, ...StyledScheduleTimeline }}>
+      <Box sx={{ width: '1200px', marginLeft: 3, ...StyledScheduleTimeline }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <CDatePicker value={selectedDate} handleChange={handleSelect} />
         </Box>

@@ -64,7 +64,8 @@ const ScheduleShowTable = () => {
         flexDirection: 'column',
         width: '100%',
         height: '100%',
-        overflowY: 'hidden',
+        overflowX: 'hidden',
+        overflowY: 'auto',
       }}
     >
       <Box
@@ -76,14 +77,13 @@ const ScheduleShowTable = () => {
       >
         <Box
           sx={{
-            width: '300px',
+            width: '500px',
             height: '100%',
             overflowY: 'auto',
             borderRight: '1px solid #e0e0e0',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: '10px',
           }}
         >
           <Box sx={{ p: 1, borderBottom: '1px solid #e0e0e0' }}>

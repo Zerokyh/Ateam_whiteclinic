@@ -11,7 +11,7 @@ export const PaymentInfo = [
         {
           formfieldtype: 'AVariableInput' as FormFieldType,
           prevprops: {
-            isInvisible: false,
+            isEdit: false,
           } as AVariableInputProps,
         },
       ],
